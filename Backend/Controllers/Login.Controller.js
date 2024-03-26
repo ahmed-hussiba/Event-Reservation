@@ -27,7 +27,7 @@ let Login = async (req,res)=>{
         if(!passwordCheck)
             return res.status(404).json({message:"wrong Email or password"});
 
-        const token = await JWT.sign({userID:foundUser._id,userName:foundUser.username,imageURL:newUser.imageURl},"private");
+        const token = await JWT.sign({userID:foundUser._id,userName:foundUser.username,imageURL:newUser.imageURL},"private");
 
         res.header("x-auth-token",token);
 

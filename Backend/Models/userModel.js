@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     password:{type:String,required:true,validate:v=>{ return validators.isStrongPassword(v)}},
     gender:{required:true,type:String,enum:['F','M']},
     username:{required:true,type:String,minLength:5,maxLength:50,trim:true},
-    imageURl:{type:String,required:true,pattern:"^(.+)(\.jpg|\.png)$"},
+    imageURL:{type:String,required:true,pattern:"^(.+)(\.jpg|\.png)$"},
     city: {required:true,type:String},
     country: {required:true,type:String},
     favourites:{type:[{eventId:Number,name:String}]},

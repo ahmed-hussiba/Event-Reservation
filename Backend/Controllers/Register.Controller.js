@@ -10,6 +10,7 @@ let Register = async (req,res)=>{
     //1)req.body
     user = req.body;
     user.email = user.email.toLowerCase();
+    console.log(user.imageURL);
     //2)check db
     let foundUser = await userModel.findOne().or([{email:user.email.toLowerCase()},{username:user.username}]);
     //3)if found
@@ -22,7 +23,7 @@ let Register = async (req,res)=>{
     user.password = await bcrypt.hash(user.password,salt);
     let newUser = new userModel(user);
     newUser.save().then(async ()=>{
-        const token = await JWT.sign({userID:newUser._id,userName:newUser.username,imageURL:newUser.imageURl},"private");
+        const token = await JWT.sign({userID:newUser._id,userName:newUser.username,imageURL:newUser.imageURL},"private");
         // const token = newUser.genToken
         console.log(token);
 

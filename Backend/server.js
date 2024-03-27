@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -6,7 +7,6 @@ const PORT = process.env.PORT || 7000;
 const regRoute = require("../Backend/Routes/Register.route");
 const loginRoute = require("../Backend/Routes/Login.Route");
 const reviewRoute = require("./Routes/Review.Route");
-const orderRoute = require("./Routes/Order.Route");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

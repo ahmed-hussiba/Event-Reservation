@@ -31,7 +31,6 @@ let Login = async (req, res) => {
         userID: foundUser._id,
         userName: foundUser.username,
         imageURL: newUser.imageURL,
-        userEmail: newUser.email,
       },
       "private"
     );

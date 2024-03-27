@@ -1,0 +1,22 @@
+/////ADD TO CART
+{
+    "eventId": 1,
+    "eventName" : "iti",
+    "ticketLevel" : "Gold",
+    "quantity" : 1,
+    "ticketPrice" : 3000
+}
+
+
+////REGISTERATIONS
+{
+    "_id": 2,
+    "email": "h@gmail.com",
+    "password":"Hassan_a123",
+    "gender": "M",
+    "username": "hassan_223",
+    "imageURL": "asd123.jpg",
+    "city": "nasr City",
+    "country":"Egypt"
+
+}

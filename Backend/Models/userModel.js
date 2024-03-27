@@ -11,8 +11,11 @@ const userSchema = new mongoose.Schema({
     city: {required:true,type:String},
     country: {required:true,type:String},
     favourites:{type:[{eventId:Number,name:String}]},
-    cart:{type:[{eventId:Number,eventName:String,ticketLevel:String,quantity:Number,ticketPrice:Number}]}
-
+    cart:{type:[{
+        eventId:Number,
+        eventName:String,ticketLevel:{type: String, enum:["golden","silver", "platinum"]},
+        quantity:Number,
+        ticketPrice:Number}]}
 }) 
 
 // userSchema.methods.genToken = function(){

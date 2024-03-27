@@ -1,142 +1,141 @@
 const userModel = require("../Models/userModel");
 
 let getAllUsers = async (req, res) => {
-    let users = await userModel.find({});
+  let users = await userModel.find({});
 
-    if (users) {
-        return res.status(200).json({ users });
-    }
+  if (users) {
+    return res.status(200).json({ users });
+  }
 
-    return res.status(404).json({ message: "No Users" });
-}
+  return res.status(404).json({ message: "No Users" });
+};
 
 let getUser = async (req, res) => {
-    let id = req.params.id;
-    let user = await userModel.findOne({ _id: id });
+  let id = req.params.id;
+  let user = await userModel.findOne({ _id: id });
 
-    if (user) {
-        return res.status(200).json({ user });
-    }
+  if (user) {
+    return res.status(200).json({ user });
+  }
 
-    return res.status(404).json({ message: "User Not Found" });
-}
+  return res.status(404).json({ message: "User Not Found" });
+};
 
 let updateUser = async (req, res) => {
-    let newUser = req.body;
-    let id = req.params.id;
+  let newUser = req.body;
+  let id = req.params.id;
 
-    ///DON'T UPDATE PASSWORD
+  ///DON'T UPDATE PASSWORD
 
-    if (newUser.password)
-        return res.status(401);
+  if (newUser.password)
+    return res.status(401).json({ message: "can't update password" });
 
-    let updatedUser = await userModel.findOneAndUpdate({_id : id}, newUser, { new: true });
+  let updatedUser = await userModel.findOneAndUpdate({ _id: id }, newUser, {
+    new: true,
+  });
 
-    if (updatedUser) {
-        return res.status(200).json({ updatedUser });
-    }
+  if (updatedUser) {
+    return res.status(200).json({ updatedUser });
+  }
 
-    return res.status(404).json({ message: "Bad Request" });
-}
+  return res.status(404).json({ message: "Bad Request" });
+};
 
 let deleteUser = async (req, res) => {
-    let id = req.params.id;
+  let id = req.params.id;
 
-    try {
-        userModel.findOneAndDelete( {_id: id}, user);
-        return res.status(200).json({ message: "User Deleted" });
-    } catch (err) {
-        console.log(err);
-        return res.status(400).json({ message: "Bad Request" });
-    }
-
-}
+  try {
+    userModel.findOneAndDelete({ _id: id }, user);
+    return res.status(200).json({ message: "User Deleted" });
+  } catch (err) {
+    console.log(err);
+    return res.status(400).json({ message: "Bad Request" });
+  }
+};
 
 let addUser = async (req, res) => {
-    let newUser = req.body;
-    //
-    ///Validation ? 
-    //
-    let createdUser = new userModel(newUser);
+  let newUser = req.body;
+  //
+  ///Validation ?
+  //
+  let createdUser = new userModel(newUser);
 
-    createdUser.save().then(() => {
-        return res.status(201).json({ createdUser });
-    }).catch((e) => {
-        console.log(e);
-        return res.status(400);
+  createdUser
+    .save()
+    .then(() => {
+      return res.status(201).json({ createdUser });
     })
-
-}
-
+    .catch((e) => {
+      console.log(e);
+      return res.status(400);
+    });
+};
 
 let getUserCart = async (req, res) => {
-    let id = req.params.id;
+  let id = req.params.id;
 
-    let user = await userModel.findOne({ _id: id });
+  let user = await userModel.findOne({ _id: id });
 
-    if (user) {
-        let cart = user.cart;
-        return res.status(200).json({ cart });
-    }
+  if (user) {
+    let cart = user.cart;
+    return res.status(200).json({ cart });
+  }
 
-    return res.status(404);
-}
+  return res.status(404);
+};
 
 let addToUserCart = async (req, res) => {
-    let id = req.params.id;
-    let newCartObj = req.body;
+  let id = req.params.id;
+  let newCartObj = req.body;
 
-    let isValid = validateCartObj(newCartObj);
+  let isValid = validateCartObj(newCartObj);
 
-    if (!isValid)
-        return res.status(400).json({ message: "Bad Request" });
+  if (!isValid) return res.status(400).json({ message: "Bad Request" });
 
-    let user = await userModel.findOneAndUpdate(
-        { _id: id },
-        { $push : {cart: newCartObj}}, 
-        {new : true});
+  let user = await userModel.findOneAndUpdate(
+    { _id: id },
+    { $push: { cart: newCartObj } },
+    { new: true }
+  );
 
+  if (user) {
+    return res.status(200).json({ user });
+  }
 
-    if (user) {
-        return res.status(200).json({user});
-    }
-
-    return res.status(404).json({ message: "Not Found" });
-    
-}
+  return res.status(404).json({ message: "Not Found" });
+};
 
 let deleteFromUserCart = async (req, res) => {
-    let id = req.params.id;
-    let deletedCartObj = req.body;
+  let id = req.params.id;
+  let deletedCartObj = req.body;
 
-    let user = await userModel.findOneAndUpdate(
-        { _id: id },
-        { $pull : {cart: deletedCartObj}}, 
-        {new : true});
+  let user = await userModel.findOneAndUpdate(
+    { _id: id },
+    { $pull: { cart: deletedCartObj } },
+    { new: true }
+  );
 
-        if (user) {
-            return res.status(200).json({deletedCartObj});
-        }
-    
-        return res.status(400).json({ message: "Not Found" });
-}
+  if (user) {
+    return res.status(200).json({ deletedCartObj });
+  }
 
-
+  return res.status(400).json({ message: "Not Found" });
+};
 
 function validateCartObj(obj) {
-    if (isNaN(+obj.eventId) || isNaN(+obj.quantity) || isNaN(+obj.ticketPrice))
-        return false
+  if (isNaN(+obj.eventId) || isNaN(+obj.quantity) || isNaN(+obj.ticketPrice))
+    return false;
 
-    return true
+  return true;
 }
 
 module.exports = {
-    getAllUsers,
-    getUser,
-    addUser,
-    updateUser,
-    deleteUser,
-    addToUserCart,
-    getUserCart,
-    deleteFromUserCart
-}
+  getAllUsers,
+  getUser,
+  addUser,
+  updateUser,
+  deleteUser,
+  addToUserCart,
+  getUserCart,
+  deleteFromUserCart,
+};

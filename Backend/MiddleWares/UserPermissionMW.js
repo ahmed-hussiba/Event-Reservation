@@ -15,7 +15,7 @@ module.exports = (req, res, nxt) => {
   console.log("MW1");
 
   const data = jwt.verify(token, "private");
-  console.log(data);
+  // console.log(data);
   if (data.userEmail.includes("@admin.com")) {
     return res.status(404).json({ msg: "Access Denied" });
   }

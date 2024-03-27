@@ -1,18 +1,21 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const UserController = require('../Controllers/User.Controller');
+const UserController = require("../Controllers/User.Controller");
+const AdminPermissionMW = require("../MiddleWares/AdminPermissionMW");
+const UserPermissionMW = require("../MiddleWares/UserPermissionMW");
 
+router.get("/", AdminPermissionMW, UserController.getAllUsers);
 
-router.get('/', UserController.getAllUsers);
-router.get('/:id', UserController.getUser);
-router.get('/:id/cart', UserController.getUserCart);
+router.get("/:id", UserController.getUser);
+router.get("/:id/cart", UserController.getUserCart);
 
-router.post('/', UserController.addUser);
-router.post('/:id/cart', UserController.addToUserCart);
+router.post("/", UserController.addUser);
 
-router.put('/:id', UserController.updateUser);
+router.post("/:id/cart", UserPermissionMW, UserController.addToUserCart);
 
-router.delete('/:id', UserController.deleteUser);
-router.delete('/:id/cart', UserController.deleteFromUserCart);
+router.put("/:id", UserPermissionMW, UserController.updateUser);
+
+router.delete("/:id", UserController.deleteUser);
+router.delete("/:id/cart", UserController.deleteFromUserCart);
 
 module.exports = router;

@@ -7,6 +7,8 @@ const PORT = process.env.PORT || 7000;
 const regRoute = require("../Backend/Routes/Register.route");
 const loginRoute = require("../Backend/Routes/Login.Route");
 const reviewRoute = require("./Routes/Review.Route");
+const userRoute = require("./Routes/User.Route");
+const orderRoute = require("./Routes/Order.Route");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -22,6 +24,9 @@ mongoose
 
     //review api
     app.use("/api/reviews", reviewRoute);
+
+    //users api
+    app.use("/api/users", userRoute);
 
     //route api
     app.use("/api/orders", orderRoute);

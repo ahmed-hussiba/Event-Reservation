@@ -1,44 +1,47 @@
-const userModel = require('../Models/userModel')
-const bcrypt = require('bcrypt')
-const JWT = require('jsonwebtoken');
- 
-let Login = async (req,res)=>{
-    //todo
-    //Validation
-    //token
+const userModel = require("../Models/userModel");
+const bcrypt = require("bcrypt");
+const JWT = require("jsonwebtoken");
 
-    //1)req.body
-    user = req.body;
-    user.email = user.email.toLowerCase();
+let Login = async (req, res) => {
+  //todo
+  //Validation
+  //token
 
-     
-    //-- check admin or user
-    if(! user.email.includes("@admin.com"))
-    {
-        //2)check db
-        let foundUser = await userModel.findOne().or([{email:user.email.toLowerCase()},{username:user.username}]);
-        if(!foundUser)
-        {
-            return res.status(404).json({message:"wrong Email or password"});
-        }
-        let userEmail = foundUser.email;
-        let passwordCheck = await bcrypt.compare(user.password,foundUser.password);
+  //1)req.body
+  user = req.body;
+  user.email = user.email.toLowerCase();
 
-        if(!passwordCheck)
-            return res.status(404).json({message:"wrong Email or password"});
-
-        const token = await JWT.sign({userID:foundUser._id,userName:foundUser.username,imageURL:newUser.imageURL},"private");
-
-        res.header("x-auth-token",token);
-
-        return res.status(200).json({message:"login success"});
+  //-- check admin or user
+  if (!user.email.includes("@admin.com")) {
+    //2)check db
+    let foundUser = await userModel
+      .findOne()
+      .or([{ email: user.email.toLowerCase() }, { username: user.username }]);
+    if (!foundUser) {
+      return res.status(404).json({ message: "wrong Email or password" });
     }
-    else
-    {
-        //admin
-    }
-    
-    
-}
+    let userEmail = foundUser.email;
+    let passwordCheck = await bcrypt.compare(user.password, foundUser.password);
 
-module.exports = {Login}
+    if (!passwordCheck)
+      return res.status(404).json({ message: "wrong Email or password" });
+
+    const token = await JWT.sign(
+      {
+        userID: foundUser._id,
+        userName: foundUser.username,
+        imageURL: newUser.imageURL,
+        userEmail: newUser.email,
+      },
+      "private"
+    );
+
+    res.header("x-auth-token", token);
+
+    return res.status(200).json({ message: "login success" });
+  } else {
+    //admin
+  }
+};
+
+module.exports = { Login };

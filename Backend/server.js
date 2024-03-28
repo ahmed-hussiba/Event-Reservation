@@ -9,6 +9,8 @@ const loginRoute = require("../Backend/Routes/Login.Route");
 const reviewRoute = require("./Routes/Review.Route");
 const userRoute = require("./Routes/User.Route");
 const orderRoute = require("./Routes/Order.Route");
+const eventRoute= require('./Routes/Event.Route');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -28,11 +30,15 @@ mongoose
     //users api
     app.use("/api/users", userRoute);
 
+    //event api
+    app.use('/api/event', eventRoute)
     //route api
     app.use("/api/orders", orderRoute);
     app.listen(PORT, () => {
       console.log("listening on port http://localhost:" + PORT);
     });
+
+
   })
   .catch((err) => {
     console.log(err);

@@ -10,6 +10,25 @@ body {
   background-color: #FFC244 !important;
   overflow-x: hidden;
 }
+
+.form-check-input[type="radio"] {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 0.5em;
+  background-color: #00A082; /* Color for checked radio button */
+  border-color: #00A082; /* Border color for unchecked radio button */
+}
+
+.form-check-input[type="radio"]:checked {
+  background-color: #00A082; /* Color for checked radio button */
+  border-color: #00A082; /* Border color for checked radio button */
+}
+
+/* Adjust label positioning */
+.form-check-label {
+  margin-top: 0.3em;
+}
+
 a {
   cursor: pointer;
   transition: all 200ms linear;
@@ -116,7 +135,10 @@ h6 span {
 .checkbox:checked + label:before {
   transform: translateX(44px) rotate(-270deg);
 }
-
+.inputfile:focus + label {
+  outline: 1px dotted #000;
+  outline: -webkit-focus-ring-color auto 5px;
+}
 .card-3d-wrap {
   position: relative;
   width: 440px;

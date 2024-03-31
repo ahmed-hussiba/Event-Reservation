@@ -12,6 +12,7 @@ const eventSchema = new mongoose.Schema({
     performer: {type: String, required: true},
     organizer: {type:String, required: true},
     userReview: {type:[String]},
+    promotion: {type:Number},
     ticketsAvailable:{type:[{level:{type:String , enum: ["silver", "golden", "platinum"]},price: Number, quantity:Number }]}
 
 })

@@ -39,6 +39,16 @@ let AddEvent = (req, res) => {
 };
 
 
+let GetPromotedEvents= async (req, res)=>{
+  let highstedPromoted = await EventModel.find({promotion :{$gt:0} }).sort({promotion: -1}).limit(5);
+  if(!highstedPromoted){
+    return res.status(404).json({Msg: "No Events Available"});
+  }
+
+  return res.status(200).json({data:highstedPromoted});
+}
+
+
 let UpdateEvent = async (req, res) => {
   try {
     let Id = req.params.id;
@@ -82,4 +92,5 @@ module.exports = {
   AddEvent,
   UpdateEvent,
   DeleteEventByID,
+  GetPromotedEvents
 };

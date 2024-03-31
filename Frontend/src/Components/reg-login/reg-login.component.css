@@ -8,6 +8,13 @@ body {
   overflow-x: hidden;
 }
 
+.parent {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* gender radio buttons */
 .form-check-input[type="radio"] {
   width: 1.5em;
@@ -31,12 +38,10 @@ p {
   font-size: 14px;
 }
 
-/* card title (singin/signup) */
 h4 {
   font-weight: 600;
   color: #00A082;
 }
-/* login sign up next to login/signup checkbox */
 h6 span {
   padding: 0 20px;
   text-transform: uppercase;
@@ -78,19 +83,34 @@ h6 span {
 }
 .checkbox:checked + label:before {
   transform: translateX(44px) rotate(-270deg);
+  
 }
+
+
+[type="checkbox"]:checked,.card-back{
+  display: flex;
+}
+
+[type="checkbox"]:checked,.card-front{
+  display: none;
+}
+
+[type="checkbox"]:not(:checked), .card-back { 
+  display: none;
+}
+
+[type="checkbox"]:not(:checked), .card-front { 
+  display: flex;
+}
+
 
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
-  position: absolute;
-  left: -9999px;
+
+  /* position: absolute;
+  left: -9999px; */
 }
 
-
-/* .mainSection{
-  border: #00A082 solid 5px;
-  border-radius: 25px;
-} */
 .section {
   width: 100%;
   display: block;
@@ -98,7 +118,7 @@ h6 span {
 }
 
 .mainSection{
-    width: 35%;
+    width: 40VW;
     border-radius: 25px;
     padding-bottom: 15px;
 }
@@ -107,7 +127,7 @@ h6 span {
   position: relative;
   width: 440px;
   max-width: 100%;
-  height: 450px;
+  min-height: 450px;
   transform-style: preserve-3d;
   perspective: 800px;
   margin-bottom: 60px;
@@ -126,13 +146,7 @@ h6 span {
   width: 100%;
   height: 100%;
   background-color: #FFC244;
-  /* background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
-  background-position: bottom center;
-  background-repeat: no-repeat;
-  background-size: 300%; */
   position: absolute;
-  /* left: 0;
-  top: 0; */
   transform-style: preserve-3d;
 }
 
@@ -142,7 +156,9 @@ h6 span {
 
 .checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
   transform: rotateY(180deg);
+  
 }
+
 .center-wrap {
   position: absolute;
   width: 100%;
@@ -190,7 +206,7 @@ h6 span {
   transition: all 200ms linear;
 }
 
-/* submit button */
+
 
 .btn {
   border-radius: 16px;

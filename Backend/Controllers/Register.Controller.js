@@ -1,7 +1,7 @@
 const userModel = require("../Models/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
-const UploadPhoto = require('../Utils/UploadPhoto');  
+const UploadPhoto = require("../Utils/UploadPhoto");
 
 let Register = async (req, res) => {
   //todo
@@ -10,6 +10,8 @@ let Register = async (req, res) => {
 
   //1)req.body
   // console.log(req.body);
+  console.log("req con");
+  // console.log(req.file.path);
   user = req.body;
   user.email = user.email.toLowerCase();
   //2)check db
@@ -25,14 +27,11 @@ let Register = async (req, res) => {
   user.password = await bcrypt.hash(user.password, salt);
   ///
   //Saving IN DB
-  
 
-  
-  
-  user.imageURL = await UploadPhoto(user.username);
+  // UploadPhoto(user.username);
 
   // console.log(user.imageURL);
-  
+
   let newUser = new userModel(user);
   newUser
     .save()

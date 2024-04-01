@@ -1,7 +1,7 @@
 const multer = require("multer");
 const path = require("path");
 
-async function UploadPhoto(name) {
+module.exports = (req, res, nxt) => {
   let finalName;
   const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -18,6 +18,8 @@ async function UploadPhoto(name) {
 
   const upload = multer({ storage });
   upload.single("image");
-}
 
-module.exports = UploadPhoto;
+  //   req.body.imageURL = finalName;
+
+  nxt();
+};

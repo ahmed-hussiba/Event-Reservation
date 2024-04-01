@@ -4,7 +4,8 @@ body {
   font-family: "Poppins", sans-serif;
   font-weight: 300;
   font-size: 15px;
-  background-color: #FFC244 !important;
+  /* background-color: #FFC244 !important; */
+  background-color: #2a2b38 !important;
   overflow-x: hidden;
 }
 
@@ -24,7 +25,6 @@ body {
   width: 1rem;
   height: 1rem;
   margin-right: 0.5em;
-  background-color: #00A082;
 }
 
 
@@ -62,8 +62,8 @@ h6 span {
   width: 60px;
   height: 16px;
   border-radius: 8px;
-  padding: 0;
-  margin: 10px auto;
+  /* padding: 0; */
+  margin: 4vh auto;
   cursor: pointer;
   background-color: white;
 }
@@ -94,11 +94,10 @@ h6 span {
 }
 
 
-[type="checkbox"]:checked,
+/* [type="checkbox"]:checked,
 .visibility-controller {
   display: flex !important;
-  /* display: flex ; */
-
+  
 }
 
 
@@ -116,7 +115,7 @@ h6 span {
 [type="checkbox"]:not(:checked),
 .card-front {
   display: flex;
-}
+} */
 
 
 [type="checkbox"]:checked,
@@ -129,14 +128,18 @@ h6 span {
 .section {
   width: 100%;
   display: block;
-  background-color: #FFC244;
+  /* background-color: #FFC244; */
 }
 
 .mainSection {
   width: 40VW;
+  max-width: 450px;
   border-radius: 25px;
   padding-bottom: 15px;
-  box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.6);
+  box-shadow: 0 4px 8px 8px rgba(21, 21, 21, 0.6);
+  /* background-color: #FFC244 !important; */
+  /* background-color: #2a2b38 !important; */
+  background-color: #0a0d3f !important;
 }
 
 .card-3d-wrap {
@@ -163,10 +166,35 @@ h6 span {
 .card-back {
   width: 100%;
   height: 100%;
-  background-color: #FFC244;
+  /* background-color: #FFC244; */
+  /* background-color: #2a2b38 ; */
+  background-color: #0a0d3f !important;
+
+
+  /* background-blend-mode:difference; */
+  /* background-blend-mode: color-dodge; */
+
+  /* background-blend-mode:screen; */
+  /* background-blend-mode:lighten; */
+  /* background-blend-mode:overlay; */
+  /* background-blend-mode: color-burn; */
+  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-position: bottom center;
+  background-repeat: no-repeat;
+  background-size: 300%;
   position: absolute;
+  border-radius: 6px;
+  left: 0;
+  top: 0;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  backface-visibility: hidden;
   transform-style: preserve-3d;
 }
+
 
 .card-back {
   display: flex;
@@ -179,8 +207,12 @@ h6 span {
   margin: auto;
 }
 
+.card-back h4, .card-front h4 {
+  margin-top: 5vh;
+}
+
 .card-back .form-style {
-  height: 30px;
+  height: 40px;
   margin-bottom: 1vh;
   
 }
@@ -194,6 +226,7 @@ h6 span {
   width: 100%;
   align-items: center;
   justify-content: space-evenly;
+  margin: 2vh 0;
 }
 
 .custom-upload {
@@ -210,7 +243,7 @@ h6 span {
 }
 
 .back-submit-btn {
-  margin-top: 35px;
+  margin-top: 2vh;
 }
 
 .card-back {
@@ -235,7 +268,6 @@ h6 span {
 
 .form-style {
   padding: 13px 1vw 13px 3vw;
-  
   height: 40px;
   width: 100%;
   font-weight: 500;
@@ -246,6 +278,9 @@ h6 span {
   outline: none;
   color: #00A082;
   background-color: white;
+  /* background-color: #FFC244; */
+  /* background-color: #2a2b38 !important; */
+
   border: none;
   transition: all 200ms linear;
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
@@ -287,10 +322,6 @@ h6 span {
   width: 100%;
 }
 
-.signup-upload>* {
-  flex-shrink: 0;
-}
-
 .upload-svg {
   width: 10%;
 }
@@ -305,9 +336,9 @@ h6 span {
   border-radius: 16px;
   border: 2px solid rgb(206, 195, 195);
   height: 32px;
-  width: 70%;
-  min-width: fit-content;
-  font-size: 1rem;
+  width: 100%;
+  padding: 0 15px;
+  font-size: 1em;
   font-weight: 750;
   text-transform: uppercase;
   letter-spacing: 1px;

@@ -16,8 +16,8 @@
         <div class="card-front">
           <div class="center-wrap">
             <div class="section  text-center m-auto">
-              <h4 class="mb-4 pb-3">Log In</h4>
-              <form [formGroup]="mySignInFormGroup">
+              <!-- <h4 class="">Log In</h4> -->
+              <form class="form-parent" [formGroup]="mySignInFormGroup">
                 <div class="form-group">
                   <input formControlName="email" type="email" form name="logemail" class="form-style"
                     placeholder="Your Email" id="logemail" autocomplete="off" />
@@ -47,9 +47,11 @@
               </form>
 
               <a href="#" class="btn mt-4" (click)="submitSignIn()">submit</a>
-              <p class="mb-0 mt-4 text-center ">
-                <a href="#0" class="link">Forgot your password?</a>
-              </p>
+              <div class="w-100">
+                <p class="mb-0 mt-4  text-center ">
+                  <a href="#0" class="pb-3 link">Forgot your password?</a>
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -58,7 +60,7 @@
             <!-- <div class="section m-auto text-center w-50"> -->
             <div class="section ">
               <!-- <h4 class="pb-3">Sign Up</h4> -->
-              <h4 class="">Sign Up</h4>
+              <!-- <h4 class="">Sign Up</h4> -->
               <!-- <div class="form-group mb-2 visibility-controller"> -->
               <div class="form-group">
                 <input type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail"
@@ -131,9 +133,9 @@
 
 
 
-              <div class="back-submit-btn">
+              <div class="back-submit-btn ">
                 <!-- <a href="#" class="btn mt-4 ">submit</a> -->
-                <a href="#" class="btn ">submit</a>
+                <a href="#" class="btn">submit</a>
               </div>
             </div>
           </div>

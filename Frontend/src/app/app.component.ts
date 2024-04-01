@@ -6,9 +6,6 @@ import { RegLoginComponent } from '../Components/reg-login/reg-login.component';
 import { PromotionEventsComponent } from '../Components/promotion-events/promotion-events.component';
 import { CategoriesComponent } from '../Components/categories/categories.component';
 import { ReviewsComponent } from '../Components/reviews/reviews.component';
-import { EventsComponent } from '../Components/events/events.component';
-import { EventDetailsComponent } from '../Components/event-details/event-details.component';
-
 
 @Component({
   selector: 'app-root',
@@ -19,9 +16,7 @@ import { EventDetailsComponent } from '../Components/event-details/event-details
             RegLoginComponent,
             PromotionEventsComponent,
             CategoriesComponent,
-            ReviewsComponent,
-            EventsComponent,
-            EventDetailsComponent
+            ReviewsComponent
           ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

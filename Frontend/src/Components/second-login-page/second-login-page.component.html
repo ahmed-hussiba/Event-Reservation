@@ -1,0 +1,55 @@
+<div class="component-container">
+
+    <section class="wrapper" [class.active]="wrapperActive">
+        <div class="form signup">
+          <header (click)="toggleWrapper()">Signup</header>
+          <form action="#">
+            <input type="text" placeholder="Full name" required />
+            <input type="text" placeholder="Email address" required />
+            <input type="password" placeholder="Password" required />
+      
+    
+            <div class="checkbox">
+              <input type="checkbox" id="signupCheck" />
+              <label for="signupCheck">I accept all terms & conditions</label>
+            </div>
+            <input type="submit" value="Signup" />
+          </form>
+        </div>
+    
+        <div class="form login">
+          <header (click)="toggleWrapper()">Login</header>
+          <form [formGroup]="mySignInFormGroup">
+            <input formControlName="email" type="email" placeholder="Email address" required />
+            @if(!emailIsValid) {
+              <p style="
+                        font-size: small;
+                        color: red;
+                        text-align: center;
+                      ">
+                invalid Email
+              </p>
+              }
+    
+            <input formControlName="password" type="password" placeholder="Password" required />
+            @if(!passwordIsValid) {
+              <p style="
+                        font-size: small;
+                        color: red;
+                        text-align: center;
+                      ">
+                Invalid Password
+              </p>
+              }
+            <a href="#">Forgot password?</a>
+            <input type="submit" value="Login" />
+          </form>
+        </div>
+    
+        
+      </section> 
+    
+    
+    
+    
+      </div>

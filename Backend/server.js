@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-require("dotenv").config();
 const PORT = process.env.PORT || 7000;
 const regRoute = require("../Backend/Routes/Register.route");
 const loginRoute = require("../Backend/Routes/Login.Route");
@@ -32,8 +31,10 @@ mongoose
 
     //event api
     app.use('/api/event', eventRoute)
-    //route api
+
+    //orders api
     app.use("/api/orders", orderRoute);
+
     app.listen(PORT, () => {
       console.log("listening on port http://localhost:" + PORT);
     });

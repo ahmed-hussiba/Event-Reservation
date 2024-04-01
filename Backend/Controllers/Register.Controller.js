@@ -1,6 +1,7 @@
 const userModel = require("../Models/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
+const UploadPhoto = require('../Utils/UploadPhoto');  
 
 let Register = async (req, res) => {
   //todo
@@ -8,9 +9,9 @@ let Register = async (req, res) => {
   //token
 
   //1)req.body
+  // console.log(req.body);
   user = req.body;
   user.email = user.email.toLowerCase();
-  console.log(user.imageURL);
   //2)check db
   let foundUser = await userModel
     .findOne()
@@ -22,6 +23,16 @@ let Register = async (req, res) => {
   //4) if not found
   let salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
+  ///
+  //Saving IN DB
+  
+
+  
+  
+  user.imageURL = await UploadPhoto(user.username);
+
+  // console.log(user.imageURL);
+  
   let newUser = new userModel(user);
   newUser
     .save()
@@ -36,7 +47,7 @@ let Register = async (req, res) => {
         "private"
       );
       // const token = newUser.genToken
-      console.log(token);
+      // console.log(token);
 
       res.header("x-auth-token", token);
 

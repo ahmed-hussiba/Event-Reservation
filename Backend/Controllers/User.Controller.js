@@ -1,5 +1,6 @@
 const userModel = require("../Models/userModel");
 
+
 let getAllUsers = async (req, res) => {
   let users = await userModel.find({});
 

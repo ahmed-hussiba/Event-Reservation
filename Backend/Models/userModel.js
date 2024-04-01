@@ -25,7 +25,7 @@ const userSchema = new mongoose.Schema({
     maxLength: 50,
     trim: true,
   },
-  imageURL: { type: String, required: true, pattern: "^(.+)(.jpg|.png)$" },
+  imageURL: { type: String, required: true, pattern: "^(.+)(.jpg|.png|.jpeg|.avif)$" }, 
   city: { required: true, type: String },
   country: { required: true, type: String },
   favourites: { type: [{ eventId: Number, name: String }] },

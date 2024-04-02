@@ -22,12 +22,6 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({ storage });
-// upload.single("image");
 
 router.post("/", upload.single("image"), userController.Register);
-
-// router.post("/", upload.single("image"), (req, res) => {
-//   res.json({ msg: "added" });
-// });
-
 module.exports = router;

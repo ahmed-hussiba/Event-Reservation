@@ -87,27 +87,26 @@ let GetPromotedEvents = async (req, res) => {
       .limit(5);
 
     console.log(highstedPromoted);
-    
+
     if (!highstedPromoted) {
       return res.status(404).json({ Msg: "No Events Available" });
     }
 
-    let imageBuffers = [];
     let PromotedEventsWithImgs = [];
 
     for (let event of highstedPromoted) {
       let imgUrl = event.imageURl;
 
       let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
-      
+
       if (imgPath) {
-        const data = fs.readFileSync(imgPath).toString();
+        const data = fs.readFileSync(imgPath);
         const imgBuffer = Buffer.from(data).toString("base64");
 
         let EventwithImg = {
-          event : event, 
-          imgBuffer : imgBuffer
-        }
+          event: event,
+          imgBuffer: imgBuffer,
+        };
         PromotedEventsWithImgs.push(EventwithImg);
       }
     }

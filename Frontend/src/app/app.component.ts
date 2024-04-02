@@ -6,6 +6,10 @@ import { RegLoginComponent } from '../Components/reg-login/reg-login.component';
 import { PromotionEventsComponent } from '../Components/promotion-events/promotion-events.component';
 import { CategoriesComponent } from '../Components/categories/categories.component';
 import { ReviewsComponent } from '../Components/reviews/reviews.component';
+import { AddToCartComponent } from '../Components/add-to-cart/add-to-cart.component';
+import { EventDetailsComponent } from '../Components/event-details/event-details.component';
+import { EventsComponent } from '../Components/events/events.component';
+
 
 @Component({
   selector: 'app-root',
@@ -16,7 +20,10 @@ import { ReviewsComponent } from '../Components/reviews/reviews.component';
             RegLoginComponent,
             PromotionEventsComponent,
             CategoriesComponent,
-            ReviewsComponent
+            ReviewsComponent,
+            AddToCartComponent,
+            EventDetailsComponent,
+            EventsComponent
           ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

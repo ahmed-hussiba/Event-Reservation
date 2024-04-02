@@ -1,0 +1,24 @@
+  .btn {
+    border-radius: 16px;
+    border: 2px solid rgb(206, 195, 195);
+    height: 32px;
+    width: 50%;
+    padding: 0 15px;
+    font-size: 75%;
+    font-weight: 750;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    color: #00A082;
+    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
+  }
+
+  .addbtn{
+    margin-top: 20%;
+  }
+
+  

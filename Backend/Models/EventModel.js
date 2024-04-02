@@ -7,7 +7,7 @@ const eventSchema = new mongoose.Schema({
   date: { type: Date, required: true },
   category: { type: String, required: true },
   description: { type: String, trim: true },
-  imageURl: { type: String, required: true },
+  imageURl: { type: String, required: true, pattern: "^(.+)(.jpg|.png)$" },
   performer: { type: String, required: true },
   organizer: { type: String, required: true },
   userReview: { type: [String] },

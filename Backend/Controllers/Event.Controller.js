@@ -33,7 +33,7 @@ let AddEvent = async (req, res) => {
   if (eventDetails) {
     let foundEvent = await EventModel.findOne({
       name: eventDetails.name,
-      date: eventDetails.data,
+      _id: eventDetails._id,
     });
 
     let oldPath = path.join(
@@ -44,7 +44,7 @@ let AddEvent = async (req, res) => {
       __dirname,
       "../images/Event-Images/" +
         eventDetails.name +
-        eventDetails.date +
+        eventDetails._id +
         "." +
         extensions.getExtension()
     );
@@ -55,9 +55,9 @@ let AddEvent = async (req, res) => {
       });
       return res.status(409).json({ msg: "Already Exist" });
     }
-    eventDetails.imageURL =
-      eventDetails.name + eventDetails.date + "." + extensions.getExtension();
-    console.log(eventDetails.imageURL);
+    eventDetails.imageURl =
+      eventDetails.name + eventDetails._id + "." + extensions.getExtension();
+    console.log(eventDetails.imageURl);
     let newEvent = new EventModel(eventDetails);
 
     newEvent

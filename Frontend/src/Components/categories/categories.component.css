@@ -1,0 +1,28 @@
+
+.circular {
+    border-radius: 50%; /* Makes the button circular */
+    overflow: hidden; /* Ensures content inside the button does not overflow */
+    width: 8rem; /* Set the width and height to maintain the aspect ratio */
+    height: 8rem;
+}
+
+.button-container {
+    width: fit-content;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    background-color: transparent;
+    margin: 5px;
+    transition: transform 0.4s, box-shadow 0.4s; 
+}
+ 
+.button-container:hover {
+    border-radius: 15px;
+    transform: scale(1.1) ;
+    box-shadow: 0 0 15px transparent; /* Add shadow on hover */
+}
+.circular img {
+    width: 100%; /* Make the image cover the entire button */
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire area without distortion */
+}

@@ -1,3 +1,8 @@
+.eventsContainer{
+  width: 95%;
+  margin: auto;
+}
+
 .bookBtn {
     width: 50%;
     height: 15% !important;

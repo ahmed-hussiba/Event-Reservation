@@ -1,0 +1,98 @@
+.main-container {
+  display: flex;
+  /* flex-direction: column; */
+  margin: 0;
+  padding: 10px;
+  justify-content: space-evenly;
+}
+.main-row {
+  display: flex;
+  justify-content: space-evenly;
+  height: 20vh;
+  border-top: 0.3px solid gray;
+}
+.main-column {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+  /* align-items: center; */
+  height: 60vh;
+  border: 0.3px solid gray;
+  border-bottom: none;
+}
+h1 {
+  margin-left: 10%;
+  margin-top: 2%;
+}
+.tickimg {
+  width: 20%;
+  margin: 2px;
+}
+.EvName {
+  width: 30%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.PQT {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1%;
+}
+.space {
+  width: 60%;
+}
+.head-row {
+  width: 63%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.Col2 {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+}
+.summary{
+    display: flex;
+    align-items: end;
+    justify-content: start;
+    padding-left: 8%;
+    padding-bottom: 4%;
+    height: 20%;
+    border-bottom:0.2px solid gray ;
+}
+.totalsummary{
+    display: flex;
+    justify-content: start;
+    padding-left: 8%;
+}
+.total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-bottom:0.2px solid gray ;
+    height: 65%;
+
+}
+span{
+    margin-left: 3%;
+    /* font-weight: bold; */
+}
+button{
+    height: 15%;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+@media (max-width: 768px) {
+    .main-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .main-column{
+        width: 60%;
+    }
+  }

@@ -81,14 +81,42 @@ let AddEvent = async (req, res) => {
 };
 
 let GetPromotedEvents = async (req, res) => {
-  let highstedPromoted = await EventModel.find({ promotion: { $gt: 0 } })
-    .sort({ promotion: -1 })
-    .limit(5);
-  if (!highstedPromoted) {
-    return res.status(404).json({ Msg: "No Events Available" });
-  }
+  try {
+    let highstedPromoted = await EventModel.find({ promotion: { $gt: 0 } })
+      .sort({ promotion: -1 })
+      .limit(5);
 
-  return res.status(200).json({ data: highstedPromoted });
+    console.log(highstedPromoted);
+    
+    if (!highstedPromoted) {
+      return res.status(404).json({ Msg: "No Events Available" });
+    }
+
+    let imageBuffers = [];
+    let PromotedEventsWithImgs = [];
+
+    for (let event of highstedPromoted) {
+      let imgUrl = event.imageURl;
+
+      let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+      
+      if (imgPath) {
+        const data = fs.readFileSync(imgPath).toString();
+        const imgBuffer = Buffer.from(data).toString("base64");
+
+        let EventwithImg = {
+          event : event, 
+          imgBuffer : imgBuffer
+        }
+        PromotedEventsWithImgs.push(EventwithImg);
+      }
+    }
+
+    return res.status(200).json({ PromotedEventsWithImgs });
+  } catch (error) {
+    console.error("Error:", error);
+    return res.status(500).json({ Msg: "Internal Server Error" });
+  }
 };
 
 let UpdateEvent = async (req, res) => {

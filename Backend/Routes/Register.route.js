@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../Controllers/Register.Controller");
-const UploadPhotoMW = require("../MiddleWares/UploadPhotoMW");
 const multer = require("multer");
 const path = require("path");
+const extensions = require("../Utils/Constants")
+
 
 // let finalName;
 
@@ -14,9 +15,9 @@ const storage = multer.diskStorage({
 
   filename: function (req, file, cb) {
     /// favicon.a.png
-    //   n = file.originalname.split(".")[1];
-    //   finalName = name + "." + n;
-    cb(null, file.originalname);
+      n = file.originalname.split(".")[1];
+      extensions.setExtensions(n);
+    cb(null, "newUser." + n);
   },
 });
 

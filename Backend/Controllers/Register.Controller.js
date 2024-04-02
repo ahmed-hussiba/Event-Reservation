@@ -1,7 +1,11 @@
 const userModel = require("../Models/userModel");
 const bcrypt = require("bcrypt");
 const JWT = require("jsonwebtoken");
-const UploadPhoto = require("../Utils/UploadPhoto");
+const fs = require("fs");
+const  path  = require("path");
+const  extensions = require("../Utils/Constants");
+
+
 
 let Register = async (req, res) => {
   //todo
@@ -12,7 +16,21 @@ let Register = async (req, res) => {
   // console.log(req.body);
   console.log("req con");
   // console.log(req.file.path);
-  user = req.body;
+  user = JSON.parse(req.body.data)
+  // req.file.path = "A7aaaaaaaa";
+  // console.log(req.file.path);
+
+  let oldPath = path.join(__dirname,"../User-Profile-Images/newUser." + extensions.getExtension())
+  let newPath = path.join(__dirname,"../User-Profile-Images/"+ user.username+"." + extensions.getExtension())
+
+  fs.rename(oldPath, newPath,  (err)=> {
+    console.log(err);
+  })
+
+  user.imageURL  = req.file.path; 
+
+  // console.log(__dirname);
+  
   user.email = user.email.toLowerCase();
   //2)check db
   let foundUser = await userModel

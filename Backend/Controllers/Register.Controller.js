@@ -20,12 +20,7 @@ let Register = async (req, res) => {
   // req.file.path = "A7aaaaaaaa";
   // console.log(req.file.path);
 
-  let oldPath = path.join(__dirname,"../User-Profile-Images/newUser." + extensions.getExtension())
-  let newPath = path.join(__dirname,"../User-Profile-Images/"+ user.username+"." + extensions.getExtension())
-
-  fs.rename(oldPath, newPath,  (err)=> {
-    console.log(err);
-  })
+  
 
   user.imageURL  = req.file.path; 
 
@@ -37,9 +32,18 @@ let Register = async (req, res) => {
     .findOne()
     .or([{ email: user.email.toLowerCase() }, { username: user.username }]);
   //3)if found
+  let oldPath = path.join(__dirname,"../User-Profile-Images/newUser." + extensions.getExtension())
+  let newPath = path.join(__dirname,"../User-Profile-Images/"+ user.username+"." + extensions.getExtension())
+  
   if (foundUser) {
+    fs.unlink(oldPath, (err)=>{
+      console.log(err);
+    })
     return res.status(200).json({ message: "already registered" });
   }
+  
+
+  
   //4) if not found
   let salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
@@ -69,12 +73,18 @@ let Register = async (req, res) => {
       res.header("x-auth-token", token);
 
       // console.log(res.header);
-
+      fs.rename(oldPath, newPath,  (err)=> {
+        console.log(err);
+      })
       return res
         .status(201)
         .json({ message: "Registered Successfully", data: newUser });
     })
     .catch((err) => {
+
+      fs.unlink(oldPath, (err)=>{
+        console.log(err);
+      })
       console.log(err);
       return res.status(400).json({ message: "Bad Request" });
     });

@@ -9,6 +9,7 @@ import { ReviewsComponent } from '../Components/reviews/reviews.component';
 import { AddToCartComponent } from '../Components/add-to-cart/add-to-cart.component';
 import { EventDetailsComponent } from '../Components/event-details/event-details.component';
 import { EventsComponent } from '../Components/events/events.component';
+import { AboutComponent } from '../Components/about/about.component';
 
 
 @Component({
@@ -23,7 +24,9 @@ import { EventsComponent } from '../Components/events/events.component';
             ReviewsComponent,
             AddToCartComponent,
             EventDetailsComponent,
-            EventsComponent
+            EventsComponent,
+            AboutComponent
+            
           ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'

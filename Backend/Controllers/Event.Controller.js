@@ -1,4 +1,7 @@
 const EventModel = require("../Models/EventModel");
+const fs = require("fs");
+const path = require("path");
+const extensions = require("../Utils/Constants");
 
 let GetAllEvents = async (req, res) => {
   let AllEvents = await EventModel.find();
@@ -24,30 +27,69 @@ let GetEventByID = async (req, res) => {
   }
 };
 
-let AddEvent = (req, res) => {
-  if (req.body) {
-    let newEvent = new EventModel(req.body);
-    newEvent.save().then(()=>{
-    res.status(201).json({ data: newEvent });
-    }).catch((err)=>{
-      console.log(err);
-      res.status(400).json({ message: "bad request 1" });
-    })
+let AddEvent = async (req, res) => {
+  let eventDetails = JSON.parse(req.body.data);
+  console.log(eventDetails);
+  if (eventDetails) {
+    let foundEvent = await EventModel.findOne({
+      name: eventDetails.name,
+      date: eventDetails.data,
+    });
+
+    let oldPath = path.join(
+      __dirname,
+      "../images/Event-Images/newEvent." + extensions.getExtension()
+    );
+    let newPath = path.join(
+      __dirname,
+      "../images/Event-Images/" +
+        eventDetails.name +
+        eventDetails.date +
+        "." +
+        extensions.getExtension()
+    );
+
+    if (foundEvent) {
+      fs.unlink(oldPath, (err) => {
+        console.log(err);
+      });
+      return res.status(409).json({ msg: "Already Exist" });
+    }
+    eventDetails.imageURL =
+      eventDetails.name + eventDetails.date + "." + extensions.getExtension();
+    console.log(eventDetails.imageURL);
+    let newEvent = new EventModel(eventDetails);
+
+    newEvent
+      .save()
+      .then(() => {
+        fs.rename(oldPath, newPath, (err) => {
+          console.log(err);
+        });
+        res.status(201).json({ data: newEvent });
+      })
+      .catch((err) => {
+        fs.unlink(oldPath, (err) => {
+          console.log(err);
+        });
+        console.log(err);
+        res.status(400).json({ message: "bad request 1" });
+      });
   } else {
     res.status(400).json({ message: "bad request" });
   }
 };
 
-
-let GetPromotedEvents= async (req, res)=>{
-  let highstedPromoted = await EventModel.find({promotion :{$gt:0} }).sort({promotion: -1}).limit(5);
-  if(!highstedPromoted){
-    return res.status(404).json({Msg: "No Events Available"});
+let GetPromotedEvents = async (req, res) => {
+  let highstedPromoted = await EventModel.find({ promotion: { $gt: 0 } })
+    .sort({ promotion: -1 })
+    .limit(5);
+  if (!highstedPromoted) {
+    return res.status(404).json({ Msg: "No Events Available" });
   }
 
-  return res.status(200).json({data:highstedPromoted});
-}
-
+  return res.status(200).json({ data: highstedPromoted });
+};
 
 let UpdateEvent = async (req, res) => {
   try {
@@ -85,12 +127,11 @@ let DeleteEventByID = async (req, res) => {
   }
 };
 
-
 module.exports = {
   GetAllEvents,
   GetEventByID,
   AddEvent,
   UpdateEvent,
   DeleteEventByID,
-  GetPromotedEvents
+  GetPromotedEvents,
 };

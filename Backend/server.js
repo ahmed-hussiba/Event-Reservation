@@ -8,15 +8,19 @@ const loginRoute = require("../Backend/Routes/Login.Route");
 const reviewRoute = require("./Routes/Review.Route");
 const userRoute = require("./Routes/User.Route");
 const orderRoute = require("./Routes/Order.Route");
-const eventRoute= require('./Routes/Event.Route');
-
+const eventRoute = require("./Routes/Event.Route");
+const path = require("path");
+const cors = require("cors");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(express.static(path.join(__dirname, "User-Profile-Images")));
+
 mongoose
   .connect("mongodb://localhost:27017/EventReservation")
   .then(() => {
+    app.use(cors());
     //register api
     app.use("/api/register", regRoute);
 
@@ -30,7 +34,7 @@ mongoose
     app.use("/api/users", userRoute);
 
     //event api
-    app.use('/api/event', eventRoute)
+    app.use("/api/event", eventRoute);
 
     //orders api
     app.use("/api/orders", orderRoute);
@@ -38,8 +42,6 @@ mongoose
     app.listen(PORT, () => {
       console.log("listening on port http://localhost:" + PORT);
     });
-
-
   })
   .catch((err) => {
     console.log(err);

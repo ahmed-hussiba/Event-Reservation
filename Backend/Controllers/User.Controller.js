@@ -1,5 +1,6 @@
 const userModel = require("../Models/userModel");
-
+const path = require("path");
+const fs = require("fs");
 
 let getAllUsers = async (req, res) => {
   let users = await userModel.find({});
@@ -16,7 +17,22 @@ let getUser = async (req, res) => {
   let user = await userModel.findOne({ _id: id });
 
   if (user) {
-    return res.status(200).json({ user });
+    let imgUrl = user.imageURL;
+    let imgPath = path.join(__dirname, "../images/User-Profile-Images", imgUrl);
+    let resObj;
+    // res.sendFile(path.join(__dirname, "../User-Profile-Images", imgUrl));
+    const data = fs.readFileSync(imgPath);
+    if (!data) {
+      return res.status(200).json({ user });
+    }
+    const img = Buffer.from(data).toString("base64");
+    resObj = {
+      user: user,
+      imageUser: img,
+    };
+    //console.log("res", resObj);
+
+    return res.status(200).json({ resObj });
   }
 
   return res.status(404).json({ message: "User Not Found" });

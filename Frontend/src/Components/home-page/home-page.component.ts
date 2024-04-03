@@ -5,6 +5,7 @@ import { EventsComponent } from '../events/events.component';
 import { CategoriesComponent } from '../categories/categories.component';
 import { ReviewsComponent } from '../reviews/reviews.component';
 import { PromotionEventsComponent } from '../promotion-events/promotion-events.component';
+import { TryComponent } from '../try/try.component';
 
 @Component({
   selector: 'app-home-page',
@@ -15,7 +16,8 @@ import { PromotionEventsComponent } from '../promotion-events/promotion-events.c
     EventsComponent,
     CategoriesComponent,
     ReviewsComponent,
-    PromotionEventsComponent
+    PromotionEventsComponent,
+    TryComponent
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

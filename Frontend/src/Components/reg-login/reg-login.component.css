@@ -10,7 +10,8 @@ body {
 }
 
 .parent {
-  width: 100vw;
+  background-color: transparent;
+  width: fit-content;
   display: flex;
   justify-content: center;
   align-items: center;

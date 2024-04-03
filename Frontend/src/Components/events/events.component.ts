@@ -15,14 +15,17 @@ import { CommonModule } from '@angular/common';
 })
 export class EventsComponent implements OnInit {
 events:any;
+twoEvents:{event:{name:string,description:string},imgBuffer:string}[]=[];
 constructor (private evService:EventService){}
   ngOnInit(): void {
     this.evService.GetAllEvents().subscribe(
       {
         next:(data)=>{
-          this.events=data
-          console.log(this.events.data);
-          this.events.push(this.events.data[0])
+          this.events=data;
+          this.twoEvents.push(this.events["eventsWithImgs"][0]);
+          this.twoEvents.push(this.events["eventsWithImgs"][1]);
+          console.log(this.twoEvents);
+          
         },
         error:(err)=>{
           console.log(err);

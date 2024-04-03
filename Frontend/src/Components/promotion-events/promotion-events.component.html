@@ -5,8 +5,7 @@
   </div>
 
   <div class="carousel-inner">
-    @if (events) {
-
+ 
       @for (item of events["PromotedEventsWithImgs"]; track $index) {
         
         <div class="carousel-item " [class.active]="flag">
@@ -18,7 +17,7 @@
         </div>
         <ng-container *ngIf="toggle()"></ng-container>
       }
-    }
+    
       
     
   </div>

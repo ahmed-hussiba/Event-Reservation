@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class EventService {
-  private DB_URL = "http://localhost:7000/api/event";
+  private DB_URL = "http://localhost:8000/api/event";
 
   constructor(private http: HttpClient) { }
 

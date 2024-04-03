@@ -23,5 +23,5 @@ import { TryComponent } from '../try/try.component';
   styleUrl: './home-page.component.css'
 })
 export class HomePageComponent {
-
+  
 }

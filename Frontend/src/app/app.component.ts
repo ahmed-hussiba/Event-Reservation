@@ -10,31 +10,32 @@ import { AddToCartComponent } from '../Components/add-to-cart/add-to-cart.compon
 import { EventDetailsComponent } from '../Components/event-details/event-details.component';
 import { EventsComponent } from '../Components/events/events.component';
 import { HomePageComponent } from '../Components/home-page/home-page.component';
-import { CartComponent } from "../Components/cart/cart.component";
+import { CartComponent } from '../Components/cart/cart.component';
 import { PaymentComponent } from '../Components/payment/payment.component';
 import { TryComponent } from '../Components/try/try.component';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
-    imports: [RouterOutlet,
-        UserHeaderLinksComponent,
-        GuestHeaderLinksComponent,
-        RegLoginComponent,
-        PromotionEventsComponent,
-        CategoriesComponent,
-        ReviewsComponent,
-        AddToCartComponent,
-        EventDetailsComponent,
-        EventsComponent,
-        HomePageComponent, 
-        CartComponent,
-        PaymentComponent,
-        TryComponent
-      ]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  imports: [
+    RouterOutlet,
+    UserHeaderLinksComponent,
+    GuestHeaderLinksComponent,
+    RegLoginComponent,
+    PromotionEventsComponent,
+    CategoriesComponent,
+    ReviewsComponent,
+    AddToCartComponent,
+    EventDetailsComponent,
+    EventsComponent,
+    HomePageComponent,
+    CartComponent,
+    PaymentComponent,
+    TryComponent,
+  ],
 })
 export class AppComponent {
   title = 'Frontend';

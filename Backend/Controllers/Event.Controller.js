@@ -4,12 +4,32 @@ const path = require("path");
 const extensions = require("../Utils/Constants");
 
 let GetAllEvents = async (req, res) => {
+
   let AllEvents = await EventModel.find();
+  let eventsWithImgs = [];
   if (AllEvents) {
-    res.status(200).json({ data: AllEvents });
-  } else {
-    res.status(400).json({ message: "Bad Request" });
+  for (let event of AllEvents) {
+    let imgUrl = event.imageURl;
+
+    let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+
+    if (imgPath) {
+      const data = fs.readFileSync(imgPath);
+      const imgBuffer = Buffer.from(data).toString("base64");
+
+      let EventwithImg = {
+        event: event,
+        imgBuffer: imgBuffer,
+      };
+      eventsWithImgs.push(EventwithImg);
+    }
   }
+   return res.status(200).json({eventsWithImgs });
+  } else {
+    return res.status(400).json({ message: "Bad Request" });
+  }
+
+  
 };
 let GetEventByID = async (req, res) => {
   try {

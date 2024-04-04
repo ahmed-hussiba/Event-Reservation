@@ -36,11 +36,32 @@ let GetEventByID = async (req, res) => {
     let Id = req.params.id;
     let foundEvent = await EventModel.findById(Id);
 
+    // if (foundEvent) {
+    //   res.status(200).json({ data: foundEvent });
+    // } else {
+    //   res.status(404).json({ message: "Event not found" });
+    // }
     if (foundEvent) {
-      res.status(200).json({ data: foundEvent });
-    } else {
-      res.status(404).json({ message: "Event not found" });
-    }
+
+        let imgUrl = foundEvent.imageURl;
+    
+        let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+    
+        if (imgPath) {
+          const data = fs.readFileSync(imgPath);
+          const imgBuffer = Buffer.from(data).toString("base64");
+    
+          let EventwithImg = {
+            event: foundEvent,
+            imgBuffer: imgBuffer,
+          };
+          
+          return res.status(200).json({EventwithImg });
+        }
+      } else {
+        return res.status(400).json({ message: "Bad Request" });
+      }
+
   } catch (error) {
     console.error("Error retrieving event:", error);
     res.status(500).json({ message: "Internal Server Error" });

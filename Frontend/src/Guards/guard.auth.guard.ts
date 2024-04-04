@@ -11,8 +11,8 @@ export const guardAuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
-  let log = LoginService;
-  if (inject(log).getToken()) {
+  const token = localStorage.getItem('access_token');
+  if (token) {
     return true;
   } else {
     inject(Router).navigate(['/login']);

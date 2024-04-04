@@ -13,6 +13,8 @@ import {
   HttpClientModule,
   HttpResponse,
 } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { routes } from '../../app/app.routes';
 
 @Component({
   selector: 'app-reg-login',
@@ -26,7 +28,7 @@ export class RegLoginComponent {
   user: any;
   responseData: any;
   responseHeaders: any;
-  constructor(private logService: LoginService) {}
+  constructor(private logService: LoginService, private route: Router) {}
   mySignInFormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [
@@ -54,9 +56,11 @@ export class RegLoginComponent {
           console.log(JSON.stringify(authToken));
 
           localStorage.setItem('access_token', JSON.stringify(authToken));
-          const decoded = jwtDecode(authToken);
-          console.log(decoded);
 
+          // console.log(decoded);
+          window.location.reload();
+
+          // this.route.navigate(['/']);
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);
         },

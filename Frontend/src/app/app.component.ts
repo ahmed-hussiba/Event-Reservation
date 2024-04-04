@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { LoginService } from './../Services/login.services';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserHeaderLinksComponent } from '../Components/user-header-links/user-header-links.component';
 import { GuestHeaderLinksComponent } from '../Components/guest-header-links/guest-header-links.component';
@@ -36,7 +37,10 @@ import { JwtHelperService } from '@auth0/angular-jwt';
     PaymentComponent,
     TryComponent,
   ],
+  providers: [LoginService],
 })
 export class AppComponent {
+  token: any;
+
   title = 'Frontend';
 }

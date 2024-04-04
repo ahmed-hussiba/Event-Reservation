@@ -14,7 +14,7 @@ export class EventService {
   }
 
   GetEventById(id:Number){
-    return this.http.get(this.DB_URL + id);
+    return this.http.get(this.DB_URL +"/"+ id);
   }
 
   GetPromotedEvets(){

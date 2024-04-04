@@ -11,11 +11,11 @@ import { SharedEventsService } from '../../Services/shared-events.service';
   standalone: true,
   imports: [HttpClientModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    HttpClientModule
   ],
   providers:[
     EventService,
-    SharedEventsService
   ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
@@ -49,8 +49,8 @@ constructor (private evService:EventService, private sharedService: SharedEvents
 
 
   GoToEvent(eventId:Number){
-    this.sharedService.sendData(eventId);
-    console.log(eventId);
+    this.sharedService.setData(eventId);
+    // console.log(eventId);
     
   }
 

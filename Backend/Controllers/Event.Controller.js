@@ -12,6 +12,7 @@ let GetAllEvents = async (req, res) => {
     let imgUrl = event.imageURl;
 
     let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+    console.log(imgUrl);
 
     if (imgPath) {
       const data = fs.readFileSync(imgPath);

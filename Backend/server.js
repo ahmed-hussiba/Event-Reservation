@@ -20,7 +20,12 @@ app.use(express.static(path.join(__dirname, "User-Profile-Images")));
 mongoose
   .connect("mongodb://localhost:27017/EventReservation")
   .then(() => {
-    app.use(cors());
+    // app.use(cors());
+    app.use(
+      cors({
+        exposedHeaders: ["x-auth-token"], // Specify the headers you want to expose
+      })
+    );
     //register api
     app.use("/api/register", regRoute);
 

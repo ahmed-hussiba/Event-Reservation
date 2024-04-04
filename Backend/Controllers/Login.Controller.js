@@ -36,9 +36,10 @@ let Login = async (req, res) => {
     "private"
   );
 
-  res.header("x-auth-token", token);
-
+  res.header("x-auth-token", "Bearer " + token);
+  // console.log(res.header());
   return res.status(200).json({ message: "login success" });
+  // return res.send("login Success");
 };
 
 module.exports = { Login };

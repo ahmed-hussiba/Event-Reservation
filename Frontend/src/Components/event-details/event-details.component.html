@@ -1,5 +1,7 @@
+<app-user-header-links ></app-user-header-links>
+
 <div>
-    <img class="card-img-top" src="../../assets/Images/large-393.jpg" >
+    <img class="w-100" src="data:image/jpg;base64,{{ event['EventwithImg'].imgBuffer }}" >
 </div>
 
 <div class="container-fluid d-flex flex-column">
@@ -7,14 +9,13 @@
     <div class="d-flex row m-2 flex-xs-column flex-md-row">
         <div class="d-flex col-8 flex-column xsmallRow" style="height: 75vh;">
             <div class="d-flex justify-content-between align-items-center">
-                <h4>Event Name</h4>
-                <h6>Date and Location</h6>
+                <h4>{{event["EventwithImg"].event.name}}</h4>
+                <h6>{{event["EventwithImg"].event.location}}</h6>
             </div>
-            <div>Organizer</div>
-            <div>Performer</div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, asperiores non iusto magni quas
-                eaque mollitia explicabo blanditiis eligendi necessitatibus doloribus adipisci quaerat nulla neque
-                numquam harum sequi ullam beatae!
+            <div>{{event["EventwithImg"].event.organizer}}</div>
+            <div>{{event["EventwithImg"].event.performer}}</div>
+            <p>
+                {{event["EventwithImg"].event.description}}
             </p>
         </div>
         <div class="col-4 xsmallRow">
@@ -25,5 +26,3 @@
             <app-reviews></app-reviews>
         </div>
     </div>
-
-    <!-- style="height: 75vh; -->

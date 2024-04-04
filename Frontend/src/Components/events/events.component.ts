@@ -1,22 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { RouterModule, RouterOutlet } from '@angular/router';
+import { SharedEventsService } from '../../Services/shared-events.service';
+
 
 @Component({
   selector: 'app-events',
   standalone: true,
   imports: [HttpClientModule,
-    CommonModule
+    CommonModule,
+    RouterModule,
+    HttpClientModule
   ],
-  providers:[EventService],
+  providers:[
+    EventService,
+  ],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css'
 })
 export class EventsComponent implements OnInit {
 events:any;
-twoEvents:{event:{name:string,description:string},imgBuffer:string}[]=[];
-constructor (private evService:EventService){}
+twoEvents:{event:{_id:Number, name:string,description:string},imgBuffer:string}[]=[];
+constructor (private evService:EventService, private sharedService: SharedEventsService){}
   ngOnInit(): void {
     this.evService.GetAllEvents().subscribe(
       {
@@ -24,7 +31,7 @@ constructor (private evService:EventService){}
           this.events=data;
           this.twoEvents.push(this.events["eventsWithImgs"][0]);
           this.twoEvents.push(this.events["eventsWithImgs"][1]);
-          console.log(this.twoEvents);
+          // console.log(this.twoEvents);
           
         },
         error:(err)=>{
@@ -38,6 +45,11 @@ constructor (private evService:EventService){}
   checkCounter(i:Number)
   {
     return i==1;
+  }
+
+
+  GoToEvent(eventId:Number){
+    this.sharedService.setData(eventId);
   }
 
 }

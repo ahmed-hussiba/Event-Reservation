@@ -14,9 +14,9 @@
         alt="..."
       />
       <div class="card-body d-flex col-3 flex-column align-items-end xsmallRow">
-        <h5 class="card-title w-100 h-25">{{ event.event.name }}</h5>
+        <h5 class="card-title w-100 h-25">{{ event.event.name}}</h5>
         <p class="card-text w-100 h-50 mb-3">{{ event.event.description }}</p>
-        <a href="#" class="bookBtn btn btn-primary mt-3">Book</a>
+        <a routerLink="/eventdetails" (click)="GoToEvent(event.event._id)"  class="bookBtn btn btn-primary mt-3">Book</a>
       </div>
     </div>
   </div>

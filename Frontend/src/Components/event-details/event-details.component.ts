@@ -5,6 +5,7 @@ import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
 @Component({
   selector: 'app-event-details',
@@ -13,7 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
     RegLoginComponent,
     ReviewsComponent,
     AddToCartComponent,
-    HttpClientModule
+    HttpClientModule,
+    UserHeaderLinksComponent
     
   ],
   providers: [
@@ -43,6 +45,7 @@ export class EventDetailsComponent implements OnInit {
       next: (data) => {
         this.event = data;
         console.log(this.event);
+        this.sharedService.setData(this.event);
         
         
       },

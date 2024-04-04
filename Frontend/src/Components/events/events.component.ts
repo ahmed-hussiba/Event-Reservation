@@ -50,8 +50,6 @@ constructor (private evService:EventService, private sharedService: SharedEvents
 
   GoToEvent(eventId:Number){
     this.sharedService.setData(eventId);
-    // console.log(eventId);
-    
   }
 
 }

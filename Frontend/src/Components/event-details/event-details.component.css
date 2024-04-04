@@ -10,7 +10,6 @@
     }
     .flex-xs-column {
         flex-direction: column !important;
-        /* align-items: center; */
       }
   }
 

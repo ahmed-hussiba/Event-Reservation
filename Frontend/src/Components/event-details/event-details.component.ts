@@ -6,7 +6,6 @@ import { SharedEventsService } from '../../Services/shared-events.service';
 import { EventService } from '../../Services/event.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
-import { InterceptorService } from '../../Services/interceptor.service';
 
 @Component({
   selector: 'app-event-details',
@@ -15,7 +14,6 @@ import { InterceptorService } from '../../Services/interceptor.service';
     RegLoginComponent,
     ReviewsComponent,
     AddToCartComponent,
-    HttpClientModule,
     UserHeaderLinksComponent,
   ],
   providers: [EventService],
@@ -26,8 +24,7 @@ export class EventDetailsComponent implements OnInit {
   eventId: Number = 0;
   constructor(
     private sharedService: SharedEventsService,
-    private eventService: EventService,
-    private http: HttpClientModule
+    private eventService: EventService
   ) {}
 
   event: any;

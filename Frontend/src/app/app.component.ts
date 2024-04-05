@@ -43,7 +43,6 @@ import { interceptorInterceptor } from '../Services/interceptor.interceptor';
     CartComponent,
     PaymentComponent,
     TryComponent,
-    HttpClientModule,
   ],
   providers: [LoginService],
 })
@@ -51,7 +50,7 @@ export class AppComponent {
   token: any;
   // http = inject(HttpClient);
 
-  // constructor(private http: HttpClient) {
+  // constructor() {
   //   this.http.get('https://jsonplaceholder.typicode.com/users').subscribe({
   //     next: (data) => {
   //       console.log(data);

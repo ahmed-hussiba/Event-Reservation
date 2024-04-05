@@ -6,6 +6,7 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { LoginService } from '../Services/login.services';
+import { SharedEventsService } from '../Services/shared-events.service';
 
 export const guardAuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
@@ -16,6 +17,7 @@ export const guardAuthGuard: CanActivateFn = (
     return true;
   } else {
     inject(Router).navigate(['/login']);
+
     return false;
   }
 };

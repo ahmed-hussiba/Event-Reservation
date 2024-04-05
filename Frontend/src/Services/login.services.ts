@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Observable } from 'rxjs';
 
@@ -9,7 +9,8 @@ import { Observable } from 'rxjs';
 export class LoginService {
   private DB_URL = 'http://localhost:7000/api/login';
 
-  constructor(private http: HttpClient) {}
+  http = inject(HttpClient);
+  constructor() {}
 
   //sign in
   signIn(user: any): Observable<any> {

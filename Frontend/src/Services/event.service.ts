@@ -21,5 +21,8 @@ export class EventService {
     return this.http.get(this.DB_URL+ "/promoted")
   }
   
+  GetEventByCategoryName(name:string){
+    return this.http.get(this.DB_URL +"/category/"+name);
+  }
 
 }

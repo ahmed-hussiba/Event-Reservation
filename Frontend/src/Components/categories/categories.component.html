@@ -1,33 +1,33 @@
 <div class="container-fluid p-2 d-flex row justify-content-evenly m-auto mt-5 border border-2 rounded-5 bg-light" style="width: 95%;">
-  <button class="button-container pt-3" >
+  <button routerLink="event/category/{{sportCategory.innerText}}" class="button-container pt-3" (click)="getCategory(sportCategory.innerText)">
     <div class="circular">
-        <img src="../../assets/Images/istockphoto-974238866-612x612.jpg" class="" alt="...">
+        <img src="../../assets/Images/Categories/Sports.png" class="" alt="...">
     </div>
-    <p class="fw-bolder text-capitalize">category</p>
+    <p #sportCategory class="fw-bolder text-capitalize">Sports</p>
   </button>
-  <button class="button-container pt-3" >
+  <button routerLink="event/category/{{ComedyCategory.innerText}}" class="button-container pt-3" (click)="getCategory(ComedyCategory.innerText)">
     <div class="circular">
-        <img src="../../assets/Images/istockphoto-974238866-612x612.jpg" class="" alt="...">
+        <img src="../../assets/Images/Categories/Comedy.png" class="" alt="...">
     </div>
-    <p class="fw-bolder text-capitalize ">category</p>
+    <p #ComedyCategory class="fw-bolder text-capitalize ">Comedy</p>
   </button>
-  <button class="button-container pt-3" >
+  <button routerLink="event/category/{{adventureCategory.innerText}}" class="button-container pt-3" (click)="getCategory(adventureCategory.innerText)">
     <div class="circular">
-        <img src="../../assets/Images/istockphoto-974238866-612x612.jpg" class="" alt="...">
+        <img src="../../assets/Images/Categories/Adventure.png" class="" alt="...">
     </div>
-    <p class="fw-bolder text-capitalize ">category</p>
+    <p #adventureCategory class="fw-bolder text-capitalize ">Adventure</p>
   </button>
-  <button class="button-container pt-3" >
+  <button routerLink="event/category/{{dramaCategory.innerText}}" class="button-container pt-3" (click)="getCategory(dramaCategory.innerText)">
     <div class="circular">
-        <img src="../../assets/Images/istockphoto-974238866-612x612.jpg" class="" alt="...">
+        <img src="../../assets/Images/Categories/Drama.png" class="" alt="...">
     </div>
-    <p class="fw-bolder text-capitalize">category</p>
+    <p #dramaCategory class="fw-bolder text-capitalize">Drama</p>
   </button>
-  <button class="button-container pt-3" >
+  <button routerLink="event/category/{{politicalCategory.innerText}}" class="button-container pt-3" (click)="getCategory(politicalCategory.innerText)">
     <div class="circular">
-        <img src="../../assets/Images/istockphoto-974238866-612x612.jpg" class="" alt="...">
+        <img src="../../assets/Images/Categories/Political.png" class="" alt="...">
     </div>
-    <p class="fw-bolder text-capitalize ">category</p>
+    <p #politicalCategory class="fw-bolder text-capitalize ">Political</p>
   </button>
 
 <!-- 

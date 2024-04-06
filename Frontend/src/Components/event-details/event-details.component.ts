@@ -4,7 +4,7 @@ import { ReviewsComponent } from '../reviews/reviews.component';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { EventService } from '../../Services/event.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
 @Component({
@@ -14,31 +14,25 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
     RegLoginComponent,
     ReviewsComponent,
     AddToCartComponent,
-    HttpClientModule,
-    UserHeaderLinksComponent
-    
+    UserHeaderLinksComponent,
   ],
-  providers: [
-    EventService
-  ],
+  providers: [EventService],
   templateUrl: './event-details.component.html',
-  styleUrl: './event-details.component.css'
+  styleUrl: './event-details.component.css',
 })
-
 export class EventDetailsComponent implements OnInit {
+  eventId: Number = 0;
+  constructor(
+    private sharedService: SharedEventsService,
+    private eventService: EventService
+  ) {}
 
-  eventId: Number= 0;
-  constructor(private sharedService: SharedEventsService, private eventService:EventService, private http:HttpClientModule) { }
-
-  event:any;
+  event: any;
   ngOnInit(): void {
-    
-    this.sharedService.data.subscribe(
-      data => {
-        // console.log(data);
-        this.eventId = data;
-      }
-    )
+    this.sharedService.data.subscribe((data) => {
+      // console.log(data);
+      this.eventId = data;
+    });
     console.log(this.eventId);
 
     this.eventService.GetEventById(this.eventId).subscribe({
@@ -46,15 +40,10 @@ export class EventDetailsComponent implements OnInit {
         this.event = data;
         console.log(this.event);
         this.sharedService.setData(this.event);
-        
-        
       },
-      error: (err) => {console.log(err);
-      }
-    })
-    
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-
-  
-  
 }

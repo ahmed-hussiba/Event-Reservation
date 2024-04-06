@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { LoginService } from './../Services/login.services';
+import { Component, Input, OnInit, Output, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { UserHeaderLinksComponent } from '../Components/user-header-links/user-header-links.component';
 import { GuestHeaderLinksComponent } from '../Components/guest-header-links/guest-header-links.component';
@@ -10,32 +11,51 @@ import { AddToCartComponent } from '../Components/add-to-cart/add-to-cart.compon
 import { EventDetailsComponent } from '../Components/event-details/event-details.component';
 import { EventsComponent } from '../Components/events/events.component';
 import { HomePageComponent } from '../Components/home-page/home-page.component';
-import { CartComponent } from "../Components/cart/cart.component";
+import { CartComponent } from '../Components/cart/cart.component';
 import { PaymentComponent } from '../Components/payment/payment.component';
 import { TryComponent } from '../Components/try/try.component';
-
+import { JwtHelperService } from '@auth0/angular-jwt';
+import {
+  HTTP_INTERCEPTORS,
+  HttpClient,
+  HttpClientModule,
+} from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { interceptorInterceptor } from '../Services/interceptor.interceptor';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.css',
-    imports: [RouterOutlet,
-        UserHeaderLinksComponent,
-        GuestHeaderLinksComponent,
-        RegLoginComponent,
-        PromotionEventsComponent,
-        CategoriesComponent,
-        ReviewsComponent,
-        AddToCartComponent,
-        EventDetailsComponent,
-        EventsComponent,
-        HomePageComponent, 
-        CartComponent,
-        PaymentComponent,
-        TryComponent
-      ]
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css',
+  imports: [
+    RouterOutlet,
+    UserHeaderLinksComponent,
+    GuestHeaderLinksComponent,
+    RegLoginComponent,
+    PromotionEventsComponent,
+    CategoriesComponent,
+    ReviewsComponent,
+    AddToCartComponent,
+    EventDetailsComponent,
+    EventsComponent,
+    HomePageComponent,
+    CartComponent,
+    PaymentComponent,
+    TryComponent,
+  ],
+  providers: [LoginService],
 })
 export class AppComponent {
+  token: any;
+  // http = inject(HttpClient);
+
+  // constructor() {
+  //   this.http.get('https://jsonplaceholder.typicode.com/users').subscribe({
+  //     next: (data) => {
+  //       console.log(data);
+  //     },
+  //   });
+  // }
   title = 'Frontend';
 }

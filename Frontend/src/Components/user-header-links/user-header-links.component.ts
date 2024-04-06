@@ -1,17 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { RouterModule } from '@angular/router';
-
 
 @Component({
   selector: 'app-user-header-links',
   standalone: true,
-  imports: [
-    RouterModule,
-    
-  ],
+  imports: [RouterModule],
   templateUrl: './user-header-links.component.html',
-  styleUrl: './user-header-links.component.css'
+  styleUrl: './user-header-links.component.css',
 })
 export class UserHeaderLinksComponent {
-
+  @Input() UserImg: any;
 }

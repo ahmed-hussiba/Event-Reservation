@@ -1,18 +1,29 @@
-<div class="container py-3 mt-5 eventsContainer bg-light rounded border border-2">
-    <div class="row justify-content-end me-3">
-        <div class="btn btn-primary" style="width: 10%;">see all</div>
-    </div>
+<div
+  class="container py-3 mt-5 eventsContainer bg-light rounded border border-2"
+>
+  <div class="row justify-content-end me-3">
+    <div class="btn btn-primary" style="width: 10%">see all</div>
+  </div>
 
-    @for (event of twoEvents; track $index) {
-        <div class="card mt-4 m-auto" style="width: 80vw;">
-            <div class="d-flex flex-xs-column flex-md-row">
-                <img src="data:image/jpg;base64,{{event.imgBuffer}}" class="card-img-top w-75  xsmallRow" alt="...">
-                <div class="card-body d-flex col-3 flex-column align-items-end xsmallRow">
-                    <h5 class="card-title w-100 h-25 ">{{event.event.name}}</h5>
-                    <p class="card-text  w-100 h-50 mb-3 ">{{event.event.description}}</p>
-                    <a href="#" class="bookBtn btn btn-primary mt-3 ">Book</a>
-                </div>
-            </div>
-        </div>
-    }
+  @for (event of twoEvents; track $index) {
+  <div class="card mt-4 m-auto" style="width: 80vw">
+    <div class="d-flex flex-xs-column flex-md-row">
+      <img
+        src="data:image/jpg;base64,{{ event.imgBuffer }}"
+        class="card-img-top w-75 xsmallRow"
+        alt="..."
+      />
+      <div class="card-body d-flex col-3 flex-column align-items-end xsmallRow">
+        <h5 class="card-title w-100 h-25">{{ event.event.name }}</h5>
+        <p class="card-text w-100 h-50 mb-3">{{ event.event.description }}</p>
+        <a
+          routerLink="/eventdetails"
+          (click)="GoToEvent(event.event._id)"
+          class="bookBtn btn btn-primary mt-3"
+          >Book</a
+        >
+      </div>
+    </div>
+  </div>
+  }
 </div>

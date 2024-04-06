@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-promotion-events',

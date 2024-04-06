@@ -2,24 +2,27 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class EventService {
-  private DB_URL = "http://localhost:7000/api/event";
+  private DB_URL = 'http://localhost:7000/api/event';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
-  GetAllEvents(){
+  GetAllEvents() {
     return this.http.get(this.DB_URL);
   }
 
-  GetEventById(id:Number){
-    return this.http.get(this.DB_URL + id);
+  GetEventById(id: Number) {
+    return this.http.get(this.DB_URL + '/' + id);
   }
 
-  GetPromotedEvets(){
-    return this.http.get(this.DB_URL+ "/promoted")
+  GetPromotedEvets() {
+    return this.http.get(this.DB_URL + '/promoted');
   }
   
+  GetEventByCategoryName(name:string){
+    return this.http.get(this.DB_URL +"/category/"+name);
+  }
 
 }

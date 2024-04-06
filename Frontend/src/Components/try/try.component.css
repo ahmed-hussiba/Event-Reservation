@@ -1,0 +1,6 @@
+.modal-content{
+  background-color: transparent;
+  border: none;
+  display: flex;
+  justify-content: center;
+}

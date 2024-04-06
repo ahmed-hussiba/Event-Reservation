@@ -1,4 +1,3 @@
-import { Component, OnInit } from '@angular/core';
 import { RegLoginComponent } from '../reg-login/reg-login.component';
 import { ReviewsComponent } from '../reviews/reviews.component';
 import { AddToCartComponent } from '../add-to-cart/add-to-cart.component';
@@ -6,6 +5,7 @@ import { SharedEventsService } from '../../Services/shared-events.service';
 import { EventService } from '../../Services/event.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-event-details',
@@ -22,6 +22,8 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
 })
 export class EventDetailsComponent implements OnInit {
   eventId: Number = 0;
+
+
   constructor(
     private sharedService: SharedEventsService,
     private eventService: EventService

@@ -6,11 +6,18 @@
             <div class="col-8">{{item.level}} {{item.price}}</div>
         <div class="col-4 d-flex justify-content-evenly align-items-center">
             <div class="d-flex justify-content-betwee align-items-center">
-                <div class="btn btn-success btn-circle d-flex justify-content-center align-items-center ">
+                <div class="btn btn-success btn-circle d-flex justify-content-center align-items-center " (click)="Add(item.level)">
                     +
                 </div>
-                <div class="mx-2">2</div>
-                <div class="btn btn-success btn-circle d-flex justify-content-center align-items-center  ">
+                @if(item.level=="golden"){
+                <div class="mx-2" >{{goldCount}}</div>
+                }@else if(item.level=="silver"){
+                    <div class="mx-2" >{{silverCount}}</div>
+                }@else {
+                    <div class="mx-2" >{{platinumCount}}</div>
+                }
+                
+                <div class="btn btn-success btn-circle d-flex justify-content-center align-items-center  " (click)="Minus(item.level)">
                     -
                 </div>
             </div>
@@ -19,5 +26,5 @@
     </div>
     
 }
-    <div class="btn m-auto addbtn">Add To Cart</div>
+    <div class="btn m-auto addbtn"(click)="AddToCart()">Add To Cart</div>
 </div>

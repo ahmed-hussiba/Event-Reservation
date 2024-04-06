@@ -19,4 +19,15 @@ export class UserService {
     }
     return this.http.get(this.DB_URL + '/' + userID);
   }
+
+  AddItemToCart(item:any){
+    this.token = this.loginService.getToken();
+    console.log(this.token);
+    let userID;
+    if (this.token) {
+      const decoded = jwtDecode(this.token);
+      userID = Object.values(decoded)[0];
+    }
+   return this.http.post(this.DB_URL+"/"+userID+"/cart",item);
+  }
 }

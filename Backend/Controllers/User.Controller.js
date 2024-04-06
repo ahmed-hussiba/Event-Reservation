@@ -103,12 +103,13 @@ let getUserCart = async (req, res) => {
 
 let addToUserCart = async (req, res) => {
   let id = req.params.id;
+  console.log(id+"****************************");
+
   let newCartObj = req.body;
 
   let isValid = validateCartObj(newCartObj);
-
   if (!isValid) return res.status(400).json({ message: "Bad Request" });
-
+  console.log(id+"****************************");
   let user = await userModel.findOneAndUpdate(
     { _id: id },
     { $push: { cart: newCartObj } },

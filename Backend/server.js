@@ -37,6 +37,8 @@ mongoose
 
     //users api
     app.use("/api/users", userRoute);
+    
+
 
     //event api
     app.use("/api/event", eventRoute);

@@ -5,7 +5,7 @@ const eventSchema = new mongoose.Schema({
   name: { type: String, minLength: 3, maxLength: 40, required: true },
   location: { type: String, required: true },
   date: { type: Date, required: true },
-  category: { type: String, required: true },
+  category: { type: String, required: true, enum:["Sport","Comedy","Political","Adventure","Drama"] },
   description: { type: String, trim: true },
   imageURl: { type: String, required: true, pattern: "^(.+)(.jpg|.png)$" },
   performer: { type: String, required: true },

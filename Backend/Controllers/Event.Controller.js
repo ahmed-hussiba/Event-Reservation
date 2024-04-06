@@ -2,7 +2,35 @@ const EventModel = require("../Models/EventModel");
 const fs = require("fs");
 const path = require("path");
 const extensions = require("../Utils/Constants");
-
+const { log } = require("console");
+//get eventCategories
+let GetEventByCategoryName = async(req,res)=>{
+  let categoryName = req.params.name;
+  foundEvents = await EventModel.find({category:categoryName})
+  let eventsWithImgs = [];
+  if(foundEvents)
+  {
+    for (let event of foundEvents) {
+      let imgUrl = event.imageURl;
+      let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+      if (imgPath) {
+        const data = fs.readFileSync(imgPath);
+        const imgBuffer = Buffer.from(data).toString("base64");
+  
+        let EventwithImg = {
+          event: event,
+          imgBuffer: imgBuffer,
+        };
+        eventsWithImgs.push(EventwithImg);
+      }
+    }
+    return res.status(200).json({eventsWithImgs});
+  }
+  else
+  {
+    return res.status(404).json({message:"notfound"});
+  }
+};
 let GetAllEvents = async (req, res) => {
 
   let AllEvents = await EventModel.find();
@@ -10,10 +38,7 @@ let GetAllEvents = async (req, res) => {
   if (AllEvents) {
   for (let event of AllEvents) {
     let imgUrl = event.imageURl;
-
     let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
-    console.log(imgUrl);
-
     if (imgPath) {
       const data = fs.readFileSync(imgPath);
       const imgBuffer = Buffer.from(data).toString("base64");
@@ -128,7 +153,6 @@ let GetPromotedEvents = async (req, res) => {
       .sort({ promotion: -1 })
       .limit(5);
 
-    console.log(highstedPromoted);
 
     if (!highstedPromoted) {
       return res.status(404).json({ Msg: "No Events Available" });
@@ -203,4 +227,5 @@ module.exports = {
   UpdateEvent,
   DeleteEventByID,
   GetPromotedEvents,
+  GetEventByCategoryName
 };

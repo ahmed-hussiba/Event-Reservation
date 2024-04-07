@@ -364,3 +364,8 @@ h6 span {
   background-color: #00A082;
   color: white;
 }
+
+
+.border-red{
+  border: 2px solid red;
+}

@@ -17,6 +17,7 @@ export class LoginService {
     return this.http.post(this.DB_URL, user, { observe: 'response' });
   }
 
+
   GetPromotedEvets() {
     return this.http.get(this.DB_URL + '/promoted');
   }

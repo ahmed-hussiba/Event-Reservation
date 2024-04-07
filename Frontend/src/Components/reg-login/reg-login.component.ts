@@ -152,10 +152,10 @@ export class RegLoginComponent {
 
 
 
-    if (fileInput.files?.length) {
-      const file = fileInput.files[0];
-      this.image = file;
-      console.log(this.image);
-    }
-  }
+  //   if (fileInput.files?.length) {
+  //     const file = fileInput.files[0];
+  //     this.image = file;
+  //     console.log(this.image);
+  //   }
+  // }
 }

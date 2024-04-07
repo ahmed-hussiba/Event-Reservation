@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { SharedEventsService } from '../../Services/shared-events.service';
 
 @Component({
   selector: 'app-payment',
@@ -9,6 +10,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })
-export class PaymentComponent {
+export class PaymentComponent implements OnInit{
+  constructor(private serv:SharedEventsService){}
+  ngOnInit(): void {
+    
+  }
 
 }

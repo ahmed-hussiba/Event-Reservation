@@ -21,6 +21,8 @@ let Login = async (req, res) => {
     return res.status(404).json({ message: "wrong Email or password" });
   }
   let userEmail = foundUser.email;
+  // console.log(user.password);
+  // console.log(foundUser.password);
   let passwordCheck = await bcrypt.compare(user.password, foundUser.password);
 
   if (!passwordCheck)

@@ -24,6 +24,7 @@ export class CartComponent implements OnInit {
   orderPrice:number = 0;
   orderQuantity:number = 0;
   userID:any;
+  orderDetails:{eventId:number,numberOfTickets:number,totalPrice:number,level:string}[]=[];
   constructor(
     private userService: UserService,
     private loginServie:LoginService,
@@ -50,12 +51,38 @@ export class CartComponent implements OnInit {
 
   calc()
   {
-    for (let i = 0; i < this.cartItems.cart.length; i++) {
+    for (let i = 0; i < this.cartItems.cart.length; i++) 
+      {
       
       this.orderPrice += this.cartItems.cart[i].ticketPrice * this.cartItems.cart[i].quantity;
       this.orderQuantity += this.cartItems.cart[i].quantity;
       console.log(`price:${this.orderPrice}, quantity:${this.orderQuantity}`);
     }
+  }
+
+  // eventId: Number,
+  //       numberOfTickets: Number,
+  //       totalPrice: Number,
+  //       level:
+  checkOut(){
+    for (let i = 0; i < this.cartItems.cart.length; i++) {
+      this.orderDetails.push(
+        {
+          eventId:this.cartItems.cart[i].eventId,
+          numberOfTickets:this.cartItems.cart[i].quantity,
+          totalPrice: this.cartItems.cart[i].quantity *this.cartItems.cart[i].ticketPrice,
+          level:this.cartItems.cart[i].ticketLevel
+        }
+      )
+    }
+
+      let order={
+        totalPrice:this.orderPrice,
+        countOfTickets:this.orderQuantity,
+        orderDetails:this.orderDetails
+      };
+
+      this.sharedService.setData(order);
   }
 
 }

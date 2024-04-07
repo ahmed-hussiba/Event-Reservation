@@ -8,11 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { LoginService } from '../../Services/login.services';
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpResponse,
-} from '@angular/common/http';
+
 import { RegisterService } from '../../Services/register.service';
 
 @Component({

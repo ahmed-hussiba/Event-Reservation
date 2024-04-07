@@ -1,10 +1,8 @@
 const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema({
-  _id: { type: Number, required: true },
   userID: { type: Number, required: true },
   date: { type: Date, required: true },
-  state: { type: String, enum: ["pending", "accepted", "rejected"] },
   totalPrice: { type: Number },
   countOfTickets: { type: Number },
   orderDetails: {

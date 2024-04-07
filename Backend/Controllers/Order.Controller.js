@@ -1,5 +1,5 @@
 const orderModel = require("../Models/OrderModel");
-
+const userController = require("../Controllers/User.Controller");
 //get (Admin)
 let getAllOrders = async (req, res) => {
   let AllOrders = await orderModel.find({});
@@ -14,46 +14,18 @@ let getOrderByID = (req, res) => {};
 
 //add (user)
 let addOrder = (req, res) => {
-  //add To Cart
-  //in req.body >>_id,userID,countOfTickets,/*orderDetails*/
-  //Total Price ??
+ 
 
   let order = req.body;
+  console.log(order);
   order.date = new Date();
-  console.log(order.date);
-  order.state = "pending"; //because add to cart
-
-  let OrderTotalPrice = 0;
-  let CountOfAllTickets = 0;
-
-  for (let i = 0; i < order.orderDetails.length; i++) {
-    if (order.orderDetails[i].level == "golden") {
-      order.orderDetails[i].totalPrice =
-        order.orderDetails[i].numberOfTickets * 100;
-
-      OrderTotalPrice += order.orderDetails[i].totalPrice;
-    } else if (order.orderDetails[i].level == "silver") {
-      order.orderDetails[i].totalPrice =
-        order.orderDetails[i].numberOfTickets * 200;
-
-      OrderTotalPrice += order.orderDetails[i].totalPrice;
-    } else if (order.orderDetails[i].level == "platinum") {
-      order.orderDetails[i].totalPrice =
-        order.orderDetails[i].numberOfTickets * 500;
-
-      OrderTotalPrice += order.orderDetails[i].totalPrice;
-    }
-
-    CountOfAllTickets += order.orderDetails[i].numberOfTickets;
-  }
-  order.totalPrice = OrderTotalPrice;
-  order.countOfTickets = CountOfAllTickets;
 
   let newOrder = new orderModel(order);
 
-  newOrder
+  newOrder  
     .save()
     .then(() => {
+      userController.deleteUserCart(order.userID)
       return res
         .status(200)
         .json({ msg: "Added Successfully", data: newOrder });

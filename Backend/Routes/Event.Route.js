@@ -25,6 +25,8 @@ const upload = multer({ storage });
 router.get("/", EventController.GetAllEvents);
 router.get("/promoted", EventController.GetPromotedEvents);
 router.get("/:id", EventController.GetEventByID);
+router.get("/category/:name", EventController.GetEventByCategoryName);
+
 
 // router.post('/',AdminPermissionMW,EventController.AddEvent);
 

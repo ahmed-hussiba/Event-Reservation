@@ -74,12 +74,18 @@ export class RegLoginComponent {
 
   submitSignUp() {
 
-    if (this.mySignUpFormGroup.valid) {
-      this.user = this.mySignUpFormGroup.value;
-      const formData = new FormData();
-      formData.append('image',this.image);
-      formData.append('data',this.user);
-      console.log(formData);
+      if (this.mySignUpFormGroup.valid) {
+        this.user = this.mySignUpFormGroup.value;
+        const formData = new FormData();
+        formData.append('image',this.image);
+        
+      // formData.append('data',JSON.stringify(this.user));
+      // console.log(formData);
+      // formData.append('image',this.image);
+      // setTimeout(() => {
+      //   console.log(formData);
+      // }, 10000);
+      
       this.regService.signUp(formData).subscribe(
         {
           next: (data) => {

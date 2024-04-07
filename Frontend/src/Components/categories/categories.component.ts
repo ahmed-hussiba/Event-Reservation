@@ -17,8 +17,6 @@ import { HttpClientModule } from '@angular/common/http';
 export class CategoriesComponent {
   constructor(private evService:EventService){}
   getCategory(name:string){
-    console.log(name);
-    
     this.evService.GetEventByCategoryName(name).subscribe({
       next:(data)=>{
         console.log(data);

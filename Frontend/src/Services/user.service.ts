@@ -30,4 +30,7 @@ export class UserService {
     }
    return this.http.post(this.DB_URL+"/"+userID+"/cart",item);
   }
+  getCart(id:Number){
+    return this.http.get(this.DB_URL+"/"+id+"/cart");
+  }
 }

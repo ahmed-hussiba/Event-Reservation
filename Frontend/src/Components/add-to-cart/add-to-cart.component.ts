@@ -2,11 +2,14 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../Services/user.service';
+import { RouterModule } from '@angular/router';
+import { LoginService } from '../../Services/login.services';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-add-to-cart',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,RouterModule],
   providers: [UserService],
   templateUrl: './add-to-cart.component.html',
   styleUrl: './add-to-cart.component.css',
@@ -18,7 +21,8 @@ export class AddToCartComponent implements OnInit {
 
   constructor(
     private sharedService: SharedEventsService,
-    private userService: UserService
+    private userService: UserService,
+    private loginServie:LoginService
   ) {}
   ngOnInit(): void {
     this.sharedService.data.subscribe((data) => {
@@ -78,8 +82,8 @@ export class AddToCartComponent implements OnInit {
       quantity: this.quantity,
       ticketPrice: this.price,
     };
-    console.log(this.cartItem);
 
+    
     this.userService.AddItemToCart(this.cartItem).subscribe({
       next: (data) => {
         console.log(data);

@@ -4,7 +4,7 @@ export const interceptorInterceptor: HttpInterceptorFn = (req, next) => {
   let token: any = localStorage.getItem('access_token');
   console.log(token);
   token = token?.split(' ')[1];
-  console.log(token);
+  token =token.substring(0,token.length-1);
 
   const reqAuth = req.clone({
     setHeaders: {

@@ -89,7 +89,7 @@ let addUser = async (req, res) => {
 };
 
 let getUserCart = async (req, res) => {
-  let id = req.params.id;
+  let id = req.params.id; 
 
   let user = await userModel.findOne({ _id: id });
 

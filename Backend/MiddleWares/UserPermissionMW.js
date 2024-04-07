@@ -12,6 +12,7 @@ module.exports = (req, res, nxt) => {
     //redirect login or reg
     return res.status(301).json({ msg: "Can't add without login" });
   }
+  console.log(token);
   console.log("MW1");
   // console.log(token);
   let data;

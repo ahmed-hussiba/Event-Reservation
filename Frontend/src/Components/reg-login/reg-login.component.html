@@ -150,10 +150,12 @@
                   </div>
                   <div class="w-50 visibility-controller">
                     
-                    <input formControlName="fileUpload" class="upload-btn" type="file" id="fileInput" style="display: none;">
-                    <button class="custom-upload" (click)="triggerFileInput($event)">
+                    <label for="fileInput" class="custom-upload">Choose Image</label>
+                    <input formControlName="fileUpload" (change)="triggerFileInput($event)" class="upload-btn" type="file" id="fileInput" style="display: none;"> 
+                    
+                    <!-- <button class="custom-upload" (click)="triggerFileInput($event)">
                       <p>Choose Image</p>
-                    </button>
+                    </button> -->
                   </div>
                 </div>
 

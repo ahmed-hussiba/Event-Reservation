@@ -1,6 +1,6 @@
 <div
   id="carouselExampleAutoplaying"
-  class="carousel slide mt-5"
+  class="carousel slide"
   data-bs-ride="carousel"
   data-bs-interval="2000"
 >
@@ -15,10 +15,10 @@
         src="data:image/jpg;base64,{{ item.imgBuffer }}"
         class="d-block w-100"
       />
-      <div class="carousel-caption d-none d-md-block">
+      <!-- <div class="carousel-caption d-none d-md-block">
         <h5>{{ item.event.name }}</h5>
         <p>{{ item.event.description }}</p>
-      </div>
+      </div> -->
     </div>
     <ng-container *ngIf="toggle()"></ng-container>
     }

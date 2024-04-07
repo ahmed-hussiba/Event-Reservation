@@ -14,7 +14,6 @@ import { HomePageComponent } from '../Components/home-page/home-page.component';
 import { CartComponent } from '../Components/cart/cart.component';
 import { PaymentComponent } from '../Components/payment/payment.component';
 import { TryComponent } from '../Components/try/try.component';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import {
   HTTP_INTERCEPTORS,
   HttpClient,

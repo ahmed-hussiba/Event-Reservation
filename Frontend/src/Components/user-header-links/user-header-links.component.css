@@ -17,9 +17,10 @@ a {
 }
 
 .navbar {
-  background-color: rgb(255, 194, 68);
-  border-bottom-left-radius: 40%;
-  border-bottom-right-radius: 40%;
+  /* background-color: rgb(255, 194, 68); */
+  background-color: #2a2b38 ;
+  /* border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%; */
 }
 
 .custom-btn {
@@ -34,6 +35,8 @@ a {
 .icon-container {
   position: relative;
   left: 60vw;
+  display: flex;
+  align-items: baseline;
 }
 
 .nav-icon {
@@ -41,6 +44,11 @@ a {
   color: rgb(0, 160, 130);
   cursor: pointer;
   margin: 10px;
+}
+
+.profile-avatar {
+  width: 4vw;
+  height: 4vw;
 }
 
 /* media queries */
@@ -56,9 +64,14 @@ a {
     position: relative;
     left: 0;
   }
-  .custom-links {
-    margin-left: 40%;
-  }
+
+  /* .navbar-collapse {
+    flex-grow: 0;
+    flex-basis: 0;
+  }  */
+
+  
+  
 }
 
 @media screen and (min-width: 360px) and (max-width: 461px) {
@@ -72,6 +85,7 @@ a {
   .icon-container {
     margin-left: 13vw;
   }
+  
 }
 
 @media screen and (min-width: 461px) and (max-width: 577px) {
@@ -85,6 +99,16 @@ a {
   .icon-container {
     margin-left: 28vw;
   }
+
+  .custom-links {
+    margin-left: 30vw;
+  }
+
+  .navbar-collapse {
+    flex-basis: 0%;
+    flex-grow: 0;
+  }
+
 }
 
 @media screen and (min-width: 577px) and (max-width: 768px) {
@@ -97,6 +121,15 @@ a {
 
   .icon-container {
     margin-left: 38vw;
+  }
+
+  .custom-links {
+    margin-left: 30vw;
+  }
+
+  .navbar-collapse {
+    flex-basis: 0%;
+    flex-grow: 0;
   }
 }
 
@@ -111,6 +144,15 @@ a {
   .icon-container {
     margin-left: 45vw;
   }
+  .custom-links {
+    margin-left: 30vw;
+  }
+
+  .navbar-collapse {
+    flex-basis: 0%;
+    flex-grow: 0;
+  }
+ 
 }
 
 @media screen and (min-width: 1200px) {
@@ -126,6 +168,8 @@ a {
   a {
     font-size: 1.5rem;
   }
+
+  
 }
 
 @media screen and (min-width: 1450px) {
@@ -141,4 +185,14 @@ a {
   a {
     font-size: 1.8rem;
   }
+
+
 }
+
+
+
+
+ /* /////CART BUTTON CSS//////// */
+
+ 
+ 

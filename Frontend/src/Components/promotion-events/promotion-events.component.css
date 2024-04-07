@@ -1,12 +1,13 @@
 .promotion-banner {
-    position: absolute;
-    top: 10px;
-    right: 40px;
-    z-index: 999;
-  }
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  z-index: 999;
+}
 
-  .carousel-item img {
-    height: 80vh; /* Adjust the height as needed */
-    object-fit: cover; /* Control the fit of the image */
-  }
-
+.carousel-item img {
+  /* height: 80vh;  */
+  object-fit: fill;
+  /* object-fit: scale-down; */
+  /* height: 500px; */
+}

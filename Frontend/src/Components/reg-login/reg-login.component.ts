@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../../Services/login.services';
-import { HttpClient, HttpClientModule, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpClientModule, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { RegisterService } from '../../Services/register.service';
 
 @Component({
@@ -13,16 +13,17 @@ import { RegisterService } from '../../Services/register.service';
     CommonModule,
     HttpClientModule
   ],
-  providers:[LoginService],
+  providers: [LoginService],
   templateUrl: './reg-login.component.html',
   styleUrl: './reg-login.component.css',
 })
 export class RegLoginComponent {
-  user:any;
-  responseData:any;
-  responseHeaders:any;
-  image:any;
-  constructor(private logService:LoginService,private regService:RegisterService){
+  user: any;
+  responseData: any;
+  responseHeaders: any;
+  image: any;
+  jsonUser : any;
+  constructor(private logService: LoginService, private regService: RegisterService) {
 
   }
   mySignInFormGroup = new FormGroup(
@@ -30,20 +31,20 @@ export class RegLoginComponent {
       email: new FormControl("", [Validators.email, Validators.required]),
       password: new FormControl("", [Validators.pattern(
         "^(?=.*[a-zA-Z])(?=.*\\d).{8,}$"
-        ),Validators.required]) 
+      ), Validators.required])
     });//
-    mySignUpFormGroup = new FormGroup({
-      email: new FormControl("", [Validators.email, Validators.required]),
-      username: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern("^[a-zA-Z0-9_.]+$")]),
-      password: new FormControl("", [Validators.pattern(
-        "^(?=.*[a-zA-Z])(?=.*\\d).{8,}$"
-        ),Validators.required]) ,
-      country: new FormControl("", [Validators.required]),
-      city: new FormControl("", [Validators.required]),
-      fileUpload: new FormControl("", [Validators.required]) // Add the file validator here
-    });
+  mySignUpFormGroup = new FormGroup({
+    email: new FormControl("", [Validators.email, Validators.required]),
+    username: new FormControl("", [Validators.required, Validators.minLength(3), Validators.maxLength(15), Validators.pattern("^[a-zA-Z0-9_.]+$")]),
+    password: new FormControl("", [Validators.pattern(
+      "^(?=.*[a-zA-Z])(?=.*\\d).{8,}$"
+    ), Validators.required]),
+    country: new FormControl("", [Validators.required]),
+    city: new FormControl("", [Validators.required]),
+    fileUpload: new FormControl("", [Validators.required]) // Add the file validator here
+  });
 
-  get emailIsValid(){
+  get emailIsValid() {
     return this.mySignInFormGroup.controls["email"].valid;
   }
   get passwordIsValid() {
@@ -76,18 +77,25 @@ export class RegLoginComponent {
 
     if (this.mySignUpFormGroup.valid) {
       this.user = this.mySignUpFormGroup.value;
+      this.jsonUser = JSON.stringify(this.user);
+
       const formData = new FormData();
-      formData.append('image',this.image);
-      formData.append('data',this.user);
+      // console.log(this.image);
+      formData.append('image', this.image);
+      // console.log(this.user);
+      formData.append('data', this.jsonUser);
       console.log(formData);
+
+
+
       this.regService.signUp(formData).subscribe(
         {
           next: (data) => {
             console.log(data);
           },
-          error:(err)=>{
+          error: (err) => {
             console.log(err);
-            
+
           }
         }
       )
@@ -114,20 +122,24 @@ export class RegLoginComponent {
     }
   }
 
-  triggerFileInput(event:any) {
-    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
-    fileInput.click();
-    console.log(fileInput.files);
+  async triggerFileInput(event: any) {
+    // const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    // // fileInput.click();
+    console.log(event);
+    console.log(event.target.files);
+    // console.log(fileInput.files);
 
-    if (fileInput.files?.length) {
-      const file = fileInput.files[0];
-      this.image = file;
-      console.log(this.image);
-    
-      
-      
-    }
+    // if (fileInput.files?.length) {
+    //   const file = fileInput.files[0];
+    //   this.image = file;
+    //   console.log(this.image);
+    // }
+    // console.log(event);
+    // console.log(event.target.files);
   }
+
+
+
 }
 
 

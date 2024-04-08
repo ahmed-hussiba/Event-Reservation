@@ -8,6 +8,7 @@ import { guardAuthGuard } from '../Guards/guard.auth.guard';
 import { CartComponent } from '../Components/cart/cart.component';
 import { PaymentComponent } from '../Components/payment/payment.component';
 import { AllEventsComponent } from '../Components/all-events/all-events.component';
+import { ProfileComponent } from '../Components/profile/profile.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -17,9 +18,10 @@ export const routes: Routes = [
     canActivate: [guardAuthGuard],
   },
   { path: 'login', component: RegLoginComponent },
-  { path: 'event/category/:name', component:AboutComponent},
-  {path:'users/:id/cart',component:CartComponent},
-  {path:'users/:id/payment',component:PaymentComponent},
-  {path:'event/allevents',component:AllEventsComponent}
-
+  { path: 'event/category/:name', component: AboutComponent },
+  { path: 'users/cart', component: CartComponent },
+  { path: 'users/:id/payment', component: PaymentComponent },
+  { path: 'event/allevents', component: AllEventsComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'profile', component: ProfileComponent },
 ];

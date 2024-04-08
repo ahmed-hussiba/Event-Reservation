@@ -3,8 +3,8 @@ import { EventService } from '../../Services/event.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
-import { SharedEventsService } from '../../Services/shared-events.service';
 import { AllEventsComponent } from '../all-events/all-events.component';
+import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 
 @Component({
   selector: 'app-events',
@@ -22,7 +22,7 @@ export class EventsComponent implements OnInit {
   }[] = [];
   constructor(
     private evService: EventService,
-    private sharedService: SharedEventsService
+    private eventsToDetailsService: EventsToEventDetailsService
   ) {}
   ngOnInit(): void {
     this.evService.GetAllEvents().subscribe({
@@ -43,6 +43,8 @@ export class EventsComponent implements OnInit {
   }
 
   GoToEvent(eventId: Number) {
-    this.sharedService.setData(eventId);
+    console.log(`id evv  = ${eventId}`);
+
+    this.eventsToDetailsService.sendData(eventId);
   }
 }

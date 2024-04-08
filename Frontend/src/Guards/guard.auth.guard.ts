@@ -16,7 +16,10 @@ export const guardAuthGuard: CanActivateFn = (
   if (token) {
     return true;
   } else {
-    inject(Router).navigate(['/login']);
+    // inject(Router).navigate(['/login']);
+    let login = document.getElementById('exampleModal') as HTMLInputElement;
+
+    console.log(login);
 
     return false;
   }

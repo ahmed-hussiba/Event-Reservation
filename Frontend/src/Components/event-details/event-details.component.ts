@@ -6,6 +6,7 @@ import { EventService } from '../../Services/event.service';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 import { Component, OnInit } from '@angular/core';
+import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 
 @Component({
   selector: 'app-event-details',
@@ -23,18 +24,18 @@ import { Component, OnInit } from '@angular/core';
 export class EventDetailsComponent implements OnInit {
   eventId: Number = 0;
 
-
   constructor(
     private sharedService: SharedEventsService,
-    private eventService: EventService
+    private eventService: EventService,
+    private eventsToDetailsService: EventsToEventDetailsService
   ) {}
 
   event: any;
   ngOnInit(): void {
-    this.sharedService.data.subscribe((data) => {
+    this.eventsToDetailsService.data.subscribe((data) => {
       // console.log(data);
       // this.eventId = data;
-      this.eventId = 2;
+      this.eventId = data;
     });
     console.log(this.eventId);
 

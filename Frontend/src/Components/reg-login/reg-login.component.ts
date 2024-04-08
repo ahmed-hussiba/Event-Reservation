@@ -10,6 +10,7 @@ import {
 import { LoginService } from '../../Services/login.services';
 
 import { RegisterService } from '../../Services/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-reg-login',

@@ -16,7 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
   selector: 'app-reg-login',
   standalone: true,
   imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
-  providers: [LoginService],
+  providers: [LoginService, RegisterService],
   templateUrl: './reg-login.component.html',
   styleUrl: './reg-login.component.css',
 })
@@ -83,7 +83,7 @@ export class RegLoginComponent {
   submitSignUp() {
     if (this.mySignUpFormGroup.valid) {
       this.user = this.mySignUpFormGroup.value;
-      this.user._id = 20;
+      this.user._id = 22;
       this.user.gender = 'M';
       console.log(this.user);
       console.log(this.image);
@@ -92,12 +92,20 @@ export class RegLoginComponent {
       formData.set('image', this.image);
 
       formData.set('data', JSON.stringify(this.user));
-      formData.set('hassan', JSON.stringify({ img: 5 }));
+      // formData.set('hassan', JSON.stringify({ img: 5 }));
 
       console.log(formData);
       this.regService.signUp(formData).subscribe({
         next: (data) => {
           console.log(data);
+          const authToken = data.headers.get('x-auth-token');
+          console.log('x-auth-token:', authToken);
+          // // console.log("authToken: \n" + JSON.stringify(authToken));
+
+          // localStorage.setItem('access_token', authToken);
+          // const decoded = jwtDecode(authToken);
+          // console.log('Decoded token \n' + decoded);
+          window.location.reload();
         },
         error: (err) => {
           console.log(err);
@@ -122,7 +130,7 @@ export class RegLoginComponent {
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
           console.log('Decoded token \n' + decoded);
-          // window.location.reload();
+          window.location.reload();
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);
         },
@@ -138,11 +146,11 @@ export class RegLoginComponent {
     fileInput.click();
     console.log(fileInput.files);
 
-    // if (fileInput.files?.length) {
-    //   const file = fileInput.files[0];
-    //   this.image = file;
-    //   console.log(this.image);
-    // }
+    if (fileInput.files?.length) {
+      const file = fileInput.files[0];
+      this.image = file;
+      console.log(this.image);
+    }
     // console.log(event);
     // console.log(event.target.files);
   }

@@ -11,6 +11,7 @@ import { LoginService } from '../../Services/login.services';
 
 import { RegisterService } from '../../Services/register.service';
 import { HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reg-login',
@@ -27,7 +28,8 @@ export class RegLoginComponent {
   image: any;
   constructor(
     private logService: LoginService,
-    private regService: RegisterService
+    private regService: RegisterService,
+    private router : Router
   ) {}
   mySignInFormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
@@ -98,14 +100,16 @@ export class RegLoginComponent {
       this.regService.signUp(formData).subscribe({
         next: (data) => {
           console.log(data);
-          const authToken = data.headers.get('x-auth-token');
-          console.log('x-auth-token:', authToken);
+          // const authToken = data.headers.get('x-auth-token');
+          // console.log('x-auth-token:', authToken);
           // // console.log("authToken: \n" + JSON.stringify(authToken));
 
           // localStorage.setItem('access_token', authToken);
           // const decoded = jwtDecode(authToken);
           // console.log('Decoded token \n' + decoded);
           window.location.reload();
+          // this.router.navigate(['/']);
+          
         },
         error: (err) => {
           console.log(err);
@@ -130,6 +134,8 @@ export class RegLoginComponent {
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
           console.log('Decoded token \n' + decoded);
+
+          
           window.location.reload();
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);

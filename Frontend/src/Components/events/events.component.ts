@@ -28,6 +28,11 @@ export class EventsComponent implements OnInit {
     this.evService.GetAllEvents().subscribe({
       next: (data) => {
         this.events = data;
+        for (const key in this.events) {
+          if (this.events.hasOwnProperty(key)) {
+            console.log(`${key}: ${this.events[key]}`);
+          }
+        }
         this.twoEvents.push(this.events['eventsWithImgs'][0]);
         this.twoEvents.push(this.events['eventsWithImgs'][1]);
         // console.log(this.twoEvents);

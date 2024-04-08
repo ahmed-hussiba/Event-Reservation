@@ -4,11 +4,12 @@ import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { FormsModule } from '@angular/forms';
+import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
 @Component({
   selector: 'app-all-events',
   standalone: true,
-  imports: [RouterModule,HttpClientModule,FormsModule],
+  imports: [RouterModule,HttpClientModule,FormsModule,UserHeaderLinksComponent],
   providers:[EventService],
   templateUrl: './all-events.component.html',
   styleUrl: './all-events.component.css'

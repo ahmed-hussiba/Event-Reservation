@@ -16,6 +16,7 @@ import { LoginService } from '../../Services/login.services';
 import { CommonModule } from '@angular/common';
 import { jwtDecode } from 'jwt-decode';
 import { UserService } from '../../Services/user.service';
+import { AllEventsComponent } from '../all-events/all-events.component';
 
 @Component({
   selector: 'app-home-page',
@@ -29,6 +30,7 @@ import { UserService } from '../../Services/user.service';
     PromotionEventsComponent,
     TryComponent,
     CommonModule,
+    AllEventsComponent
   ],
   providers: [LoginService, UserService],
   templateUrl: './home-page.component.html',

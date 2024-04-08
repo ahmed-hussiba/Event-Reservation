@@ -4,11 +4,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { SharedEventsService } from '../../Services/shared-events.service';
+import { AllEventsComponent } from '../all-events/all-events.component';
 
 @Component({
   selector: 'app-events',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, AllEventsComponent],
   providers: [EventService],
   templateUrl: './events.component.html',
   styleUrl: './events.component.css',

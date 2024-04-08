@@ -7,6 +7,7 @@ const UserPermissionMW = require("../MiddleWares/UserPermissionMW");
 router.get("/", AdminPermissionMW, UserController.getAllUsers);
 
 router.get("/:id", UserController.getUser);
+
 router.get("/:id/cart", UserController.getUserCart);
 
 router.post("/", UserController.addUser);

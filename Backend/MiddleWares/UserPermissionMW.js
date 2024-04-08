@@ -30,7 +30,7 @@ module.exports = (req, res, nxt) => {
     return res.status(404).json({ msg: "Access Denied" });
   }
 
-  // req.body.userID = data.userID;
+  req.body.userID = data.userID;
   // console.log("MW2");
   // console.log(req.body);
   console.log(req.body);

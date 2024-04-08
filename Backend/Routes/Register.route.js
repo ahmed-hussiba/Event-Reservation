@@ -4,6 +4,7 @@ const userController = require("../Controllers/Register.Controller");
 const multer = require("multer");
 const path = require("path");
 const extensions = require("../Utils/Constants");
+const { log } = require("console");
 
 // let finalName;
 
@@ -15,6 +16,9 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     /// favicon.a.png
     n = file.originalname.split(".")[1];
+    // console.log("imagggge");
+    // console.log(file.originalname);
+    // console.log("imagggge");
     extensions.setExtensions(n);
     cb(null, "newUser." + n);
   },

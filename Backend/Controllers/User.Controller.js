@@ -141,6 +141,15 @@ let deleteFromUserCart = async (req, res) => {
 
   return res.status(400).json({ message: "Not Found" });
 };
+let deleteUserCart = async (id)=>
+{
+
+  let foundUser = await userModel.findOneAndUpdate({_id:id},{cart:[]});
+  if(foundUser)
+    console.log(foundUser._id);
+  else
+    console.log("notFound");
+}
 
 function validateCartObj(obj) {
   if (isNaN(+obj.eventId) || isNaN(+obj.quantity) || isNaN(+obj.ticketPrice))
@@ -158,4 +167,5 @@ module.exports = {
   addToUserCart,
   getUserCart,
   deleteFromUserCart,
+  deleteUserCart
 };

@@ -12,4 +12,5 @@ module.exports = (req, res, nxt) => {
     return res.status(404).json({ msg: "Access Denied" });
   }
   nxt();
+  
 };

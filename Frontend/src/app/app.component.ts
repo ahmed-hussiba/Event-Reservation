@@ -21,29 +21,31 @@ import {
 } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { interceptorInterceptor } from '../Services/interceptor.interceptor';
+import { AllEventsComponent } from "../Components/all-events/all-events.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  imports: [
-    RouterOutlet,
-    UserHeaderLinksComponent,
-    GuestHeaderLinksComponent,
-    RegLoginComponent,
-    PromotionEventsComponent,
-    CategoriesComponent,
-    ReviewsComponent,
-    AddToCartComponent,
-    EventDetailsComponent,
-    EventsComponent,
-    HomePageComponent,
-    CartComponent,
-    PaymentComponent,
-    TryComponent,
-  ],
-  providers: [LoginService],
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    providers: [LoginService],
+    imports: [
+        RouterOutlet,
+        UserHeaderLinksComponent,
+        GuestHeaderLinksComponent,
+        RegLoginComponent,
+        PromotionEventsComponent,
+        CategoriesComponent,
+        ReviewsComponent,
+        AddToCartComponent,
+        EventDetailsComponent,
+        EventsComponent,
+        HomePageComponent,
+        CartComponent,
+        PaymentComponent,
+        TryComponent,
+        AllEventsComponent
+    ]
 })
 export class AppComponent {
   token: any;

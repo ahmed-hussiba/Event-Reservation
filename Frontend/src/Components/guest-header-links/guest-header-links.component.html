@@ -1,45 +1,32 @@
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand logo ms-5" href="#">Tiatro</a>
 
-    <button
-      class="navbar-toggler custom-btn"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="logo">
+      <a class="navbar-brand logo" href="#">Tiatro</a>
 
-    <div class="collapse navbar-collapse custom-links" id="navbarNavDropdown">
+      <button class="navbar-toggler custom-btn" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
+        aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse nav-links" id="navbarNavDropdown">
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link button" aria-current="page" routerLink="/">Home</a>
         </li>
 
         <li class="nav-item">
-          <a
-            class="nav-link button"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-            >Get Started</a
-          >
+          <a class="nav-link button" data-bs-toggle="modal" data-bs-target="#exampleModal">Get Started</a>
         </li>
 
         <li class="nav-item">
           <a class="nav-link button" routerLink="/about us">About us</a>
         </li>
         <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle button"
-            routerLink="#"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
+          <a class="nav-link dropdown-toggle button" routerLink="#" role="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
             Languages
             <i class="bi bi-globe"></i>
           </a>

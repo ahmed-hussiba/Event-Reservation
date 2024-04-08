@@ -6,7 +6,7 @@
   width: 95%;
   margin: auto;
   background-color: rgba(230, 230, 230, 0.767);
-  /* background-color: rgb(0, 160, 130) ; */
+  /* background-color: rgb(0, 160, 130) ; /
 
 }
 
@@ -19,7 +19,7 @@
   font-weight: 600;
 }
 
-.button__book {
+.buttonbook {
   position: relative;
   width: 150px;
   height: 40px;
@@ -31,17 +31,17 @@
   padding: 0;
 }
 
-.button__book, .button__icon, .button__text {
+.buttonbook, .buttonicon, .buttontext {
   transition: all 0.3s;
 }
 
-.button__book .button__text {
+.buttonbook .buttontext {
   transform: translateX(30px);
   color: #fff;
   font-weight: 600;
 }
 
-.button__book .button__icon {
+.buttonbook .buttonicon {
   position: absolute;
   transform: translateX(109px);
   height: 100%;
@@ -52,25 +52,25 @@
   justify-content: center;
 }
 
-.button__book .svg {
+.buttonbook .svg {
   width: 30px;
   stroke: #fff;
 }
 
-.button__book:hover {
+.buttonbook:hover {
   background: var(--btnGreen);
 }
 
-.button__book:hover .button__text {
+.buttonbook:hover .buttontext {
   color: transparent;
 }
 
-.button__book:hover .button__icon {
+.buttonbook:hover .buttonicon {
   width: 148px;
   transform: translateX(0);
 }
 
-.button__book:active .button__icon {
+.buttonbook:active .buttonicon {
   background-color: var(--btnGreen);
 }
 
@@ -91,10 +91,9 @@ p {
 @media (max-width: 576px) {
   .flex-xs-column {
     flex-direction: column !important;
-    /* align-items: center; */
+    / align-items: center; */
   }
 
   .xsmallRow {
     width: 100% !important;
   }
-}

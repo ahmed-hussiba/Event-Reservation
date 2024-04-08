@@ -49,7 +49,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.token = this.loginService.getToken();
 
-    console.log(this.token);
+    console.log("Token: \n" + this.token);
 
     if (this.token) {
       const decoded = jwtDecode(this.token);

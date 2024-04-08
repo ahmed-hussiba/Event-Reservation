@@ -8,17 +8,14 @@ import {
   Validators,
 } from '@angular/forms';
 import { LoginService } from '../../Services/login.services';
-import {
-  HttpClient,
-  HttpClientModule,
-  HttpResponse,
-} from '@angular/common/http';
+
 import { RegisterService } from '../../Services/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-reg-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
   providers: [LoginService],
   templateUrl: './reg-login.component.html',
   styleUrl: './reg-login.component.css',
@@ -114,18 +111,18 @@ export class RegLoginComponent {
   submitSignIn() {
     if (this.mySignInFormGroup.valid) {
       this.user = this.mySignInFormGroup.value;
-      console.log(this.user);
+      console.log("User: \n " + this.user);
 
       this.logService.signIn(this.user).subscribe({
         next: (data) => {
           const authToken = data.headers.get('x-auth-token');
           // console.log('x-auth-token:', authToken);
-          console.log(JSON.stringify(authToken));
+          // console.log("authToken: \n" + JSON.stringify(authToken));
 
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
-          console.log(decoded);
-          window.location.reload();
+          console.log("Decoded token \n" + decoded);
+          // window.location.reload();
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);
         },
@@ -149,13 +146,4 @@ export class RegLoginComponent {
     // console.log(event);
     // console.log(event.target.files);
   }
-
-
-
-  //   if (fileInput.files?.length) {
-  //     const file = fileInput.files[0];
-  //     this.image = file;
-  //     console.log(this.image);
-  //   }
-  // }
 }

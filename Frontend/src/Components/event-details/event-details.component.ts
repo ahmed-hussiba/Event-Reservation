@@ -33,7 +33,8 @@ export class EventDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.sharedService.data.subscribe((data) => {
       // console.log(data);
-      this.eventId = data;
+      // this.eventId = data;
+      this.eventId = 2;
     });
     console.log(this.eventId);
 

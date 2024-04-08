@@ -9,7 +9,7 @@ import { jwtDecode } from 'jwt-decode';
 @Component({
   selector: 'app-add-to-cart',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   providers: [UserService],
   templateUrl: './add-to-cart.component.html',
   styleUrl: './add-to-cart.component.css',
@@ -22,8 +22,8 @@ export class AddToCartComponent implements OnInit {
   constructor(
     private sharedService: SharedEventsService,
     private userService: UserService,
-    private loginServie:LoginService
-  ) {}
+    private loginServie: LoginService
+  ) { }
   ngOnInit(): void {
     this.sharedService.data.subscribe((data) => {
       this.event = data;
@@ -35,25 +35,32 @@ export class AddToCartComponent implements OnInit {
   goldCount: any = 0;
   quantity: any;
   price: any;
+
   Add(name: string) {
     this.level = name;
     switch (name) {
       case 'golden':
-        this.goldCount++;
-        this.quantity = this.goldCount;
-        this.price = this.event['EventwithImg'].event.ticketsAvailable[1].price;
+        if (this.silverCount == 0 && this.platinumCount == 0) {
+
+          this.goldCount++;
+          this.quantity = this.goldCount;
+          this.price = this.event['EventwithImg'].event.ticketsAvailable[1].price;
+        }
         break;
       case 'silver':
-        this.silverCount++;
-        this.quantity = this.silverCount;
-        this.price = this.event['EventwithImg'].event.ticketsAvailable[0].price;
+        if (this.goldCount == 0 && this.platinumCount == 0) {
 
+          this.silverCount++;
+          this.quantity = this.silverCount;
+          this.price = this.event['EventwithImg'].event.ticketsAvailable[0].price;
+        }
         break;
       case 'platinum':
-        this.platinumCount++;
-        this.quantity = this.platinumCount;
-        this.price = this.event['EventwithImg'].event.ticketsAvailable[2].price;
-
+        if (this.silverCount == 0 && this.goldCount == 0) {
+          this.platinumCount++;
+          this.quantity = this.platinumCount;
+          this.price = this.event['EventwithImg'].event.ticketsAvailable[2].price;
+        }
         break;
     }
   }
@@ -75,6 +82,7 @@ export class AddToCartComponent implements OnInit {
   }
 
   AddToCart() {
+    /////////////////////DON'T SEND UNLESS QUANTITY > 1/////////////////////
     this.cartItem = {
       eventId: +this.event['EventwithImg'].event._id,
       eventName: this.event['EventwithImg'].event.name,
@@ -83,7 +91,7 @@ export class AddToCartComponent implements OnInit {
       ticketPrice: this.price,
     };
 
-    
+
     this.userService.AddItemToCart(this.cartItem).subscribe({
       next: (data) => {
         console.log(data);

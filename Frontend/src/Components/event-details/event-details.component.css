@@ -1,18 +1,76 @@
-@media (max-width: 576px) {
-    
-    
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 700;
+  font-style: italic;
+
+  /* font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal; */
+}
+
+p {
+  font-weight: bold;
+}
+
+h3 {
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+}
+
+h1 ,h3  {
+  color: #2a2b38;
+}
+
+h6 {
+  color: rgb(0, 160, 130);
+}
+
+h3, h6 {
+  font-size: 20px;
+}
+
+.event-detalis {
+  /* border: #2a2b38 1px solid; */
+  border: rgb(0, 160, 130) 1px solid ;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgba(230, 230, 230, 0.767);
+  border-radius: 20px;
+}
+
+.content {
+  margin-top: 2vw;
+  margin-left: 2vw;
+}
+
+.cart-section {
+  border: #2a2b38 1px solid;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  background-color: rgba(230, 230, 230, 0.767);
+
+  padding: 1rem;
+  margin: auto;
+  border-radius: 20px;
+}
+
+.cart-section:hover {
+  border: rgb(0, 160, 130) 1px solid ;
+}
+
+@media (max-width: 576px) {}
+
+@media (max-width: 768px) {
+  .xsmallRow {
+    width: 100% !important;
+    margin-top: 10px;
   }
 
-  @media (max-width: 768px) {
-    .xsmallRow{
-        width: 100% !important;
-        margin-top: 10px;
-    }
-    .flex-xs-column {
-        flex-direction: column !important;
-        /* align-items: center; */
-      }
+  .flex-xs-column {
+    flex-direction: column !important;
+    /* align-items: center; */
   }
-
-  
-
+}

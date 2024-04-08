@@ -17,7 +17,7 @@ export const routes: Routes = [
   },
   { path: 'login', component: RegLoginComponent },
   { path: 'event/category/:name', component:AboutComponent},
-  {path:'users/:id/cart',component:CartComponent},
+  {path:'users/cart',component:CartComponent},
   {path:'users/:id/payment',component:PaymentComponent}
 
 ];

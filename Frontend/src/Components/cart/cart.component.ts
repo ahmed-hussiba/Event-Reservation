@@ -5,12 +5,15 @@ import { jwtDecode } from 'jwt-decode';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SharedEventsService } from '../../Services/shared-events.service';
+import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
 @Component({
   selector: 'app-cart',
   standalone: true,
-  imports: [CommonModule,
-    RouterModule
+  imports: [
+    CommonModule,
+    RouterModule,
+    UserHeaderLinksComponent
   ],
   providers:[
     UserService,

@@ -10,6 +10,7 @@ import {
 import { LoginService } from '../../Services/login.services';
 
 import { RegisterService } from '../../Services/register.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-reg-login',
@@ -110,7 +111,7 @@ export class RegLoginComponent {
   submitSignIn() {
     if (this.mySignInFormGroup.valid) {
       this.user = this.mySignInFormGroup.value;
-      console.log("User: \n " + this.user);
+      console.log('User: \n ' + this.user);
 
       this.logService.signIn(this.user).subscribe({
         next: (data) => {
@@ -120,7 +121,7 @@ export class RegLoginComponent {
 
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
-          console.log("Decoded token \n" + decoded);
+          console.log('Decoded token \n' + decoded);
           // window.location.reload();
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);

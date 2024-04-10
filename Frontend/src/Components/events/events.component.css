@@ -1,11 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+
 :host {
   --btnGreen: #00a97f;
 }
 
 .eventsContainer {
+  min-width: fit-content;
   width: 95%;
-  margin: auto;
+  /* min-height: fit-content; */
+  box-sizing: border-box;
+  margin: 5vh auto;
   background-color: rgba(230, 230, 230, 0.767);
+  border: 1px solid rgb(196, 192, 192);
+  border-radius: 20px;
+}
+
+.btn-container {
+  margin: 3vh;
 }
 
 .see-all-button {
@@ -17,8 +29,35 @@
   font-weight: 600;
 }
 
+.card {
+  margin: 3vh 0;
+  width: 80vw;
+}
+
+.title-container {
+  
+}
+
+.cart-btn-container {
+  margin: auto;
+}
+
+.card-title {
+  font-size: 2vw;
+  color: #6c978c;
+  font-family: "Pacifico", cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.card-text {
+  line-height: 1.25;
+
+}
+
 .button__book {
   position: relative;
+  /* min-width: 150px; */
   width: 150px;
   height: 40px;
   cursor: pointer;
@@ -88,9 +127,21 @@ p {
   font-size: 1.5vw;
 }
 
-@media (max-width: 576px) {
+@media (max-width: 880px) {
   .flex-xs-column {
     flex-direction: column !important;
+  }
+
+  .title-container, .text-container {
+    text-align: center;
+  }
+  .card-title {
+    font-size: 1.5em;
+  }
+
+  .card-text {
+    font-size: 0.7rem;
+    margin: 2vh 0;
   }
 
   .xsmallRow {

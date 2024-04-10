@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { jwtDecode } from 'jwt-decode';
 import { UserService } from '../../Services/user.service';
 import { AllEventsComponent } from '../all-events/all-events.component';
+import { JwtPayload } from '../../Interfaces/jwt-payload';
 
 @Component({
   selector: 'app-home-page',
@@ -36,6 +37,8 @@ import { AllEventsComponent } from '../all-events/all-events.component';
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
+
+
 export class HomePageComponent implements OnInit {
   token: any;
   IsAdmin: boolean = false;
@@ -52,19 +55,22 @@ export class HomePageComponent implements OnInit {
     console.log("Token: \n" + this.token);
 
     if (this.token) {
-      const decoded = jwtDecode(this.token);
-      console.log(decoded);
+      const decoded = jwtDecode(this.token) as JwtPayload;
+      // console.log(decoded);
 
-      let email = Object.values(decoded)[3];
+      const {userEmail : email, imageURL, userName, userID} = decoded;
 
-      console.log(Object.values(decoded)[3]);
+      // let {userEmail} = decoded;
+
+      // console.log(Object.values(decoded));
+      
       if (email.includes('@admin.com')) {
         this.IsAdmin = true;
       }
       this.userService.GetUserByID().subscribe({
         next: (data) => {
-          console.log(Object.values(data)[0].imageUser);
-          this.UserImg = Object.values(data)[0].imageUser;
+          
+          this.UserImg = imageURL;
         },
         error: (err) => {
           console.log(err);

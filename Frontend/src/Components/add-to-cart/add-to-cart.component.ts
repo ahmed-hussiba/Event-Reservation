@@ -91,6 +91,7 @@ export class AddToCartComponent implements OnInit {
       ticketPrice: this.price,
     };
 
+    console.log(this.cartItem);
 
     this.userService.AddItemToCart(this.cartItem).subscribe({
       next: (data) => {

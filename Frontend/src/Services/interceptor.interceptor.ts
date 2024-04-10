@@ -16,6 +16,5 @@ export const interceptorInterceptor: HttpInterceptorFn = (req, next) => {
   });
   console.log(`in interceptors`);
 
-  // return next(reqAuth);
-  return next(req);
+  return next(reqAuth);
 };

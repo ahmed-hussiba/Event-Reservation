@@ -8,11 +8,12 @@ import {
   Validators,
 } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
+import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, UserHeaderLinksComponent],
   providers: [UserService],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',

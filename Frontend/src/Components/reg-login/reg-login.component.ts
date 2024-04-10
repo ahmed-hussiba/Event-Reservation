@@ -4,6 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import {
   FormControl,
   FormGroup,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -29,8 +30,8 @@ export class RegLoginComponent {
   constructor(
     private logService: LoginService,
     private regService: RegisterService,
-    private router : Router
-  ) {}
+    private router: Router
+  ) { }
   mySignInFormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [
@@ -46,6 +47,9 @@ export class RegLoginComponent {
       Validators.maxLength(15),
       Validators.pattern('^[a-zA-Z0-9_.]+$'),
     ]),
+    gender: new FormControl({
+      gender: ''
+    }),
     password: new FormControl('', [
       Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d).{8,}$'),
       Validators.required,
@@ -85,10 +89,10 @@ export class RegLoginComponent {
   submitSignUp() {
     if (this.mySignUpFormGroup.valid) {
       this.user = this.mySignUpFormGroup.value;
-      this.user._id = 22;
-      this.user.gender = 'M';
-      console.log(this.user);
-      console.log(this.image);
+      // this.user._id = 22;
+
+      console.log(this.user.gender);
+      // console.log(this.image);
 
       let formData = new FormData();
       formData.set('image', this.image);
@@ -96,23 +100,31 @@ export class RegLoginComponent {
       formData.set('data', JSON.stringify(this.user));
       // formData.set('hassan', JSON.stringify({ img: 5 }));
 
-      console.log(formData);
+      // console.log(formData);
       this.regService.signUp(formData).subscribe({
         next: (data) => {
-          console.log(data);
-          // const authToken = data.headers.get('x-auth-token');
-          // console.log('x-auth-token:', authToken);
-          // // console.log("authToken: \n" + JSON.stringify(authToken));
+          console.log("REGISTER COMP: REGSERVICE.SIGNUP")
+          if (data) {
+           
+            const authToken = data.headers.get('x-auth-token');
+            // console.log("authToken: \n" + JSON.stringify(authToken));
+            localStorage.setItem('access_token', authToken);
+            const decoded = jwtDecode(authToken);
+            // console.log('Decoded token \n' + decoded);
+            window.location.reload();
 
-          // localStorage.setItem('access_token', authToken);
-          // const decoded = jwtDecode(authToken);
-          // console.log('Decoded token \n' + decoded);
-          window.location.reload();
+          } else {
+
+            console.log("REGISTER COMP: NO DATA RETURNED IN REGSERVICE.SIGNUP");
+          }
+
+
+          // console.log('x-auth-token:', authToken);
           // this.router.navigate(['/']);
-          
+
         },
         error: (err) => {
-          console.log(err);
+          console.log("ERROR CAUGHT: REGISTER COMP->REGSERVICE.SIGNUP->TOKEN ERROR")
         },
       });
     } else {
@@ -135,7 +147,7 @@ export class RegLoginComponent {
           const decoded = jwtDecode(authToken);
           console.log('Decoded token \n' + decoded);
 
-          
+
           window.location.reload();
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);

@@ -15,7 +15,7 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
     RouterModule,
     UserHeaderLinksComponent
   ],
-  providers:[
+  providers: [
     UserService,
     LoginService
   ],
@@ -23,40 +23,38 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
   styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnInit {
-  cartItems:any;
-  orderPrice:number = 0;
-  orderQuantity:number = 0;
-  userID:any;
-  orderDetails:{eventId:number,numberOfTickets:number,totalPrice:number,level:string}[]=[];
+  cartItems: any;
+  orderPrice: number = 0;
+  orderQuantity: number = 0;
+  userID: any;
+  orderDetails: { eventId: number, numberOfTickets: number, totalPrice: number, level: string }[] = [];
   constructor(
     private userService: UserService,
-    private loginServie:LoginService,
-    private sharedService:SharedEventsService
-  ) {}
+    private loginServie: LoginService,
+    private sharedService: SharedEventsService
+  ) { }
   ngOnInit(): void {
-    const token:any = this.loginServie.getToken()
+    const token: any = this.loginServie.getToken()
     const decoded = jwtDecode(token)
     this.userID = Object.values(decoded)[0]
-    
+
     this.userService.getCart(+this.userID).subscribe(
       {
-        next:(data)=>{
+        next: (data) => {
           this.cartItems = data;
-          this.calc();  
+          this.calc();
           this.sharedService.setData(this.cartItems);
         },
-        error:(err)=>{
+        error: (err) => {
           console.log(err);
         }
       }
-    ) 
+    )
   }
 
-  calc()
-  {
-    for (let i = 0; i < this.cartItems.cart.length; i++) 
-      {
-      
+  calc() {
+    for (let i = 0; i < this.cartItems.cart.length; i++) {
+
       this.orderPrice += this.cartItems.cart[i].ticketPrice * this.cartItems.cart[i].quantity;
       this.orderQuantity += this.cartItems.cart[i].quantity;
       console.log(`price:${this.orderPrice}, quantity:${this.orderQuantity}`);
@@ -67,25 +65,46 @@ export class CartComponent implements OnInit {
   //       numberOfTickets: Number,
   //       totalPrice: Number,
   //       level:
-  checkOut(){
+  checkOut() {
     for (let i = 0; i < this.cartItems.cart.length; i++) {
       this.orderDetails.push(
         {
-          eventId:this.cartItems.cart[i].eventId,
-          numberOfTickets:this.cartItems.cart[i].quantity,
-          totalPrice: this.cartItems.cart[i].quantity *this.cartItems.cart[i].ticketPrice,
-          level:this.cartItems.cart[i].ticketLevel
+          eventId: this.cartItems.cart[i].eventId,
+          numberOfTickets: this.cartItems.cart[i].quantity,
+          totalPrice: this.cartItems.cart[i].quantity * this.cartItems.cart[i].ticketPrice,
+          level: this.cartItems.cart[i].ticketLevel
         }
       )
     }
 
-      let order={
-        totalPrice:this.orderPrice,
-        countOfTickets:this.orderQuantity,
-        orderDetails:this.orderDetails
-      };
+    let order = {
+      totalPrice: this.orderPrice,
+      countOfTickets: this.orderQuantity,
+      orderDetails: this.orderDetails
+    };
 
-      this.sharedService.setData(order);
+    this.sharedService.setData(order);
+  }
+
+
+  removeFromCart(item: any) {
+    // console.log(item);
+    if (confirm("Do you want to remove this item from the cart")) {
+      this.userService.deleteFromCart(item).subscribe(
+        {
+          next: (data) => {
+            let d = data;
+            console.log(d);
+          },
+
+          error: (er) => {
+            console.log(er);
+          }
+        }
+      )
+
+      window.location.reload();
+    }
   }
 
 }

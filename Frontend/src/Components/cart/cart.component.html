@@ -13,6 +13,10 @@
     <div class="Col2">
       @for (item of cartItems.cart; track $index) {
         <div class="main-row">
+          <div class="cancelBtn">
+            <i (click) = "removeFromCart(item)" class="bi bi-x-square-fill"></i>
+
+          </div>
           <div class="tickimg">
             <img
             src="../../assets/Images/ticket.jpeg"

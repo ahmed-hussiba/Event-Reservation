@@ -2,7 +2,7 @@ import { LoginService } from './login.services';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
-
+import { JwtPayload } from '../Interfaces/jwt-payload';
 @Injectable({
   providedIn: 'root',
 })
@@ -22,16 +22,32 @@ export class UserService {
 
   AddItemToCart(item: any) {
     this.token = this.loginService.getToken();
-    console.log(this.token);
+    // console.log(this.token);
     let userID;
     if (this.token) {
-      const decoded = jwtDecode(this.token);
-      userID = Object.values(decoded)[0];
-    }
+      const decoded = jwtDecode(this.token) as JwtPayload;
+      const { userID : id } = decoded;
+      userID = id;
+    } 
     return this.http.post(this.DB_URL + '/' + userID + '/cart', item);
   }
+
   getCart(id: Number) {
     return this.http.get(this.DB_URL + '/' + id + '/cart');
+  }
+
+  deleteFromCart (cartItem: any) {
+    this.token = this.loginService.getToken();
+    const item = cartItem;
+    let userId;
+
+    if (this.token) {
+      const decoded = jwtDecode(this.token) as JwtPayload;
+      const {userID : id} = decoded;
+      userId = id;
+    }
+
+    return this.http.put(this.DB_URL + "/" + userId +"/cart", item);
   }
 
   EditProfile(user: any) {

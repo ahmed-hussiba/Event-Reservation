@@ -13,15 +13,29 @@ import { ProfileComponent } from '../Components/profile/profile.component';
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   {
-    path: 'eventdetails',
-    component: EventDetailsComponent,
+    path: 'eventdetails', component: EventDetailsComponent,
     canActivate: [guardAuthGuard],
   },
   { path: 'login', component: RegLoginComponent },
   { path: 'event/category/:name', component: AboutComponent },
-  { path: 'users/cart', component: CartComponent },
-  { path: 'users/:id/payment', component: PaymentComponent },
-  { path: 'event/allevents', component: AllEventsComponent },
+  {
+    path: 'users/cart', component: CartComponent,
+    canActivate: [guardAuthGuard]
+  },
+  {
+    path: 'users/:id/payment', component: PaymentComponent,
+    canActivate: [guardAuthGuard],
+
+  },
+  {
+    path: 'event/allevents', component: AllEventsComponent,
+    canActivate: [guardAuthGuard],
+
+  },
   { path: 'about', component: AboutComponent },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: 'profile', component: ProfileComponent,
+    canActivate: [guardAuthGuard],
+
+  },
 ];

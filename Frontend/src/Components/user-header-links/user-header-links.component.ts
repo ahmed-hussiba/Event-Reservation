@@ -10,4 +10,13 @@ import { RouterModule } from '@angular/router';
 })
 export class UserHeaderLinksComponent {
   @Input() UserImg: any;
+
+
+  LogOut() {
+    // console.log("LOGGING OUT");
+    localStorage.removeItem('access_token');
+    window.location.reload();
+  }
 }
+
+

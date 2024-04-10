@@ -8,28 +8,31 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   selector: 'app-promotion-events',
   standalone: true,
   imports: [HttpClientModule,
-  CommonModule],
-  providers:[EventService],
+    CommonModule],
+  providers: [EventService],
   templateUrl: './promotion-events.component.html',
   styleUrl: './promotion-events.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PromotionEventsComponent implements OnInit {
-  events:any;
-  flag:Boolean=true;
-constructor(private evService:EventService){}
+  events: any;
+  flag: Boolean = true;
+  constructor(private evService: EventService) { }
   ngOnInit(): void {
     this.evService.GetPromotedEvets().subscribe(
       {
-        next:(data)=>{this.events=data;
+        next: (data) => {
+          this.events = data;
+          // console.log("PROMOTED EVENTS COMP: EVSERVICE.GETPROMOTED");
+          // console.log(this.events);
         },
-        error:(err)=>{console.log(err);}
+        error: (err) => { console.log(err); }
       }
     );
   }
 
-   toggle() {
-    this.flag=false
+  toggle() {
+    this.flag = false
   }
 
 

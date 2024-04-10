@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -12,7 +12,7 @@ export class RegisterService {
 
   //sign up
   signUp(user:any):Observable<any>{
-    return this.http.post(this.DB_URL, user);
+    return this.http.post(this.DB_URL, user , { observe: 'response' });
   }
 
   // GetPromotedEvets(){

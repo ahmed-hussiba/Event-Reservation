@@ -4,19 +4,18 @@ const path = require("path");
 const extensions = require("../Utils/Constants");
 const { log } = require("console");
 //get eventCategories
-let GetEventByCategoryName = async(req,res)=>{
+let GetEventByCategoryName = async (req, res) => {
   let categoryName = req.params.name;
-  foundEvents = await EventModel.find({category:categoryName})
+  foundEvents = await EventModel.find({ category: categoryName })
   let eventsWithImgs = [];
-  if(foundEvents)
-  {
+  if (foundEvents) {
     for (let event of foundEvents) {
       let imgUrl = event.imageURl;
       let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
       if (imgPath) {
         const data = fs.readFileSync(imgPath);
         const imgBuffer = Buffer.from(data).toString("base64");
-  
+
         let EventwithImg = {
           event: event,
           imgBuffer: imgBuffer,
@@ -24,11 +23,10 @@ let GetEventByCategoryName = async(req,res)=>{
         eventsWithImgs.push(EventwithImg);
       }
     }
-    return res.status(200).json({eventsWithImgs});
+    return res.status(200).json({ eventsWithImgs });
   }
-  else
-  {
-    return res.status(404).json({message:"notfound"});
+  else {
+    return res.status(404).json({ message: "notfound" });
   }
 };
 let GetAllEvents = async (req, res) => {
@@ -36,26 +34,26 @@ let GetAllEvents = async (req, res) => {
   let AllEvents = await EventModel.find();
   let eventsWithImgs = [];
   if (AllEvents) {
-  for (let event of AllEvents) {
-    let imgUrl = event.imageURl;
-    let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
-    if (imgPath) {
-      const data = fs.readFileSync(imgPath);
-      const imgBuffer = Buffer.from(data).toString("base64");
+    for (let event of AllEvents) {
+      let imgUrl = event.imageURl;
+      let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+      if (imgPath) {
+        const data = fs.readFileSync(imgPath);
+        const imgBuffer = Buffer.from(data).toString("base64");
 
-      let EventwithImg = {
-        event: event,
-        imgBuffer: imgBuffer,
-      };
-      eventsWithImgs.push(EventwithImg);
+        let EventwithImg = {
+          event: event,
+          imgBuffer: imgBuffer,
+        };
+        eventsWithImgs.push(EventwithImg);
+      }
     }
-  }
-   return res.status(200).json({eventsWithImgs });
+    return res.status(200).json({ eventsWithImgs });
   } else {
     return res.status(400).json({ message: "Bad Request" });
   }
 
-  
+
 };
 let GetEventByID = async (req, res) => {
   try {
@@ -69,24 +67,24 @@ let GetEventByID = async (req, res) => {
     // }
     if (foundEvent) {
 
-        let imgUrl = foundEvent.imageURl;
-    
-        let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
-    
-        if (imgPath) {
-          const data = fs.readFileSync(imgPath);
-          const imgBuffer = Buffer.from(data).toString("base64");
-    
-          let EventwithImg = {
-            event: foundEvent,
-            imgBuffer: imgBuffer,
-          };
-          
-          return res.status(200).json({EventwithImg });
-        }
-      } else {
-        return res.status(400).json({ message: "Bad Request" });
+      let imgUrl = foundEvent.imageURl;
+
+      let imgPath = path.join(__dirname, "../images/Event-Images", imgUrl);
+
+      if (imgPath) {
+        const data = fs.readFileSync(imgPath);
+        const imgBuffer = Buffer.from(data).toString("base64");
+
+        let EventwithImg = {
+          event: foundEvent,
+          imgBuffer: imgBuffer,
+        };
+
+        return res.status(200).json({ EventwithImg });
       }
+    } else {
+      return res.status(400).json({ message: "Bad Request" });
+    }
 
   } catch (error) {
     console.error("Error retrieving event:", error);
@@ -110,10 +108,10 @@ let AddEvent = async (req, res) => {
     let newPath = path.join(
       __dirname,
       "../images/Event-Images/" +
-        eventDetails.name +
-        eventDetails._id +
-        "." +
-        extensions.getExtension()
+      eventDetails.name +
+      eventDetails._id +
+      "." +
+      extensions.getExtension()
     );
 
     if (foundEvent) {
@@ -174,8 +172,11 @@ let GetPromotedEvents = async (req, res) => {
           imgBuffer: imgBuffer,
         };
         PromotedEventsWithImgs.push(EventwithImg);
+
+
       }
     }
+
 
     return res.status(200).json({ PromotedEventsWithImgs });
   } catch (error) {

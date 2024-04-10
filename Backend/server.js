@@ -16,9 +16,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "User-Profile-Images")));
-
+// mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro
+// mongodb://localhost:27017/EventReservation
 mongoose
-  .connect("mongodb://localhost:27017/EventReservation")
+  .connect("mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro")
   .then(() => {
     // app.use(cors());
     app.use(

@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const validators = require("validator");
 const JWT = require("jsonwebtoken");
 const userSchema = new mongoose.Schema({
-  _id: { type: Number, required: true },
+  _id: { type: Number , required:true},
   email: {
     type: String,
     required: true,

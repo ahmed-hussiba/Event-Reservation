@@ -4,16 +4,23 @@ const JWT = require("jsonwebtoken");
 const fs = require("fs");
 const path = require("path");
 const extensions = require("../Utils/Constants");
+const { log } = require("console");
 
 let Register = async (req, res) => {
   user = JSON.parse(req.body.data);
 
   user.email = user.email.toLowerCase();
   //2)check db
-  let foundUser = await userModel
-    .findOne()
-    .or([{ email: user.email.toLowerCase() }, { username: user.username }]);
+  // let foundUser;
+  // try {
+    let foundUser = await userModel
+      .findOne()
+      .or([{ email: user.email.toLowerCase() }, { username: user.username }]);
 
+  // } catch (err) {
+  //   console.log("ERROR CAUGHT REGISTER CONTROLLER FOUND USER");
+  //   console.log(err);
+  // }
   let oldPath = path.join(
     __dirname,
     "../images/User-Profile-Images/newUser." + extensions.getExtension()
@@ -21,9 +28,9 @@ let Register = async (req, res) => {
   let newPath = path.join(
     __dirname,
     "../images/User-Profile-Images/" +
-      user.username +
-      "." +
-      extensions.getExtension()
+    user.username +
+    "." +
+    extensions.getExtension()
   );
 
   //3)if found
@@ -40,6 +47,15 @@ let Register = async (req, res) => {
   ///
   //Saving IN DB
 
+  let latestID = await userModel.findOne().sort({x:-1});
+  let newId = 1;
+  
+  if (latestID) {
+    newId = +latestID._id + 1;
+  }
+
+  user._id = newId;
+
   user.imageURL = user.username + "." + extensions.getExtension();
   let newUser = new userModel(user);
   newUser
@@ -55,11 +71,13 @@ let Register = async (req, res) => {
         "private"
       );
 
-      res.header("x-auth-token", token);
+      // console.log(token);
+      res.header("x-auth-token","Bearer " + token);
 
       fs.rename(oldPath, newPath, (err) => {
         console.log(err);
       });
+
       return res
         .status(201)
         .json({ message: "Registered Successfully", data: newUser });
@@ -68,6 +86,7 @@ let Register = async (req, res) => {
       fs.unlink(oldPath, (err) => {
         console.log(err);
       });
+      console.log("ERROR CAUGHT REGISTER CONTROLLER SAVING USER");
       console.log(err);
       return res.status(400).json({ message: "Bad Request" });
     });

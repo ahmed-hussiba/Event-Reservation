@@ -7,6 +7,7 @@ let Login = async (req, res) => {
   //Validation
   //token
 
+
   //1)req.body
   user = req.body;
   user.email = user.email.toLowerCase();
@@ -20,6 +21,8 @@ let Login = async (req, res) => {
   if (!foundUser) {
     return res.status(404).json({ message: "wrong Email or password" });
   }
+
+
   let userEmail = foundUser.email;
   // console.log(user.password);
   // console.log(foundUser.password);

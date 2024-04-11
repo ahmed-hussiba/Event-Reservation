@@ -47,7 +47,8 @@ let Register = async (req, res) => {
   ///
   //Saving IN DB
 
-  let latestID = await userModel.findOne().sort({x:-1});
+  let latestID = await userModel.findOne().sort({_id:-1});
+  console.log(latestID);
   let newId = 1;
   
   if (latestID) {
@@ -55,6 +56,7 @@ let Register = async (req, res) => {
   }
 
   user._id = newId;
+  console.log(newId);
 
   user.imageURL = user.username + "." + extensions.getExtension();
   let newUser = new userModel(user);

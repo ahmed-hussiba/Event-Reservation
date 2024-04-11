@@ -95,7 +95,7 @@ let getUserCart = async (req, res) => {
 
   if (user) {
     let cart = user.cart;
-    return res.status(200).json({ cart });
+    return res.status(200).json({ cart:cart, cartLength:cart.length});
   }
 
   return res.status(404);

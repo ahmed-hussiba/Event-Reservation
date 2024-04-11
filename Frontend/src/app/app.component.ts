@@ -23,6 +23,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { interceptorInterceptor } from '../Services/interceptor.interceptor';
 import { AllEventsComponent } from '../Components/all-events/all-events.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
+import { FooterComponent } from '../Components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -47,6 +48,7 @@ import { ProfileComponent } from '../Components/profile/profile.component';
     TryComponent,
     AllEventsComponent,
     ProfileComponent,
+    FooterComponent,
   ],
 })
 export class AppComponent {

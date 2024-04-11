@@ -5,13 +5,13 @@
 
   @if (token) {
   <!-- check user or admin -->
-    @if(IsAdmin){
-    <h1>Admin</h1>
-    } @else {
-    <app-user-header-links [UserImg]="UserImg"></app-user-header-links>
+  @if(IsAdmin){
+  <h1>Admin</h1>
+  } @else {
+  <app-user-header-links></app-user-header-links>
 
-    } } @else {
-    <app-guest-header-links></app-guest-header-links>
+  } } @else {
+  <app-guest-header-links></app-guest-header-links>
   }
 
   <app-promotion-events></app-promotion-events>

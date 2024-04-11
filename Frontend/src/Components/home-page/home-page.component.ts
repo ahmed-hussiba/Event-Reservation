@@ -31,18 +31,15 @@ import { JwtPayload } from '../../Interfaces/jwt-payload';
     PromotionEventsComponent,
     TryComponent,
     CommonModule,
-    AllEventsComponent
+    AllEventsComponent,
   ],
   providers: [LoginService, UserService],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
-
-
 export class HomePageComponent implements OnInit {
   token: any;
   IsAdmin: boolean = false;
-  UserImg: any;
 
   constructor(
     private loginService: LoginService,
@@ -52,30 +49,21 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.token = this.loginService.getToken();
 
-    console.log("Token: \n" + this.token);
+    console.log('Token: \n' + this.token);
 
     if (this.token) {
       const decoded = jwtDecode(this.token) as JwtPayload;
       // console.log(decoded);
 
-      const {userEmail : email, imageURL, userName, userID} = decoded;
+      const { userEmail: email, imageURL, userName, userID } = decoded;
 
       // let {userEmail} = decoded;
 
       // console.log(Object.values(decoded));
-      
+
       if (email.includes('@admin.com')) {
         this.IsAdmin = true;
       }
-      this.userService.GetUserByID().subscribe({
-        next: (data) => {
-          
-          this.UserImg = imageURL;
-        },
-        error: (err) => {
-          console.log(err);
-        },
-      });
     }
   }
 }

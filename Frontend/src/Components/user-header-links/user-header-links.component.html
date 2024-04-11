@@ -2,13 +2,17 @@
   <div class="container-fluid nav-container">
     <div class="logo">
       <a class="navbar-brand" href="#">Tiatro</a>
-      
     </div>
 
     <div class="collapse navbar-collapse nav-links" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link button" aria-current="page" routerLink="/event/allevents">Events</a>
+          <a
+            class="nav-link button"
+            aria-current="page"
+            routerLink="/event/allevents"
+            >Events</a
+          >
         </li>
         <li class="nav-item">
           <a class="nav-link button" routerLink="/">Home</a>
@@ -39,13 +43,15 @@
 
     <div class="icon-container">
       <i routerLink="/users/cart" class="bi bi-cart-fill nav-icon">
-        <span class="badge badgee badge-primary">{{cartLength}}</span>
+        @if (cartLength!=0) {
+        <span class="badge badgee badge-primary">{{ cartLength }}</span>
+        }
       </i>
-      
+
       <img
         routerLink="/profile"
         class="nav-profile rounded-circle"
-        src="../../assets/Images/profile.png"
+        src="data:image/jpg;base64,{{ UserImg }}"
       />
       <i (click)="LogOut()" class="bi bi-box-arrow-right nav-icon"></i>
     </div>

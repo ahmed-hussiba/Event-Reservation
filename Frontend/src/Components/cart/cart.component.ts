@@ -41,7 +41,9 @@ export class CartComponent implements OnInit {
     this.userService.getCart(+this.userID).subscribe(
       {
         next: (data) => {
+          
           this.cartItems = data;
+          
           this.calc();
           this.sharedService.setData(this.cartItems);
         },
@@ -57,7 +59,6 @@ export class CartComponent implements OnInit {
 
       this.orderPrice += this.cartItems.cart[i].ticketPrice * this.cartItems.cart[i].quantity;
       this.orderQuantity += this.cartItems.cart[i].quantity;
-      console.log(`price:${this.orderPrice}, quantity:${this.orderQuantity}`);
     }
   }
 

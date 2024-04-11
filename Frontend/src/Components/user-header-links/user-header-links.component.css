@@ -53,8 +53,16 @@ li {
   margin: 0 10px;
 }
 
-i {
+i{
   color: #00A97F;
+} 
+
+.badgee{
+  color: #00A97F;
+  /* background-color: orange; */
+  /* position: absolute;
+  right: 0;
+  top: 0; */
 } 
 
 

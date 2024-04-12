@@ -1,3 +1,4 @@
+import { IntroSectionComponent } from './../Components/intro.section/intro.section.component';
 import { LoginService } from './../Services/login.services';
 import { Component, Input, OnInit, Output, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -49,6 +50,7 @@ import { FooterComponent } from '../Components/footer/footer.component';
     AllEventsComponent,
     ProfileComponent,
     FooterComponent,
+    IntroSectionComponent,
   ],
 })
 export class AppComponent {

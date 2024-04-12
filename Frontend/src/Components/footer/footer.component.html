@@ -24,11 +24,14 @@
                   cols="5"
                   class="form-control"
                   placeholder="Enter your message"
+                  #message
                 ></textarea>
               </div>
 
               <div class="form-btn">
-                <button class="submit-btn">Submit Message</button>
+                <div class="submit-btn" (click)="AddReview(message.value)">
+                  Submit Message
+                </div>
               </div>
             </form>
           </div>

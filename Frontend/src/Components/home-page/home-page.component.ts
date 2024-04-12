@@ -18,6 +18,7 @@ import { jwtDecode } from 'jwt-decode';
 import { UserService } from '../../Services/user.service';
 import { AllEventsComponent } from '../all-events/all-events.component';
 import { JwtPayload } from '../../Interfaces/jwt-payload';
+import { IntroSectionComponent } from '../intro.section/intro.section.component';
 
 @Component({
   selector: 'app-home-page',
@@ -32,6 +33,7 @@ import { JwtPayload } from '../../Interfaces/jwt-payload';
     TryComponent,
     CommonModule,
     AllEventsComponent,
+    IntroSectionComponent,
   ],
   providers: [LoginService, UserService],
   templateUrl: './home-page.component.html',
@@ -49,7 +51,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.token = this.loginService.getToken();
 
-    console.log('Token: \n' + this.token);
+    // console.log('Token: \n' + this.token);
 
     if (this.token) {
       const decoded = jwtDecode(this.token) as JwtPayload;

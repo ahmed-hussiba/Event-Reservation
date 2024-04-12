@@ -47,7 +47,7 @@ export class UserHeaderLinksComponent implements OnInit {
           this.UserImg = data;
           this.UserImg = this.UserImg.resObj.imageUser;
 
-          console.log(this.UserImg);
+          // console.log(this.UserImg);
         },
         error: (err) => {
           console.log(err);

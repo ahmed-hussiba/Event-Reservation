@@ -1,0 +1,255 @@
+.typing::after {
+  content: "|";
+  animation-name: writing;
+  animation-iteration-count: infinite;
+  animation-duration: 15s;
+}
+@keyframes writing {
+  1% {
+    content: "T|";
+  }
+  2% {
+    content: "Ti|";
+  }
+  3% {
+    content: "Tic|";
+  }
+  4% {
+    content: "Tick|";
+  }
+  5% {
+    content: "Ticke|";
+  }
+  6% {
+    content: "Ticket|";
+  }
+  7% {
+    content: "Tickets|";
+  }
+  8% {
+    content: "Ticket|";
+  }
+  9% {
+    content: "Ticke|";
+  }
+  10% {
+    content: "Tick|";
+  }
+  11% {
+    content: "Tic|";
+  }
+  12% {
+    content: "Ti|";
+  }
+  13% {
+    content: "T|";
+  }
+  14% {
+    content: "|";
+  }
+  15% {
+    content: "R|";
+  }
+  16% {
+    content: "Re|";
+  }
+  17% {
+    content: "Res|";
+  }
+  18% {
+    content: "Rese|";
+  }
+  19% {
+    content: "Reser|";
+  }
+  20% {
+    content: "Reserv|";
+  }
+  21% {
+    content: "Reserva|";
+  }
+  22% {
+    content: "Reservat|";
+  }
+  23% {
+    content: "Reservati|";
+  }
+  24% {
+    content: "Reservatio|";
+  }
+  25% {
+    content: "Reservation|";
+  }
+  26% {
+    content: "Reservatio|";
+  }
+  27% {
+    content: "Reservati|";
+  }
+  28% {
+    content: "Reservat|";
+  }
+  29% {
+    content: "Reserva|";
+  }
+  30% {
+    content: "Reserva|";
+  }
+  31% {
+    content: "Reserv|";
+  }
+  32% {
+    content: "Reser|";
+  }
+  33% {
+    content: "Rese|";
+  }
+  34% {
+    content: "Res|";
+  }
+  35% {
+    content: "Re|";
+  }
+  36% {
+    content: "R|";
+  }
+
+  37% {
+    content: "|";
+  }
+  38% {
+    content: "F|";
+  }
+  39% {
+    content: "Fo|";
+  }
+  40% {
+    content: "For|";
+  }
+  41% {
+    content: "Fo|";
+  }
+  42% {
+    content: "F|";
+  }
+  43% {
+    content: "|";
+  }
+  44% {
+    content: "A|";
+  }
+  45% {
+    content: "An|";
+  }
+  46% {
+    content: "Any|";
+  }
+  47% {
+    content: "An|";
+  }
+  48% {
+    content: "A|";
+  }
+  49% {
+    content: "E|";
+  }
+  50% {
+    content: "Ev|";
+  }
+  51% {
+    content: "Eve|";
+  }
+  52% {
+    content: "Even|";
+  }
+  53% {
+    content: "Event|";
+  }
+  54% {
+    content: "Events|";
+  }
+  55% {
+    content: "Event|";
+  }
+  56% {
+    content: "Even|";
+  }
+  57% {
+    content: "Eve|";
+  }
+  58% {
+    content: "Ev|";
+  }
+  59% {
+    content: "E|";
+  }
+  60% {
+    content: "|";
+  }
+  /*
+  61% {
+    content: "Deve|";
+  }
+  62% {
+    content: "Devel|";
+  }
+  63% {
+    content: "Develo|";
+  }
+  64% {
+    content: "Develop|";
+  }
+  65% {
+    content: "Develope|";
+  }
+  66% {
+    content: "Developer|";
+  }
+  67% {
+    content: "Develope|";
+  }
+  68% {
+    content: "Develop|";
+  }
+  69% {
+    content: "Develo|";
+  }
+  70% {
+    content: "Devel|";
+  }
+  71% {
+    content: "Deve|";
+  }
+  72% {
+    content: "Dev|";
+  }
+  73% {
+    content: "De|";
+  }
+  74% {
+    content: "D|";
+  }
+  75% {
+    content: "";
+  }
+  100% {
+    content: "|";
+  }*/
+}
+
+.intro {
+  background-image: url("../../assets/Images/intro.jpg");
+  /* background-position: center; */
+  /* background-attachment: cover; */
+  background-size: cover;
+}
+
+.content {
+  height: 100vh;
+}
+.title {
+  margin-top: 50vh;
+  font-size: 5rem;
+  font-family: "Pacifico", cursive;
+  font-style: italic;
+}

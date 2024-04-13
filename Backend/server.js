@@ -19,7 +19,9 @@ app.use(express.static(path.join(__dirname, "User-Profile-Images")));
 // mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro
 // mongodb://localhost:27017/EventReservation
 mongoose
-  .connect("mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro")
+  .connect(
+    "mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro"
+  )
   .then(() => {
     // app.use(cors());
     app.use(
@@ -38,8 +40,6 @@ mongoose
 
     //users api
     app.use("/api/users", userRoute);
-    
-
 
     //event api
     app.use("/api/event", eventRoute);

@@ -25,7 +25,6 @@ export class UserHeaderLinksComponent implements OnInit {
         next: (data) => {
           this.cart = data;
           this.cartLength = this.cart.cartLength;
-          console.log(this.cartLength);
         },
         error: (err) => {
           console.log(err);

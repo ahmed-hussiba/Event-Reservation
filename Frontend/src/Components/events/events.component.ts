@@ -4,7 +4,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { AllEventsComponent } from '../all-events/all-events.component';
-import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 
 @Component({
   selector: 'app-events',
@@ -22,17 +21,16 @@ export class EventsComponent implements OnInit {
   }[] = [];
   constructor(
     private evService: EventService,
-    private eventsToDetailsService: EventsToEventDetailsService
   ) {}
   ngOnInit(): void {
     this.evService.GetAllEvents().subscribe({
       next: (data) => {
         this.events = data;
-        for (const key in this.events) {
-          if (this.events.hasOwnProperty(key)) {
-            console.log(`${key}: ${this.events[key]}`);
-          }
-        }
+        // for (const key in this.events) {
+        //   if (this.events.hasOwnProperty(key)) {
+        //     console.log(`${key}: ${this.events[key]}`);
+        //   }
+        // }
         this.twoEvents.push(this.events['eventsWithImgs'][0]);
         this.twoEvents.push(this.events['eventsWithImgs'][1]);
         // console.log(this.twoEvents);
@@ -48,8 +46,6 @@ export class EventsComponent implements OnInit {
   }
 
   GoToEvent(eventId: Number) {
-    console.log(`id evv  = ${eventId}`);
 
-    this.eventsToDetailsService.sendData(eventId);
   }
 }

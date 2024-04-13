@@ -9,6 +9,7 @@
           id="carouselExampleInterval"
           class="carousel slide m-auto py-5 my-5 text-white"
           data-bs-ride="carousel"
+          data-bs-interval="500"
         >
           <div class="carousel-indicators">
             <button
@@ -46,11 +47,10 @@
             ></button>
           </div>
           <div class="carousel-inner">
-            @for (item of reviews; track $index) {
+            @for (item of review["reviewsWithImgs"]; track $index) {
             <div
               class="carousel-item"
               [class.active]="flag"
-              data-bs-interval="3000"
             >
               <img
                 src="data:image/jpg;base64,{{ item.imgBuffer }}"

@@ -14,18 +14,16 @@ import { CommonModule } from '@angular/common';
 export class ReviewsComponent {
   counter: any;
   review: any;
-  reviews: any[] = [];
+  reviews: any;
   flag: boolean = true;
   constructor(private reviewService: ReviewService) {}
 
   ngOnInit(): void {
     this.reviewService.GetAllReviews().subscribe({
       next: (data) => {
-        console.log(data);
-
         this.review = data;
-
-        // console.log(this.review.reviews);
+        console.log(this.review);
+        
         this.reviews = this.review.reviewsWithImgs;
       },
       error: (err) => {
@@ -35,5 +33,7 @@ export class ReviewsComponent {
   }
   toggle() {
     this.flag = false;
+    console.log("reviewsss");
+    
   }
 }

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/61b5c6d1-cdba-4d3c-af52-fe179e841942/resourceGroups/newres/providers/Microsoft.Web/sites/backendmean",
+    "appService.deploySubpath": "Backend"
+}

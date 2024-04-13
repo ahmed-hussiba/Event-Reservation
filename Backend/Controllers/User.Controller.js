@@ -130,8 +130,6 @@ let deleteFromUserCart = async (req, res) => {
   let deletedCartObj = req.body;
 
   console.log(req);
-  // console.log(id);
-  // console.log(deletedCartObj);
 
   let user = await userModel.findOneAndUpdate(
     { _id: id },

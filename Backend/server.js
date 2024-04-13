@@ -28,6 +28,9 @@ mongoose
       })
     );
     //register api
+    app.get("/",(req,res)=>{
+      res.write("hello to server")
+    })
     app.use("/api/register", regRoute);
 
     //login api

@@ -22,7 +22,6 @@ export class AddToCartComponent implements OnInit {
   constructor(
     private sharedService: SharedEventsService,
     private userService: UserService,
-    private loginServie: LoginService
   ) { }
   ngOnInit(): void {
     this.sharedService.data.subscribe((data) => {

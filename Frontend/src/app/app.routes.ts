@@ -13,7 +13,7 @@ import { ProfileComponent } from '../Components/profile/profile.component';
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   {
-    path: 'eventdetails', component: EventDetailsComponent,
+    path: 'eventdetails/:id', component: EventDetailsComponent,
     canActivate: [guardAuthGuard],
   },
   { path: 'login', component: RegLoginComponent },

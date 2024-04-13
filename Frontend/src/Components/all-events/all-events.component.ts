@@ -15,7 +15,7 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
   styleUrl: './all-events.component.css'
 })
 export class AllEventsComponent implements OnInit {
-constructor(private evService:EventService, private sharedService:SharedEventsService){}
+constructor(private evService:EventService){}
 allEv:any;
 searchData:{ event: { name: string } }[] =[];
 flag:boolean=true;
@@ -46,7 +46,7 @@ filteredItems:any[]=[];
 
   }
   GoToEvent(eventId: Number) {
-    this.sharedService.setData(eventId);
+    // this.dataService.sendData(eventId);
   }
   onInputChange(value: string) {
     this.EvName = value;

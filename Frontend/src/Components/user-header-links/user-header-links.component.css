@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
-/* nav {
+nav {
   background-color: black !important;
-} */
+}
 .nav-container {
   display: flex;
   justify-content: space-evenly;

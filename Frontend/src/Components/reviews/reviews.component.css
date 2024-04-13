@@ -1,6 +1,29 @@
+.feedback {
+  background-image: url("../../assets/Images/review2BK.jpg");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+.carousel-indicators button {
+  width: 15px !important ;
+  height: 15px !important;
+  border-radius: 50%;
+}
+.nav-item a {
+  position: relative;
+}
 
-
-
-
-
-
+.nav-line {
+  transition: all 1s;
+}
+.nav-item a:hover .nav-line {
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 50%;
+  height: 2px;
+  transform: translate(-50%, -50%);
+  text-align: left;
+}

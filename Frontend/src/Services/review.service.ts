@@ -10,4 +10,7 @@ export class ReviewService {
   AddReview(message: any) {
     return this.http.post(this.DB_URL, message);
   }
+  GetAllReviews() {
+    return this.http.get(this.DB_URL);
+  }
 }

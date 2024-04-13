@@ -16,6 +16,7 @@ let AddReview = async (req,res)=>{
     
     const data = req.header("x-auth-token");
 
+    console.log("dataaaaaaaaaaaaaaaaaaaaaaaa:",data);
     let decodedData = JWT.verify(data, "private")
 
     req.body.imageURl = decodedData["imageURL"];

@@ -24,12 +24,13 @@ mongoose
     // app.use(cors());
     app.use(
       cors({
-        exposedHeaders: ["x-auth-token"], // Specify the headers you want to expose
+        exposedHeaders: ["x-auth-token"],
+         // Specify the headers you want to expose
       })
     );
     //register api
     app.get("/",(req,res)=>{
-      res.write("hello to server")
+      res.send("hello to server")
     })
     app.use("/api/register", regRoute);
 

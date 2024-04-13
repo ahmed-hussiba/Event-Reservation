@@ -16,6 +16,8 @@ export class FooterComponent {
     const token = localStorage.getItem('access_token');
     if (token) {
       let obj = { body: message };
+      console.log(obj);
+      
       this.reviewService.AddReview(obj).subscribe({
         next: (data) => {
           console.log(data);

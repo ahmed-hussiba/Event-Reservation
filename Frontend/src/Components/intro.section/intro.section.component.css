@@ -241,7 +241,9 @@
   background-image: url("../../assets/Images/intro.jpg");
   /* background-position: center; */
   /* background-attachment: cover; */
-  background-size: cover;
+  background-size: contain;
+  object-fit: fill;
+  /* background-repeat: no-repeat; */
 }
 
 .content {

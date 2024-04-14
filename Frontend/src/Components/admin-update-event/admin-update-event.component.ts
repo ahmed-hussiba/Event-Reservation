@@ -22,7 +22,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [EventService, SharedEventsService],
+  providers: [EventService],
   templateUrl: './admin-update-event.component.html',
   styleUrl: './admin-update-event.component.css',
 })
@@ -43,10 +43,14 @@ export class AdminUpdateEventComponent implements OnInit {
 
     this.eventService.GetEventById(this.id!).subscribe({
       next: (data) => {
+        console.log(data);
+
         this.event = data;
+        this.img = this.event.EventwithImg.imgBuffer;
         this.event = this.event.EventwithImg.event;
         console.log(this.event);
-        this.img = this.event.EventwithImg.imgBuffer;
+        console.log(this.img);
+
         this.addForm = new FormGroup({
           imageURl: new FormControl(`${this.img}`, [Validators.required]),
           name: new FormControl(`${this.event.name}`, [
@@ -109,6 +113,21 @@ export class AdminUpdateEventComponent implements OnInit {
       } else {
         console.log('Errrrrrrrror');
       }
+    }
+  }
+  triggerFileInput(event: any) {
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    fileInput.click();
+    console.log(`event = ${event}`);
+
+    console.log(fileInput.files);
+
+    if (fileInput.files?.length) {
+      const file = fileInput.files[0];
+      // this.image = file;
+      console.log(`file=${file}`);
+
+      // console.log(`img in fun = ${this.image}`);
     }
   }
 }

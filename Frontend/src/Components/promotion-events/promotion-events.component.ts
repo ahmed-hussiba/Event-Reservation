@@ -2,7 +2,8 @@ import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Input, OnInit, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild, input } from '@angular/core';
+declare var $: any;
 
 @Component({
   selector: 'app-promotion-events',
@@ -15,14 +16,25 @@ import { ChangeDetectionStrategy, Component, Input, OnInit, input } from '@angul
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PromotionEventsComponent implements OnInit {
-  
-  @Input()
-  events:any;
+  @Input() events: any;
   flag: Boolean = true;
+
   constructor(private evService: EventService) { }
+
+  @ViewChild('next') myDiv!: ElementRef<HTMLElement>;
+
+  triggerFalseClick() {
+    let el: HTMLElement = this.myDiv.nativeElement;
+    console.log(el);
+    el.click();
+  }
+
   ngOnInit(): void {
-    console.log(this.events);
-    
+
+  }
+
+  ngAfterViewInit() {
+    this.triggerFalseClick();
   }
 
   toggle() {

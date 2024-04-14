@@ -9,14 +9,19 @@ import { CartComponent } from '../Components/cart/cart.component';
 import { PaymentComponent } from '../Components/payment/payment.component';
 import { AllEventsComponent } from '../Components/all-events/all-events.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
+import { FooterComponent } from '../Components/footer/footer.component';
+import { RedirectedLoginComponent } from '../Components/redirected-login/redirected-login.component';
 
 export const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  {
+    path: '', component: HomePageComponent,
+
+  },
   {
     path: 'eventdetails/:id', component: EventDetailsComponent,
     canActivate: [guardAuthGuard],
   },
-  { path: 'login', component: RegLoginComponent },
+  { path: 'login', component: RedirectedLoginComponent },
   { path: 'event/category/:name', component: AboutComponent },
   {
     path: 'users/cart', component: CartComponent,
@@ -38,4 +43,6 @@ export const routes: Routes = [
     canActivate: [guardAuthGuard],
 
   },
+
+
 ];

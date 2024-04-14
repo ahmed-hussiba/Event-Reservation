@@ -1,4 +1,4 @@
-<div id="Feedback" class="feedback mt-5 p-5 shadow position-relative">
+<!-- <div id="carouselExampleCaptions" class="feedback mt-5 shadow position-relative">
   <div
     class="layer-contact position-absolute top-0 start-0 h-100 w-100 background opacity-75"
   ></div>
@@ -46,6 +46,7 @@
               aria-label="Slide 5"
             ></button>
           </div>
+
           <div class="carousel-inner">
             @for (item of review["reviewsWithImgs"]; track $index) {
             <div
@@ -54,10 +55,9 @@
             >
               <img
                 src="data:image/jpg;base64,{{ item.imgBuffer }}"
-                class="d-block m-auto rounded-circle"
+                class="img d-block m-auto rounded-circle"
                 alt="..."
-                width="200"
-                height="200"
+                
               />
               <div class="feedback-content text-center">
                 <h3>{{ item.review.username }}</h3>
@@ -72,4 +72,43 @@
       </div>
     </div>
   </div>
+</div> -->
+
+
+
+<div id="carouselExampleDark" class="carousel carousel-dark slide feedback">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"
+      aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="4" aria-label="Slide 0"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="5" aria-label="Slide 3"></button>
+  </div>
+
+  <div class="carousel-inner">
+    @for (item of review["reviewsWithImgs"]; track $index) {
+    <div class="carousel-item" [class.active]="flag" data-bs-interval="2000">
+      <img src="data:image/jpg;base64,{{ item.imgBuffer }}"
+       class="img d-block m-auto rounded-circle" alt="..." />
+      <div class="feedback-content text-center">
+        <h3>{{ item.review.username }}</h3>
+        <P> {{ item.review.body }}</P>
+      </div>
+    </div>
+    <ng-container *ngIf="toggle()"></ng-container>
+
+    }
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button #next class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+  
 </div>

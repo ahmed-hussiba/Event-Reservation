@@ -36,7 +36,7 @@ import { EventService } from '../../Services/event.service';
     CommonModule,
     AllEventsComponent,
     IntroSectionComponent,
-    FooterComponent
+    FooterComponent,
   ],
   providers: [LoginService, UserService,EventService],
   templateUrl: './home-page.component.html',
@@ -45,6 +45,7 @@ import { EventService } from '../../Services/event.service';
 export class HomePageComponent implements OnInit {
   token: any;
   IsAdmin: boolean = false;
+  events:any;
 
   constructor(
     private loginService: LoginService,
@@ -52,8 +53,9 @@ export class HomePageComponent implements OnInit {
     private evService: EventService
   ) {}
 
-  events:any;
   ngOnInit(): void {
+
+    console.log("Home");
 
     //#region Role check
     this.token = this.loginService.getToken();

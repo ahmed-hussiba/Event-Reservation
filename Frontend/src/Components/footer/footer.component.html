@@ -13,21 +13,35 @@
             </p>
           </div>
         </div>
-        <div class="col-md-4 col-md-pull-7">
+        <div class="col-md-4 col-md-pull-7 review-body">
           <div class="booking-form">
             <form>
               <div class="form-group">
                 <span class="form-label">Add Review </span>
 
-                <textarea
-                  rows="5"
-                  cols="5"
-                  class="form-control"
-                  placeholder="Enter your message"
-                  #message
-                ></textarea>
+                <textarea rows="5" cols="5" class="form-control" placeholder="Enter your message" #message></textarea>
               </div>
 
+              @if (reviewError == null) {
+
+              } @else {
+
+
+              @if (reviewError) {
+              <p class="review-error">Error Posting Review. Check if Review is more than 2 sentences and 5 words!</p>
+              } @else {
+              <p class="review-success">Review Sent Successfully!</p>
+              }
+
+              }
+
+              @if (isSignedIn == null) {
+
+              } @else {
+              @if (!isSignedIn) {
+              <p class="review-error">Please Sign In to add a review!</p>
+              }
+              }
               <div class="form-btn">
                 <div class="submit-btn" (click)="AddReview(message.value)">
                   Submit Message

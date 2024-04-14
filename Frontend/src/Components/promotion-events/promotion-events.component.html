@@ -5,6 +5,7 @@
   data-bs-interval="2000"
 >
   <div class="carousel-inner">
+      
       @for (item of events["PromotedEventsWithImgs"]; track $index) {
         <div class="promotion-banner">
           <span class="badge bg-success">-{{ item.event.promotion }}%</span>
@@ -17,8 +18,9 @@
           />
         </div>
         <ng-container *ngIf="toggle()"></ng-container>
+        
       }
-    
+      
     </div>
     <button
     class="carousel-control-prev"
@@ -35,7 +37,7 @@
     data-bs-target="#carouselExampleAutoplaying"
     data-bs-slide="next"
   >
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span #next class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>

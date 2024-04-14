@@ -19,15 +19,21 @@ app.use(express.static(path.join(__dirname, "User-Profile-Images")));
 // mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro
 // mongodb://localhost:27017/EventReservation
 mongoose
-  .connect("mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro")
+  .connect(
+    "mongodb+srv://peterashrafmail:crossplatformPeter@cluster0.cwjy943.mongodb.net/Tiatro"
+  )
   .then(() => {
     // app.use(cors());
     app.use(
       cors({
-        exposedHeaders: ["x-auth-token"], // Specify the headers you want to expose
+        exposedHeaders: ["x-auth-token"],
+         // Specify the headers you want to expose
       })
     );
     //register api
+    app.get("/",(req,res)=>{
+      res.send("hello to server")
+    })
     app.use("/api/register", regRoute);
 
     //login api
@@ -38,8 +44,6 @@ mongoose
 
     //users api
     app.use("/api/users", userRoute);
-    
-
 
     //event api
     app.use("/api/event", eventRoute);

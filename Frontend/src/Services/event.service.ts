@@ -29,7 +29,10 @@ export class EventService {
   AddEvent(event: any): Observable<any> {
     return this.http.post(this.DB_URL, event, { observe: 'response' });
   }
-  UpdateEvent(id: any, event: any) {
-    return this.http.post(this.DB_URL, id, event);
+  UpdateEvent(id:any, event:any) {
+    return this.http.put(this.DB_URL+ '/' +id, event);
+  }
+  DeleteEvent(id:any){
+    return this.http.delete(this.DB_URL+'/'+id);
   }
 }

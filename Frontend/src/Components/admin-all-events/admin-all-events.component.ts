@@ -11,7 +11,6 @@ import { AdminUpdateEventComponent } from '../admin-update-event/admin-update-ev
   standalone: true,
   imports: [
     RouterModule,
-    HttpClientModule,
     FormsModule,
     AdminAddEventComponent,
     AdminUpdateEventComponent,
@@ -50,9 +49,7 @@ export class AdminAllEventsComponent implements OnInit {
     console.log(this.filteredItems + 'filtereeeeeeddataaa');
   }
   GoToEvent(eventId: number) {
-    // this.EventToDetails.sendData(eventId);
-    // console.log(eventId);
-    // console.log(this.EventToDetails.data);
+    
     console.log('Entered Go To Eventtttttttt');
   }
   onInputChange(value: string) {
@@ -61,5 +58,12 @@ export class AdminAllEventsComponent implements OnInit {
     this.flag = false;
     this.SearchEvent(); // Update EvName with the input value
   }
-  Delete() {}
+  Delete(id:any) {
+    this.evService.DeleteEvent(id).subscribe({
+      next:(data)=>{console.log(data);
+      },
+      error:(err)=>{console.log(err);
+      }
+    });
+  }
 }

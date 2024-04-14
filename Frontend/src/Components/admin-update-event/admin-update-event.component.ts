@@ -19,7 +19,6 @@ import { CommonModule } from '@angular/common';
     RouterModule,
     ReactiveFormsModule,
     CommonModule,
-    HttpClientModule,
     FormsModule,
   ],
   providers: [EventService],
@@ -104,12 +103,36 @@ export class AdminUpdateEventComponent implements OnInit {
   }
   Update() {
     if (this.addForm) {
-      console.log(this.addForm.controls['category'].value);
-
       if (this.addForm.valid) {
+        this.ticketsDetails.push({
+          level: 'silver',
+          price: this.addForm.controls['PriceS'].value,
+          quantity: this.addForm.controls['QuantityS'].value,
+        });
+  
+        this.ticketsDetails.push({
+          level: 'golden',
+          price: this.addForm.controls['PriceG'].value,
+          quantity: this.addForm.controls['QuantityG'].value,
+        });
+  
+        this.ticketsDetails.push({
+          level: 'platinum',
+          price: this.addForm.controls['PriceP'].value,
+          quantity: this.addForm.controls['QuantityP'].value,
+        });
         this.event = this.addForm.value;
+        delete this.event.imageURl;
 
-        // this.eventService.UpdateEvent( this.event);
+        console.log(this.event);
+        this.event['ticketsAvailable'] = this.ticketsDetails;
+
+        this.eventService.UpdateEvent(this.id,this.event).subscribe({
+          next:(data)=>{console.log(data);},
+          error:(err)=>{console.log(err);}
+        });
+        console.log("After Update service ");
+        
       } else {
         console.log('Errrrrrrrror');
       }

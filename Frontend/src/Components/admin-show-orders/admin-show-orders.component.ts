@@ -14,16 +14,14 @@ export class AdminShowOrdersComponent implements OnInit {
 constructor(private orderService:OrderServiceService){}
 allOrders:any
   ngOnInit(): void {
-    this.orderService.GetAllOrders().subscribe({
-      next:(data)=>{
-        console.log(data);
-        this.allOrders=data;
+    this.orderService.getAllOrders().subscribe({ 
+      next:(value)=> {
+          console.log(value);
       },
-      error:(err)=>{
-        console.log(err);
-      }
-
-    })
+      error:(err)=> {
+       console.log(err);
+      },
+    });
   }
   
 

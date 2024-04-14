@@ -8,11 +8,16 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-add-event',
   standalone: true,
-  imports: [HttpClientModule, ReactiveFormsModule],
+  imports: [
+    HttpClientModule,
+     ReactiveFormsModule,
+     CommonModule,
+    FormsModule,],
   providers: [EventService],
   templateUrl: './admin-add-event.component.html',
   styleUrl: './admin-add-event.component.css',

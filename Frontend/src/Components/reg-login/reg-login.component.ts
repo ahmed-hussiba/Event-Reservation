@@ -103,19 +103,25 @@ export class RegLoginComponent {
       this.regService.signUp(formData).subscribe({
         next: (data) => {
           console.log("REGISTER COMP: REGSERVICE.SIGNUP")
-          if (data) {
-           
+          if(data.body.message != "already registered")
+          {
             const authToken = data.headers.get('x-auth-token');
-            // console.log("authToken: \n" + JSON.stringify(authToken));
-            localStorage.setItem('access_token', authToken);
-            const decoded = jwtDecode(authToken);
-            // console.log('Decoded token \n' + decoded);
-            window.location.reload();
-
-          } else {
-
-            console.log("REGISTER COMP: NO DATA RETURNED IN REGSERVICE.SIGNUP");
+            if(authToken){
+              // console.log("authToken: \n" + JSON.stringify(authToken));
+              localStorage.setItem('access_token', authToken);
+              const decoded = jwtDecode(authToken);
+              // console.log('Decoded token \n' + decoded);
+              window.location.reload();
+            }
           }
+          else{
+            alert("Already Registered");
+          }
+
+          
+            
+
+          
 
 
           // console.log('x-auth-token:', authToken);

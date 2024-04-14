@@ -15,4 +15,7 @@ export class OrderServiceService {
   makeOrder(order: any) {
     return this.http.post(this.DB_URL, order);
   }
+  GetAllOrders() {
+    return this.http.get(this.DB_URL);
+  }
 }

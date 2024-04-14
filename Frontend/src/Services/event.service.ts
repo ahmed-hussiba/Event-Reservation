@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { EventsToEventDetailsService } from './events.to.event-details.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,5 +26,11 @@ export class EventService {
 
   GetEventByCategoryName(name: string) {
     return this.http.get(this.DB_URL + '/category/' + name);
+  }
+  AddEvent(event: any): Observable<any> {
+    return this.http.post(this.DB_URL, event, { observe: 'response' });
+  }
+  UpdateEvent(id: any, event: any) {
+    return this.http.post(this.DB_URL, id, event);
   }
 }

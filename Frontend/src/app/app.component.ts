@@ -25,6 +25,9 @@ import { interceptorInterceptor } from '../Services/interceptor.interceptor';
 import { AllEventsComponent } from '../Components/all-events/all-events.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
 import { FooterComponent } from '../Components/footer/footer.component';
+import { AdminHomeComponent } from '../Components/admin-home/admin-home.component';
+import { AdminAllEventsComponent } from '../Components/admin-all-events/admin-all-events.component';
+import { AdminAddEventComponent } from '../Components/admin-add-event/admin-add-event.component';
 
 @Component({
   selector: 'app-root',
@@ -51,6 +54,9 @@ import { FooterComponent } from '../Components/footer/footer.component';
     ProfileComponent,
     FooterComponent,
     IntroSectionComponent,
+    AdminHomeComponent,
+    AdminAllEventsComponent,
+    AdminAddEventComponent,
   ],
 })
 export class AppComponent {

@@ -10,14 +10,13 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EventService } from '../../Services/event.service';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { HttpClientModule } from '@angular/common/http';
-import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-update-event',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule,CommonModule, HttpClientModule,FormsModule],
-  providers:[EventService,SharedEventsService,EventsToEventDetailsService],
+  providers:[EventService,SharedEventsService],
   templateUrl: './admin-update-event.component.html',
   styleUrl: './admin-update-event.component.css',
 })
@@ -25,7 +24,6 @@ export class AdminUpdateEventComponent implements OnInit {
   id: any ; 
   constructor(
     private eventService: EventService,
-    private eventsToDetailsService: EventsToEventDetailsService,
     private route:ActivatedRoute
   ) {}
   event: any;

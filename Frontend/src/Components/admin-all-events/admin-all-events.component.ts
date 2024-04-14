@@ -3,10 +3,8 @@ import { EventService } from '../../Services/event.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { SharedEventsService } from '../../Services/shared-events.service';
 import { AdminAddEventComponent } from '../admin-add-event/admin-add-event.component';
 import { AdminUpdateEventComponent } from '../admin-update-event/admin-update-event.component';
-import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 
 @Component({
   selector: 'app-admin-all-events',
@@ -22,7 +20,7 @@ import { EventsToEventDetailsService } from '../../Services/events.to.event-deta
   styleUrl: './admin-all-events.component.css'
 })
 export class AdminAllEventsComponent implements OnInit{
-  constructor(private evService:EventService, private EventToDetails:EventsToEventDetailsService){}
+  constructor(private evService:EventService){}
   allEv:any;
   searchData:{ event: { name: string } }[] =[];
   flag:boolean=true;
@@ -53,11 +51,7 @@ export class AdminAllEventsComponent implements OnInit{
   
     }
     GoToEvent(eventId: number) {
-      this.EventToDetails.sendData(eventId);
-      console.log(eventId);
-      // console.log(this.EventToDetails.data);
-      console.log("Entered Go To Eventtttttttt");
-
+      
     }
     onInputChange(value: string) {
       this.EvName = value;

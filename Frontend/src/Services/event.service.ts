@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { EventsToEventDetailsService } from './events.to.event-details.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,7 @@ export class EventService {
   private DB_URL = 'https://event-reservation-2.onrender.com/api/event';
 
 
-  constructor(private http: HttpClient, private evService:EventsToEventDetailsService) {}
+  constructor(private http: HttpClient) {}
 
   GetAllEvents() {
     return this.http.get(this.DB_URL);

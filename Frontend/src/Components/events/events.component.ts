@@ -1,9 +1,9 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { EventService } from '../../Services/event.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { RouterModule, RouterOutlet } from '@angular/router';
 import { AllEventsComponent } from '../all-events/all-events.component';
+import { EventService } from '../../Services/event.service';
 
 @Component({
   selector: 'app-events',
@@ -20,7 +20,7 @@ export class EventsComponent implements OnInit {
     imgBuffer: string;
   }[] = [];
   constructor(
-    private evService: EventService,
+    private evService: EventService
   ) {}
   ngOnInit(): void {
     this.evService.GetAllEvents().subscribe({

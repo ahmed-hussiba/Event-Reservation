@@ -19,8 +19,8 @@
               <!-- <h4 class="">Log In</h4> -->
               <form class="form-parent" [formGroup]="mySignInFormGroup">
                 <div class="form-group">
-                  <input formControlName="email" type="email" form name="logemail" class="form-style"
-                    placeholder="Your Email" id="logemail" autocomplete="off" />
+                  <input formControlName="email" type="email" form name="email" class="form-style"
+                    placeholder="Your Email" id="email" autocomplete="off" />
                   @if(!emailIsValid) {
                   <p style="
                             font-size: small;
@@ -32,8 +32,8 @@
                   }
                 </div>
                 <div class="form-group mt-2">
-                  <input formControlName="password" type="password" name="logpass2" class="form-style"
-                    placeholder="Your Password" id="logpass2" autocomplete="off" />
+                  <input formControlName="password" type="password" name="password" class="form-style"
+                    placeholder="Your Password" id="password" autocomplete="off" />
                   @if(!passwordIsValid) {
                   <p style="
                             font-size: small;
@@ -46,7 +46,7 @@
                 </div>
               </form>
 
-              <a href="#" class="btn mt-4" (click)="submitSignIn()">submit</a>
+              <a  class="btn mt-4" (click)="submitSignIn()">submit</a>
               <div class="w-100">
                 <p class="mb-0 mt-4  text-center ">
                   <a href="#0" class="pb-3 link">Forgot your password?</a>
@@ -82,7 +82,7 @@
 
                 <div class="form-group">
                   <input formControlName="email" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterEmail}"
-                    type="email" name="logemail" class="form-style" placeholder="Your Email" id="logemail"
+                    type="email" name="email" class="form-style" placeholder="Your Email" id="email"
                     autocomplete="off"/>
                   
                 </div>
@@ -92,29 +92,29 @@
 
 
                 <div class="form-group">
-                  <input formControlName="username" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterUserName}" type="text" name="logname" class="form-style"
-                    placeholder="your username" id="logname" autocomplete="off" />
+                  <input formControlName="username" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterUserName}" type="text" name="username" class="form-style"
+                    placeholder="your username" id="username" autocomplete="off" />
 
 
                 </div>
 
                 <div class="form-group ">
-                  <input formControlName="password" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterPassword}"  type="password" name="logpass" class="form-style"
-                    placeholder="Your Password" id="logpass" autocomplete="off" />
+                  <input formControlName="password" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterPassword}"  type="password" name="password" class="form-style"
+                    placeholder="Your Password" id="password" autocomplete="off" />
                 </div>
 
 
                 <div class="form-group">
-                  <input formControlName="city" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterCity}"  type="text" name="logCity" class="form-style me-2" placeholder="City"
+                  <input formControlName="city" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterCity}"  type="text" name="city" class="form-style me-2" placeholder="City"
                     autocomplete="off" />
 
-                  <input formControlName="country" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterCountry}"  type="text" name="logCountry" class="form-style"
+                  <input formControlName="country" [ngClass]="{'form-style': true, 'border-red': !isValidRegisterCountry}"  type="text" name="country" class="form-style"
                     placeholder="Country" autocomplete="off" />
 
                 </div>
                 <div class="gender-inputs">
                   <div class="form-check">
-                    <input formControlName="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                    <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="flexRadioDefault1"
                     value="F" />
                     <label class="form-check-label" for="flexRadioDefault1">
                       <svg xmlns="http://www.w3.org/2000/svg" class="visibility-controller" viewBox="0 0 128 128"
@@ -128,7 +128,7 @@
                     </label>
                   </div>
                   <div class="form-check ">
-                    <input formControlName="gender" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2"
+                    <input formControlName="gender" class="form-check-input" type="radio" name="gender" id="flexRadioDefault2"
                       checked value="M"/>
                     <label class="form-check-label" for="flexRadioDefault2">
                       <svg xmlns="http://www.w3.org/2000/svg" class="visibility-controller" viewBox="0 0 128 128"

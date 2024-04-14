@@ -1,22 +1,25 @@
 <div class="homeContainer">
   <app-try></app-try>
+  <!-- @defer (on timer(4000ms)) { -->
 
-  <!-- check if (token) in L.S  -->
+    @if (token) {
+      @if(IsAdmin){
+      <h1>Admin</h1>
+      } @else {
+      <app-user-header-links></app-user-header-links>
+    
+      } } @else {
+      <app-guest-header-links></app-guest-header-links>
+      }
+    
+      <app-promotion-events [events]="events"></app-promotion-events>
+      <!-- <app-categories></app-categories> -->
+      <app-events></app-events>
+      <app-reviews></app-reviews>
+      <!-- <app-footer></app-footer> -->
+  <!-- }@placeholder { -->
 
-  @if (token) {
-  <!-- check user or admin -->
-  @if(IsAdmin){
-  <h1>Admin</h1>
-  } @else {
-  <app-user-header-links></app-user-header-links>
+    <!-- <app-intro></app-intro> -->
+  <!-- } -->
 
-  } } @else {
-  <app-guest-header-links></app-guest-header-links>
-  }
-
-  <!-- <app-intro></app-intro> -->
-  <app-promotion-events></app-promotion-events>
-  <!-- <app-categories></app-categories> -->
-  <app-events></app-events>
-  <app-reviews></app-reviews>
 </div>

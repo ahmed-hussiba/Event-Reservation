@@ -19,6 +19,8 @@ import { UserService } from '../../Services/user.service';
 import { AllEventsComponent } from '../all-events/all-events.component';
 import { JwtPayload } from '../../Interfaces/jwt-payload';
 import { IntroSectionComponent } from '../intro.section/intro.section.component';
+import { FooterComponent } from '../footer/footer.component';
+import { EventService } from '../../Services/event.service';
 
 @Component({
   selector: 'app-home-page',
@@ -34,8 +36,9 @@ import { IntroSectionComponent } from '../intro.section/intro.section.component'
     CommonModule,
     AllEventsComponent,
     IntroSectionComponent,
+    FooterComponent
   ],
-  providers: [LoginService, UserService],
+  providers: [LoginService, UserService,EventService],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css',
 })
@@ -45,10 +48,14 @@ export class HomePageComponent implements OnInit {
 
   constructor(
     private loginService: LoginService,
-    private userService: UserService
+    private userService: UserService,
+    private evService: EventService
   ) {}
 
+  events:any;
   ngOnInit(): void {
+
+    //#region Role check
     this.token = this.loginService.getToken();
 
     // console.log('Token: \n' + this.token);
@@ -67,5 +74,15 @@ export class HomePageComponent implements OnInit {
         this.IsAdmin = true;
       }
     }
+    //#endregion
+    this.evService.GetPromotedEvets().subscribe(
+      {
+        next: (data) => {
+          this.events = data;
+        },
+        error: (err) => { console.log(err); }
+      }
+    );
   }
+  
 }

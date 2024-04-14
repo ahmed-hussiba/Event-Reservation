@@ -18,7 +18,7 @@ import { AdminShowOrdersComponent } from '../Components/admin-show-orders/admin-
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
   {
-    path: 'eventdetails', component: EventDetailsComponent,
+    path: 'eventdetails/:id', component: EventDetailsComponent,
     canActivate: [guardAuthGuard],
   },
   { path: 'login', component: RegLoginComponent },

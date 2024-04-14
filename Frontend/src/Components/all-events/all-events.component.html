@@ -14,12 +14,8 @@
                 <div class="card-body d-flex col-3 flex-column align-items-end xsmallRow">
                   <h5 class="card-title w-100 h-25">{{ event.event.name }}</h5>
                   <p class="card-text w-100 h-50 mb-3">{{ event.event.description }}</p>
-                  
-                  
-                  <!-- <a routerLink="/eventdetails" (click)="GoToEvent(event.event._id)" class="bookBtn btn btn-primary mt-3">Book</a> -->
-          
-          
-                  <button type="button" class="button__book" routerLink="eventdetails" (click)="GoToEvent(event.event._id)">
+     
+                  <button type="button" class="button__book" routerLink="/eventdetails/{{event.event._id}}" (click)="GoToEvent(event.event._id)">
                     <span class="button__text">Add Item</span>
                     <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24"
                         stroke-width="2" stroke-linejoin="round" stroke-linecap="round" stroke="currentColor" height="24"

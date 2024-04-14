@@ -2,7 +2,7 @@ import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit, input } from '@angular/core';
 
 @Component({
   selector: 'app-promotion-events',
@@ -15,20 +15,14 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PromotionEventsComponent implements OnInit {
-  events: any;
+  
+  @Input()
+  events:any;
   flag: Boolean = true;
   constructor(private evService: EventService) { }
   ngOnInit(): void {
-    this.evService.GetPromotedEvets().subscribe(
-      {
-        next: (data) => {
-          this.events = data;
-          // console.log("PROMOTED EVENTS COMP: EVSERVICE.GETPROMOTED");
-          // console.log(this.events);
-        },
-        error: (err) => { console.log(err); }
-      }
-    );
+    console.log(this.events);
+    
   }
 
   toggle() {

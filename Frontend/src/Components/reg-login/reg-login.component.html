@@ -1,3 +1,5 @@
+<!-- <app-guest-header-links></app-guest-header-links> -->
+
 <div class="parent">
 
 
@@ -47,6 +49,20 @@
               </form>
 
               <a  class="btn mt-4" (click)="submitSignIn()">submit</a>
+
+              @if (logInError == null) {
+
+              } @else {
+
+
+              @if (logInError) {
+              <p class="error">Error Logging in. Please check your email/password</p>
+              } @else {
+              <p class="success">Logged In Succefully</p>
+              }
+
+              }
+
               <div class="w-100">
                 <p class="mb-0 mt-4  text-center ">
                   <a href="#0" class="pb-3 link">Forgot your password?</a>
@@ -214,6 +230,20 @@
                             ">
                   invalid country
                 </p>
+                }
+
+
+                @if (registerError == null) {
+
+                } @else {
+  
+  
+                @if (registerError) {
+                <p class="error">Error Registering. Please re-enter your data</p>
+                } @else {
+                <p class="success">Registered Succefully</p>
+                }
+  
                 }
               </form>
 

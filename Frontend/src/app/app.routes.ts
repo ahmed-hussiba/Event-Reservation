@@ -16,12 +16,15 @@ import { AdminUpdateEventComponent } from '../Components/admin-update-event/admi
 import { AdminShowOrdersComponent } from '../Components/admin-show-orders/admin-show-orders.component';
 
 export const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  {
+    path: '', component: HomePageComponent,
+
+  },
   {
     path: 'eventdetails/:id', component: EventDetailsComponent,
     canActivate: [guardAuthGuard],
   },
-  { path: 'login', component: RegLoginComponent },
+  { path: 'login', component: RedirectedLoginComponent },
   { path: 'event/category/:name', component: AboutComponent },
   {
     path: 'users/cart', component: CartComponent,

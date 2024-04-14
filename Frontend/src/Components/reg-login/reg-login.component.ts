@@ -13,11 +13,12 @@ import { LoginService } from '../../Services/login.services';
 import { RegisterService } from '../../Services/register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GuestHeaderLinksComponent } from '../guest-header-links/guest-header-links.component';
 
 @Component({
   selector: 'app-reg-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [ReactiveFormsModule, CommonModule, HttpClientModule, GuestHeaderLinksComponent],
   providers: [LoginService, RegisterService],
   templateUrl: './reg-login.component.html',
   styleUrl: './reg-login.component.css',
@@ -27,6 +28,10 @@ export class RegLoginComponent {
   responseData: any;
   responseHeaders: any;
   image: any;
+
+  registerError : any  = null;
+  logInError : any  = null;
+
   constructor(
     private logService: LoginService,
     private regService: RegisterService,
@@ -129,6 +134,8 @@ export class RegLoginComponent {
 
         },
         error: (err) => {
+          this.registerError = true;
+
           console.log("ERROR CAUGHT: REGISTER COMP->REGSERVICE.SIGNUP->TOKEN ERROR")
         },
       });
@@ -147,17 +154,23 @@ export class RegLoginComponent {
           const authToken = data.headers.get('x-auth-token');
           // console.log('x-auth-token:', authToken);
           // console.log("authToken: \n" + JSON.stringify(authToken));
-
+          this.logInError = false;
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
           console.log('Decoded token \n' + decoded);
 
 
-          window.location.reload();
+          if (this.router.url === '/login') {
+            this.router.navigate(["/"]);
+          } else {
+            window.location.reload();
+
+          }
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);
         },
         error: (err) => {
+          this.logInError = true;
           console.log(err);
         },
       });

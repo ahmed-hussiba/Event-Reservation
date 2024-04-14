@@ -1,0 +1,214 @@
+<div class="container">
+  <h1>Update Event</h1>
+  <hr />
+  <!-- left column -->
+
+  <!-- edit form column -->
+  <div class="col-md-12 personal-info m-auto">
+    <h3>Event information</h3>
+
+    @if (event) {
+    <form role="form" [formGroup]="addForm">
+      <div class="col-md-3">
+        <div class="text-center">
+          <img
+            src="data:image/jpg;base64,{{ img }}"
+            class="avatar img-circle"
+            alt="avatar"
+            width="400"
+            height="200"
+          />
+          <h6>Upload image</h6>
+
+          <input
+            type="file"
+            formControlName="imageURl"
+            class="form-control"
+            (change)="triggerFileInput($event)"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Event Name:</label>
+        <div class="col-lg-8">
+          <input
+            class="form-control"
+            formControlName="name"
+            type="text"
+            value="{{ this.event.name }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Description:</label>
+        <div class="col-lg-8">
+          <input
+            class="form-control"
+            formControlName="description"
+            type="text"
+            value="{{ this.event.description }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Category:</label>
+        <div class="col-lg-8">
+          <input
+            class="form-control"
+            formControlName="category"
+            type="text"
+            value="{{ this.event.category }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Location:</label>
+        <div class="col-lg-8">
+          <input
+            class="form-control"
+            formControlName="location"
+            type="text"
+            value="{{ this.event.location }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-lg-3 control-label">Date:</label>
+        <div class="col-lg-8">
+          <input
+            class="form-control"
+            formControlName="date"
+            type="date"
+            value="{{ this.event.date }}"
+          />
+        </div>
+      </div>
+      <!-- <div class="form-group">
+            <label class="col-lg-3 control-label">Time Zone:</label>
+            <div class="col-lg-8">
+              <div class="ui-select">
+                <select id="user_time_zone" class="form-control">
+                  <option value="Hawaii">(GMT-10:00) Hawaii</option>
+                  <option value="Alaska">(GMT-09:00) Alaska</option>
+                  <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
+                  <option value="Arizona">(GMT-07:00) Arizona</option>
+                  <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
+                  <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
+                  <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
+                  <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Category:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="text" value="janeuser">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Description:</label>
+            <div class="col-md-8">
+              <input class="form-control" type="password" value="11111122333">
+            </div>
+          </div> -->
+      <div class="form-group">
+        <label class="col-md-3 control-label">Performer:</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            formControlName="performer"
+            type="text"
+            value="{{ this.event.performer }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Organizer:</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            formControlName="organizer"
+            type="text"
+            value="{{ this.event.organizer }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="col-md-3 control-label">Promotion:</label>
+        <div class="col-md-8">
+          <input
+            class="form-control"
+            formControlName="promotion"
+            type="number"
+            value="{{ this.event.promotion }}"
+          />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Available Tickets :</label>
+        <div class="form-group-type">
+          <label class="ticket">Golden: </label>
+          <input
+            class="ticket-type"
+            formControlName="QuantityG"
+            type="number"
+            value="{{ this.event.ticketsAvailable[1].quantity }}"
+          />
+          <input
+            class="ticket-type"
+            formControlName="PriceG"
+            type="number"
+            value="{{ this.event.ticketsAvailable[1].price }}"
+          />
+        </div>
+        <div class="form-group-type">
+          <label class="ticket">Silver: </label>
+          <input
+            class="ticket-type"
+            formControlName="PriceS"
+            type="number"
+            value="{{ this.event.ticketsAvailable[0].quantity }}"
+          />
+          <input
+            class="ticket-type"
+            formControlName="QuantityS"
+            type="number"
+            value="{{ this.event.ticketsAvailable[0].price }}"
+          />
+        </div>
+        <div class="form-group-type">
+          <label class="ticket">Platinum: </label>
+          <input
+            class="ticket-type"
+            formControlName="QuantityP"
+            type="number"
+            value="{{ this.event.ticketsAvailable[2].quantity }}"
+          />
+          <input
+            class="ticket-type"
+            formControlName="PriceP"
+            type="number"
+            value="{{ this.event.ticketsAvailable[2].price }}"
+          />
+        </div>
+      </div>
+      <!-- //buttons -->
+      <div class="form-group">
+        <label class="col-md-3 control-label"></label>
+        <div class="col-md-8">
+          <input
+            type="button"
+            class="btn btn-primary"
+            (click)="Update()"
+            value="Save Changes"
+          />
+          <span></span>
+          <input type="reset" class="btn btn-default" value="Cancel" />
+        </div>
+      </div>
+    </form>
+    }
+  </div>
+</div>
+<hr />

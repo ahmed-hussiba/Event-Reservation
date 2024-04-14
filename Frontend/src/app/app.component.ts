@@ -25,33 +25,41 @@ import { interceptorInterceptor } from '../Services/interceptor.interceptor';
 import { AllEventsComponent } from '../Components/all-events/all-events.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
 import { FooterComponent } from '../Components/footer/footer.component';
+import { AdminHomeComponent } from '../Components/admin-home/admin-home.component';
+import { AdminAllEventsComponent } from '../Components/admin-all-events/admin-all-events.component';
+import { AdminAddEventComponent } from '../Components/admin-add-event/admin-add-event.component';
+import { AdminShowOrdersComponent } from "../Components/admin-show-orders/admin-show-orders.component";
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  providers: [LoginService],
-  imports: [
-    RouterOutlet,
-    UserHeaderLinksComponent,
-    GuestHeaderLinksComponent,
-    RegLoginComponent,
-    PromotionEventsComponent,
-    CategoriesComponent,
-    ReviewsComponent,
-    AddToCartComponent,
-    EventDetailsComponent,
-    EventsComponent,
-    HomePageComponent,
-    CartComponent,
-    PaymentComponent,
-    TryComponent,
-    AllEventsComponent,
-    ProfileComponent,
-    FooterComponent,
-    IntroSectionComponent,
-  ],
+    selector: 'app-root',
+    standalone: true,
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    providers: [LoginService],
+    imports: [
+        RouterOutlet,
+        UserHeaderLinksComponent,
+        GuestHeaderLinksComponent,
+        RegLoginComponent,
+        PromotionEventsComponent,
+        CategoriesComponent,
+        ReviewsComponent,
+        AddToCartComponent,
+        EventDetailsComponent,
+        EventsComponent,
+        HomePageComponent,
+        CartComponent,
+        PaymentComponent,
+        TryComponent,
+        AllEventsComponent,
+        ProfileComponent,
+        FooterComponent,
+        IntroSectionComponent,
+        AdminHomeComponent,
+        AdminAllEventsComponent,
+        AdminAddEventComponent,
+        AdminShowOrdersComponent
+    ]
 })
 export class AppComponent {
   token: any;

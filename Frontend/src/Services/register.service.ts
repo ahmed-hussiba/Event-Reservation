@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RegisterService {
 
@@ -12,12 +12,11 @@ export class RegisterService {
   // private DB_URL = 'https://event-reservation-2.onrender.com/api/register';
 
   //sign up
-  signUp(user:any):Observable<any>{
-    return this.http.post(this.DB_URL, user , { observe: 'response' });
+  signUp(user: any): Observable<any> {
+    return this.http.post(this.DB_URL, user, { observe: 'response' });
   }
 
   // GetPromotedEvets(){
   //   return this.http.get(this.DB_URL + "/promoted")
   // }
- 
 }

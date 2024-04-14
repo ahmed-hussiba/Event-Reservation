@@ -8,12 +8,11 @@ declare var $: any;
 @Component({
   selector: 'app-promotion-events',
   standalone: true,
-  imports: [HttpClientModule,
-    CommonModule],
+  imports: [HttpClientModule, CommonModule],
   providers: [EventService],
   templateUrl: './promotion-events.component.html',
   styleUrl: './promotion-events.component.css',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PromotionEventsComponent implements OnInit {
   @Input() events: any;
@@ -38,8 +37,13 @@ export class PromotionEventsComponent implements OnInit {
   }
 
   toggle() {
-    this.flag = false
+    console.log(this.flag);
+
+    this.flag = false;
   }
-
-
+  // setFlag() {
+  //   setTimeout(() => {
+  //     this.flag = true;
+  //   }, 4000);
+  // }
 }

@@ -4,7 +4,7 @@ import { jwtDecode } from 'jwt-decode';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class OrderServiceService {
   token:any;
@@ -12,8 +12,11 @@ export class OrderServiceService {
   // private DB_URL = 'https://event-reservation-2.onrender.com/api/orders';
   constructor(private http:HttpClient) { }
 
-  makeOrder(order:any){
-    
-   return this.http.post(this.DB_URL,order);
+  makeOrder(order: any) {
+    return this.http.post(this.DB_URL, order);
+  }
+  getAllOrders() {
+    console.log("dakhl l order service")
+    return this.http.get(this.DB_URL);
   }
 }

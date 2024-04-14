@@ -27,9 +27,9 @@ export class UserService {
     let userID;
     if (this.token) {
       const decoded = jwtDecode(this.token) as JwtPayload;
-      const { userID : id } = decoded;
+      const { userID: id } = decoded;
       userID = id;
-    } 
+    }
     return this.http.post(this.DB_URL + '/' + userID + '/cart', item);
   }
 
@@ -37,18 +37,18 @@ export class UserService {
     return this.http.get(this.DB_URL + '/' + id + '/cart');
   }
 
-  deleteFromCart (cartItem: any) {
+  deleteFromCart(cartItem: any) {
     this.token = this.loginService.getToken();
     const item = cartItem;
     let userId;
 
     if (this.token) {
       const decoded = jwtDecode(this.token) as JwtPayload;
-      const {userID : id} = decoded;
+      const { userID: id } = decoded;
       userId = id;
     }
 
-    return this.http.put(this.DB_URL + "/" + userId +"/cart", item);
+    return this.http.put(this.DB_URL + '/' + userId + '/cart', item);
   }
 
   EditProfile(user: any) {

@@ -101,7 +101,6 @@ export class RegLoginComponent {
 
       let formData = new FormData();
       formData.set('image', this.image);
-
       formData.set('data', JSON.stringify(this.user));
       // formData.set('hassan', JSON.stringify({ img: 5 }));
 

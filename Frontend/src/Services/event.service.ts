@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +23,17 @@ export class EventService {
   GetPromotedEvets() {
     return this.http.get(this.DB_URL + '/promoted');
   }
-  
-  GetEventByCategoryName(name:string){
-    return this.http.get(this.DB_URL +"/category/"+name);
-  }
 
+  GetEventByCategoryName(name: string) {
+    return this.http.get(this.DB_URL + '/category/' + name);
+  }
+  AddEvent(event: any): Observable<any> {
+    return this.http.post(this.DB_URL, event, { observe: 'response' });
+  }
+  UpdateEvent(id:any, event:any) {
+    return this.http.put(this.DB_URL+ '/' +id, event);
+  }
+  DeleteEvent(id:any){
+    return this.http.delete(this.DB_URL+'/'+id);
+  }
 }

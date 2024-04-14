@@ -12,6 +12,7 @@ export class SharedEventsService {
 
   setData(data: any) {
     this.dataSubject.next(data);
+    console.log(this.data);
   }
 
 }

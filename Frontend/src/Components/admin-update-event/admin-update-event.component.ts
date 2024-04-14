@@ -10,23 +10,27 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EventService } from '../../Services/event.service';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { HttpClientModule } from '@angular/common/http';
-import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-admin-update-event',
   standalone: true,
-  imports: [RouterModule, ReactiveFormsModule,CommonModule, HttpClientModule,FormsModule],
-  providers:[EventService,SharedEventsService,EventsToEventDetailsService],
+  imports: [
+    RouterModule,
+    ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+  ],
+  providers: [EventService, SharedEventsService],
   templateUrl: './admin-update-event.component.html',
   styleUrl: './admin-update-event.component.css',
 })
 export class AdminUpdateEventComponent implements OnInit {
-  id: any ; 
+  id: any;
   constructor(
     private eventService: EventService,
-    private eventsToDetailsService: EventsToEventDetailsService,
-    private route:ActivatedRoute
+    private route: ActivatedRoute
   ) {}
   event: any;
   img: any;
@@ -34,9 +38,9 @@ export class AdminUpdateEventComponent implements OnInit {
   addForm: any;
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get("id");
+    this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id);
-    
+
     this.eventService.GetEventById(this.id!).subscribe({
       next: (data) => {
         this.event = data;
@@ -44,23 +48,50 @@ export class AdminUpdateEventComponent implements OnInit {
         console.log(this.event);
         this.img = this.event.EventwithImg.imgBuffer;
         this.addForm = new FormGroup({
-          imageURl: new FormControl(`${this.img}`, [Validators.required]), 
-          name: new FormControl(`${this.event.name}`,[Validators.required,Validators.minLength(3)]),
-          location: new FormControl(`${this.event.location}`,[Validators.required,]),
-          date: new FormControl(`${this.event.date}`,[Validators.required,]),
-          category: new FormControl(`${this.event.category}`,[Validators.required,]),
-          description: new FormControl(`${this.event.description}`,[Validators.required,]),
-          organizer: new FormControl(`${this.event.organizer}`,[Validators.required,]),
-          performer: new FormControl(`${this.event.performer}`,[Validators.required,]),
-          promotion: new FormControl(`${this.event.promotion}`,[]),
-          PriceS: new FormControl(`${this.event.ticketsAvailable[0].price}`,[Validators.required,]),
-          PriceG: new FormControl(`${this.event.ticketsAvailable[1].price}`,[Validators.required,]),
-          PriceP: new FormControl(`${this.event.ticketsAvailable[2].price}`,[Validators.required,]),
-          QuantityS: new FormControl(`${this.event.ticketsAvailable[0].quantity}`,[Validators.required,]),
-          QuantityG: new FormControl(`${this.event.ticketsAvailable[1].quantity}`,[Validators.required,]),
-          QuantityP: new FormControl(`${this.event.ticketsAvailable[2].quantity}`,[Validators.required,]),
+          imageURl: new FormControl(`${this.img}`, [Validators.required]),
+          name: new FormControl(`${this.event.name}`, [
+            Validators.required,
+            Validators.minLength(3),
+          ]),
+          location: new FormControl(`${this.event.location}`, [
+            Validators.required,
+          ]),
+          date: new FormControl(`${this.event.date}`, [Validators.required]),
+          category: new FormControl(`${this.event.category}`, [
+            Validators.required,
+          ]),
+          description: new FormControl(`${this.event.description}`, [
+            Validators.required,
+          ]),
+          organizer: new FormControl(`${this.event.organizer}`, [
+            Validators.required,
+          ]),
+          performer: new FormControl(`${this.event.performer}`, [
+            Validators.required,
+          ]),
+          promotion: new FormControl(`${this.event.promotion}`, []),
+          PriceS: new FormControl(`${this.event.ticketsAvailable[0].price}`, [
+            Validators.required,
+          ]),
+          PriceG: new FormControl(`${this.event.ticketsAvailable[1].price}`, [
+            Validators.required,
+          ]),
+          PriceP: new FormControl(`${this.event.ticketsAvailable[2].price}`, [
+            Validators.required,
+          ]),
+          QuantityS: new FormControl(
+            `${this.event.ticketsAvailable[0].quantity}`,
+            [Validators.required]
+          ),
+          QuantityG: new FormControl(
+            `${this.event.ticketsAvailable[1].quantity}`,
+            [Validators.required]
+          ),
+          QuantityP: new FormControl(
+            `${this.event.ticketsAvailable[2].quantity}`,
+            [Validators.required]
+          ),
         });
-      
       },
       error: (err) => {
         console.log(err);

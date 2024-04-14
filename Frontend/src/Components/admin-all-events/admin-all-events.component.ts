@@ -6,7 +6,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { AdminAddEventComponent } from '../admin-add-event/admin-add-event.component';
 import { AdminUpdateEventComponent } from '../admin-update-event/admin-update-event.component';
-import { EventsToEventDetailsService } from '../../Services/events.to.event-details.service';
 
 @Component({
   selector: 'app-admin-all-events',
@@ -16,56 +15,52 @@ import { EventsToEventDetailsService } from '../../Services/events.to.event-deta
     HttpClientModule,
     FormsModule,
     AdminAddEventComponent,
-    AdminUpdateEventComponent],
-  providers:[EventService],
+    AdminUpdateEventComponent,
+  ],
+  providers: [EventService],
   templateUrl: './admin-all-events.component.html',
-  styleUrl: './admin-all-events.component.css'
+  styleUrl: './admin-all-events.component.css',
 })
-export class AdminAllEventsComponent implements OnInit{
-  constructor(private evService:EventService, private EventToDetails:EventsToEventDetailsService){}
-  allEv:any;
-  searchData:{ event: { name: string } }[] =[];
-  flag:boolean=true;
+export class AdminAllEventsComponent implements OnInit {
+  constructor(private evService: EventService) {}
+  allEv: any;
+  searchData: { event: { name: string } }[] = [];
+  flag: boolean = true;
   ngOnInit(): void {
     this.evService.GetAllEvents().subscribe({
-      next:(data)=>{
-        this.allEv=data;
-        this.allEv=this.allEv.eventsWithImgs;
-        this.searchData=this.allEv
-        console.log(this.searchData+"seeeeearchdataaa");
-        
+      next: (data) => {
+        this.allEv = data;
+        this.allEv = this.allEv.eventsWithImgs;
+        this.searchData = this.allEv;
+        console.log(this.searchData + 'seeeeearchdataaa');
+
         console.log(this.allEv);
       },
-      error:(err)=>{console.log(err);
-      }
-    })
+      error: (err) => {
+        console.log(err);
+      },
+    });
   }
-  EvName:string="";
-  filteredItems:any[]=[];
-    SearchEvent(){
-      // console.log(this.EvName);
-      this.filteredItems=this.searchData.filter(item  =>
-        item.event.name.toLowerCase().includes(this.EvName.toLowerCase())
-  
-      );
-        console.log(this.filteredItems+"filtereeeeeeddataaa");
-       
-  
-    }
-    GoToEvent(eventId: number) {
-      this.EventToDetails.sendData(eventId);
-      console.log(eventId);
-      // console.log(this.EventToDetails.data);
-      console.log("Entered Go To Eventtttttttt");
-
-    }
-    onInputChange(value: string) {
-      this.EvName = value;
-      console.log(this.EvName);
-      this.flag=false;
-      this.SearchEvent(); // Update EvName with the input value
-    }
-    Delete(){
-
-    }
+  EvName: string = '';
+  filteredItems: any[] = [];
+  SearchEvent() {
+    // console.log(this.EvName);
+    this.filteredItems = this.searchData.filter((item) =>
+      item.event.name.toLowerCase().includes(this.EvName.toLowerCase())
+    );
+    console.log(this.filteredItems + 'filtereeeeeeddataaa');
+  }
+  GoToEvent(eventId: number) {
+    // this.EventToDetails.sendData(eventId);
+    // console.log(eventId);
+    // console.log(this.EventToDetails.data);
+    console.log('Entered Go To Eventtttttttt');
+  }
+  onInputChange(value: string) {
+    this.EvName = value;
+    console.log(this.EvName);
+    this.flag = false;
+    this.SearchEvent(); // Update EvName with the input value
+  }
+  Delete() {}
 }

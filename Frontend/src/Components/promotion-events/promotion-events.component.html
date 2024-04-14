@@ -5,22 +5,21 @@
   data-bs-interval="2000"
 >
   <div class="carousel-inner">
-      @for (item of events["PromotedEventsWithImgs"]; track $index) {
-        <div class="promotion-banner">
-          <span class="badge bg-success">-{{ item.event.promotion }}%</span>
-        </div>
-        
-        <div class="carousel-item" [class.active]="flag">
-          <img 
-          src="data:image/jpg;base64,{{ item.imgBuffer }}"
-          class="d-block w-100"
-          />
-        </div>
-        <ng-container *ngIf="toggle()"></ng-container>
-      }
-    
+    @for (item of events["PromotedEventsWithImgs"]; track $index) {
+    <div class="promotion-banner">
+      <span class="badge bg-success">-{{ item.event.promotion }}%</span>
     </div>
-    <button
+
+    <div class="carousel-item" [class.active]="flag">
+      <img
+        src="data:image/jpg;base64,{{ item.imgBuffer }}"
+        class="d-block w-100"
+      />
+    </div>
+    <ng-container *ngIf="toggle()"></ng-container>
+    }
+  </div>
+  <button
     class="carousel-control-prev"
     type="button"
     data-bs-target="#carouselExampleAutoplaying"

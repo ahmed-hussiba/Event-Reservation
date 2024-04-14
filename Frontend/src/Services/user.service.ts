@@ -9,8 +9,8 @@ import { JwtPayload } from '../Interfaces/jwt-payload';
 export class UserService {
   private userID: any;
   private token: any;
-  // private DB_URL = 'http://localhost:7000/api/users';
-  private DB_URL = 'https://event-reservation-2.onrender.com/api/users';
+  private DB_URL = 'http://localhost:7000/api/users';
+  // private DB_URL = 'https://event-reservation-2.onrender.com/api/users';
   constructor(private http: HttpClient, private loginService: LoginService) {}
   GetUserByID() {
     this.token = this.loginService.getToken();
@@ -27,9 +27,9 @@ export class UserService {
     let userID;
     if (this.token) {
       const decoded = jwtDecode(this.token) as JwtPayload;
-      const { userID : id } = decoded;
+      const { userID: id } = decoded;
       userID = id;
-    } 
+    }
     return this.http.post(this.DB_URL + '/' + userID + '/cart', item);
   }
 
@@ -37,18 +37,18 @@ export class UserService {
     return this.http.get(this.DB_URL + '/' + id + '/cart');
   }
 
-  deleteFromCart (cartItem: any) {
+  deleteFromCart(cartItem: any) {
     this.token = this.loginService.getToken();
     const item = cartItem;
     let userId;
 
     if (this.token) {
       const decoded = jwtDecode(this.token) as JwtPayload;
-      const {userID : id} = decoded;
+      const { userID: id } = decoded;
       userId = id;
     }
 
-    return this.http.put(this.DB_URL + "/" + userId +"/cart", item);
+    return this.http.put(this.DB_URL + '/' + userId + '/cart', item);
   }
 
   EditProfile(user: any) {

@@ -6,9 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class EventService {
-  // private DB_URL = 'http://localhost:7000/api/event';
-  private DB_URL = 'https://event-reservation-2.onrender.com/api/event';
-
+  private DB_URL = 'http://localhost:7000/api/event';
+  // private DB_URL = 'https://event-reservation-2.onrender.com/api/event';
 
   constructor(private http: HttpClient) {}
 
@@ -23,16 +22,14 @@ export class EventService {
   GetPromotedEvets() {
     return this.http.get(this.DB_URL + '/promoted');
   }
-  
-  GetEventByCategoryName(name:string){
-    return this.http.get(this.DB_URL +"/category/"+name);
-  }
-  AddEvent(event:any):Observable<any>{
-    return this.http.post(this.DB_URL,event , { observe: 'response' });
-  }
-  UpdateEvent(id :any,event:any){
-   
-    return this.http.post(this.DB_URL,id,event);
-  }
 
+  GetEventByCategoryName(name: string) {
+    return this.http.get(this.DB_URL + '/category/' + name);
+  }
+  AddEvent(event: any): Observable<any> {
+    return this.http.post(this.DB_URL, event, { observe: 'response' });
+  }
+  UpdateEvent(id: any, event: any) {
+    return this.http.post(this.DB_URL, id, event);
+  }
 }

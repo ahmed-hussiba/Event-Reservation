@@ -16,7 +16,10 @@ const storage = multer.diskStorage({
     /// favicon.a.png
     n = file.originalname.split(".")[1];
     extensions.setExtensions(n);
-    cb(null, "newEvent." + n);
+    console.log(n);
+    console.log(`img=${file.originalname}`);
+
+    cb(null,"newEvent."+n);
   },
 });
 

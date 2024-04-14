@@ -5,7 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 @Component({
   selector: 'app-admin-show-orders',
   standalone: true,
-  imports: [HttpClientModule,],
+  imports: [],
   providers:[OrderServiceService],
   templateUrl: './admin-show-orders.component.html',
   styleUrl: './admin-show-orders.component.css'

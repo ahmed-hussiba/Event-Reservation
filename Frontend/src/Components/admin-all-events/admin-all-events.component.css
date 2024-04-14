@@ -1,0 +1,8 @@
+.btn-row{
+    display: flex;
+    justify-content: space-evenly;
+}
+.add-btn-row{
+    display: flex;
+    justify-content: end;
+}

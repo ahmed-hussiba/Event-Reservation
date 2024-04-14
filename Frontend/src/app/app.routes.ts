@@ -9,6 +9,11 @@ import { CartComponent } from '../Components/cart/cart.component';
 import { PaymentComponent } from '../Components/payment/payment.component';
 import { AllEventsComponent } from '../Components/all-events/all-events.component';
 import { ProfileComponent } from '../Components/profile/profile.component';
+import { AdminHomeComponent } from '../Components/admin-home/admin-home.component';
+import { AdminAddEventComponent } from '../Components/admin-add-event/admin-add-event.component';
+import { AdminAllEventsComponent } from '../Components/admin-all-events/admin-all-events.component';
+import { AdminUpdateEventComponent } from '../Components/admin-update-event/admin-update-event.component';
+import { AdminShowOrdersComponent } from '../Components/admin-show-orders/admin-show-orders.component';
 
 export const routes: Routes = [
   { path: '', component: HomePageComponent },
@@ -38,4 +43,32 @@ export const routes: Routes = [
     canActivate: [guardAuthGuard],
 
   },
+  {
+    path:'admin',component:AdminHomeComponent,
+    // canActivate:[guardAuthGuard]
+  },
+  {
+    path:'addevent', component:AdminAddEventComponent,
+    // canActivate:[guardAuthGuard]
+
+  },
+  {
+    path:'updateevent/:id', component:AdminUpdateEventComponent,
+    // canActivate:[guardAuthGuard]
+
+  },
+  {
+    path:'admin/allevents' , component:AdminAllEventsComponent,
+    // canActivate:[guardAuthGuard]
+
+  },
+  {
+    path:'admin/allorders' , component:AdminShowOrdersComponent,
+    // canActivate:[guardAuthGuard]
+
+  },
+  {
+    path:'**', component:AboutComponent, 
+  }
+
 ];

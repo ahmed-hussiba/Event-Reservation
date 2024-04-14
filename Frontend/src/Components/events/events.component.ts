@@ -49,7 +49,6 @@ export class EventsComponent implements OnInit {
 
   GoToEvent(eventId: Number) {
     console.log(`id evv  = ${eventId}`);
-
     this.eventsToDetailsService.sendData(eventId);
   }
 }

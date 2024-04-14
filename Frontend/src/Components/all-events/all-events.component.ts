@@ -9,7 +9,11 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
 @Component({
   selector: 'app-all-events',
   standalone: true,
-  imports: [RouterModule,HttpClientModule,FormsModule,UserHeaderLinksComponent],
+  imports: [
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    UserHeaderLinksComponent],
   providers:[EventService],
   templateUrl: './all-events.component.html',
   styleUrl: './all-events.component.css'

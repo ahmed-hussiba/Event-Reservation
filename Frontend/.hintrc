@@ -6,7 +6,8 @@
     "axe/forms": [
       "default",
       {
-        "label": "off"
+        "label": "off",
+        "select-name": "off"
       }
     ],
     "axe/name-role-value": [
@@ -19,6 +20,15 @@
       "default",
       {
         "image-alt": "off"
+      }
+    ],
+    "compat-api/css": [
+      "default",
+      {
+        "ignore": [
+          "min-width: fit-content",
+          "width: fit-content"
+        ]
       }
     ]
   }

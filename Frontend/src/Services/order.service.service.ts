@@ -12,7 +12,9 @@ export class OrderServiceService {
   constructor(private http:HttpClient) { }
 
   makeOrder(order:any){
-    
    return this.http.post(this.DB_URL,order);
+  }
+  GetAllOrders(){
+    return this.http.get(this.DB_URL);
   }
 }

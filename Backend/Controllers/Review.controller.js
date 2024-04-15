@@ -4,6 +4,7 @@ const fs = require("fs");
 const path = require("path");
 
 let GetReviews = async (req, res) => {
+  console.log(req.body);
   let reviewsWithImgs = [];
   console.log("ssssss");
   let reviews = await reviewModel.find({}).limit(6);

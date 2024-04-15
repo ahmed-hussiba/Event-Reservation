@@ -6,7 +6,7 @@ const path = require("path");
 let GetReviews = async (req, res) => {
   let reviewsWithImgs = [];
   console.log("ssssss");
-  let reviews = await reviewModel.find({}).limit(10);
+  let reviews = await reviewModel.find({}).limit(6);
   for (let review of reviews) {
     let imgUrl = review.imageURl;
     let imgPath = path.join(__dirname, "../images/User-Profile-Images", imgUrl);

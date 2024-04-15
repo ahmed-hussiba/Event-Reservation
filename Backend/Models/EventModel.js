@@ -8,7 +8,7 @@ const eventSchema = new mongoose.Schema({
   category: {
     type: String,
     required: true,
-    enum: ["Sport", "Comedy", "Political", "Adventure", "Drama"],
+    enum: ["Sports", "Theater", "Arts", "Concert", "Entertainment"],
   },
   description: { type: String, trim: true },
   imageURl: {

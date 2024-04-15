@@ -29,6 +29,8 @@ let GetReviews = async (req, res) => {
 let AddReview = async (req, res) => {
   const data = req.header("x-auth-token");
 
+  console.log("data " + data)
+
   let decodedData = JWT.verify(data, "private");
 
   req.body.imageURl = decodedData["imageURL"];

@@ -7,6 +7,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 import { Component, OnInit } from '@angular/core';
 import {  ActivatedRoute, Router } from '@angular/router';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-event-details',
@@ -16,6 +17,7 @@ import {  ActivatedRoute, Router } from '@angular/router';
     ReviewsComponent,
     AddToCartComponent,
     UserHeaderLinksComponent,
+    FooterComponent
   ],
   providers: [EventService],
   templateUrl: './event-details.component.html',

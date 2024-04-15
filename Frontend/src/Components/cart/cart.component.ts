@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-cart',
@@ -13,7 +14,8 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
   imports: [
     CommonModule,
     RouterModule,
-    UserHeaderLinksComponent
+    UserHeaderLinksComponent,
+    FooterComponent
   ],
   providers: [
     UserService,

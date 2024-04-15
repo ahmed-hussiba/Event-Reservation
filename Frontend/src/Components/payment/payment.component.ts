@@ -7,11 +7,12 @@ import { Route, Router, RouterModule } from '@angular/router';
 import { PaymentServiceService } from '../../Services/payment.service.service';
 import {render} from 'creditcardpayments/creditCardPayments'
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, RouterModule,UserHeaderLinksComponent],
+  imports: [CommonModule,ReactiveFormsModule, RouterModule,UserHeaderLinksComponent,FooterComponent],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })

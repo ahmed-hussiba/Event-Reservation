@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { FormsModule } from '@angular/forms';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-all-events',
@@ -13,7 +14,8 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
     RouterModule,
     HttpClientModule,
     FormsModule,
-    UserHeaderLinksComponent
+    UserHeaderLinksComponent,
+    FooterComponent
   ],
   providers:[EventService],
   templateUrl: './all-events.component.html',

@@ -20,6 +20,7 @@ import { AllEventsComponent } from '../all-events/all-events.component';
 import { JwtPayload } from '../../Interfaces/jwt-payload';
 import { IntroSectionComponent } from '../intro.section/intro.section.component';
 import { EventService } from '../../Services/event.service';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home-page',
@@ -35,6 +36,7 @@ import { EventService } from '../../Services/event.service';
     CommonModule,
     AllEventsComponent,
     IntroSectionComponent,
+    FooterComponent
   ],
   providers: [LoginService, UserService,EventService],
   templateUrl: './home-page.component.html',

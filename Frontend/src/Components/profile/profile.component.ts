@@ -9,11 +9,12 @@ import {
 } from '@angular/forms';
 import { UserService } from '../../Services/user.service';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, UserHeaderLinksComponent],
+  imports: [ReactiveFormsModule, CommonModule, UserHeaderLinksComponent,FooterComponent],
   providers: [UserService],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.css',

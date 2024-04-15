@@ -8,8 +8,8 @@
 
 <div class="container-fluid d-flex flex-column">
 
-    <div class="d-flex row m-2 flex-xs-column flex-md-row">
-        <div class="d-flex col-7 flex-column xsmallRow event-detalis ">
+    <div class="d-flex row m-2 flex-xs-column flex-md-row mt-5">
+        <div class="d-flex col-7 mb-5 flex-column xsmallRow event-detalis ">
             <div class="content section">
                 @if (event) {
 
@@ -25,9 +25,10 @@
                 }
             </div>
         </div>
-        <div class="col-4 xsmallRow cart-section section">
+        <div class="col-4 xsmallRow mb-5  cart-section section">
             <app-add-to-cart></app-add-to-cart>
         </div>
 
 
     </div>
+    <app-footer></app-footer>

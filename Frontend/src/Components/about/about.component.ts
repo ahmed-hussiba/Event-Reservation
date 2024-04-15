@@ -6,6 +6,7 @@ import { LoginService } from '../../Services/login.services';
 import { CommonModule } from '@angular/common';
 import { JwtPayload, jwtDecode } from 'jwt-decode';
 import { AddReviewComponent } from '../add-review/add-review.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-about',
@@ -14,7 +15,8 @@ import { AddReviewComponent } from '../add-review/add-review.component';
     AddReviewComponent,
     UserHeaderLinksComponent,
     GuestHeaderLinksComponent,
-    CommonModule
+    CommonModule,
+    FooterComponent
   ],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'

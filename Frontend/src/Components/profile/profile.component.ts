@@ -20,6 +20,9 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
 })
 export class ProfileComponent implements OnInit {
   UserData: any = '';
+  image: any;
+  flag: any;
+  err: any;
   mySignUpFormGroup: any;
 
   constructor(private userService: UserService) {}
@@ -79,19 +82,48 @@ export class ProfileComponent implements OnInit {
     // console.log(this.mySignUpFormGroup.controls['email'].value);
     if (this.mySignUpFormGroup.valid) {
       let newUser = this.mySignUpFormGroup.value;
+      let formData = new FormData();
+      formData.set('image', this.image);
+      formData.set('data', JSON.stringify(newUser));
 
       console.log(newUser);
-      this.userService.EditProfile(newUser).subscribe({
+      this.userService.EditProfile(formData).subscribe({
         next: (data) => {
           console.log('update successfully');
-
+          this.flag = 1;
           console.log(data);
         },
         error: (err) => {
           console.log('err in update');
           console.log(err);
+          this.flag = 2;
         },
       });
     }
+  }
+
+  triggerFileInput(event: any) {
+    const fileInput = document.getElementById('fileInput') as HTMLInputElement;
+    const imgId: any = document.getElementById('imgId') as HTMLInputElement;
+    fileInput.click();
+    console.log(fileInput.files);
+
+    if (fileInput.files?.length) {
+      var tgt = event.target || event.srcElement,
+        files = tgt.files;
+      const file = fileInput.files[0];
+      this.image = file;
+      console.log(this.image);
+
+      if (FileReader && files && files.length) {
+        var fr = new FileReader();
+        fr.onload = function () {
+          imgId.src = fr.result;
+        };
+        fr.readAsDataURL(files[0]);
+      }
+    }
+    // console.log(event);
+    // console.log(event.target.files);
   }
 }

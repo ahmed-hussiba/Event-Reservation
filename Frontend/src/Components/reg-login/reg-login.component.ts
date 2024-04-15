@@ -31,7 +31,7 @@ export class RegLoginComponent {
     private logService: LoginService,
     private regService: RegisterService,
     private router: Router
-  ) { }
+  ) {}
   mySignInFormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [
@@ -48,7 +48,7 @@ export class RegLoginComponent {
       Validators.pattern('^[a-zA-Z0-9_.]+$'),
     ]),
     gender: new FormControl({
-      gender: ''
+      gender: '',
     }),
     password: new FormControl('', [
       Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d).{8,}$'),
@@ -102,28 +102,25 @@ export class RegLoginComponent {
       // console.log(formData);
       this.regService.signUp(formData).subscribe({
         next: (data) => {
-          console.log("REGISTER COMP: REGSERVICE.SIGNUP")
+          console.log('REGISTER COMP: REGSERVICE.SIGNUP');
           if (data) {
-           
             const authToken = data.headers.get('x-auth-token');
             // console.log("authToken: \n" + JSON.stringify(authToken));
             localStorage.setItem('access_token', authToken);
             const decoded = jwtDecode(authToken);
             // console.log('Decoded token \n' + decoded);
             window.location.reload();
-
           } else {
-
-            console.log("REGISTER COMP: NO DATA RETURNED IN REGSERVICE.SIGNUP");
+            console.log('REGISTER COMP: NO DATA RETURNED IN REGSERVICE.SIGNUP');
           }
-
 
           // console.log('x-auth-token:', authToken);
           // this.router.navigate(['/']);
-
         },
         error: (err) => {
-          console.log("ERROR CAUGHT: REGISTER COMP->REGSERVICE.SIGNUP->TOKEN ERROR")
+          console.log(
+            'ERROR CAUGHT: REGISTER COMP->REGSERVICE.SIGNUP->TOKEN ERROR'
+          );
         },
       });
     } else {
@@ -145,7 +142,6 @@ export class RegLoginComponent {
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
           console.log('Decoded token \n' + decoded);
-
 
           window.location.reload();
           // const decodedToken = jwt_decode();

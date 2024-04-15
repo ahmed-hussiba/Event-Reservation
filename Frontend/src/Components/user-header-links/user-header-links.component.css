@@ -3,11 +3,11 @@
 nav {
   background-color: black;
 }
-
 .nav-container {
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 10px;
+  
 }
 
 .logo {

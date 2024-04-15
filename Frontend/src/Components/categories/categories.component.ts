@@ -16,15 +16,15 @@ import { HttpClientModule } from '@angular/common/http';
 })
 export class CategoriesComponent {
   constructor(private evService:EventService){}
-  getCategory(name:string){
-    this.evService.GetEventByCategoryName(name).subscribe({
-      next:(data)=>{
-        console.log(data);
-      },
-      error:(err)=>{
-        console.log(err);
+  // getCategory(name:string){
+  //   this.evService.GetEventByCategoryName(name).subscribe({
+  //     next:(data)=>{
+  //       console.log(data);
+  //     },
+  //     error:(err)=>{
+  //       console.log(err);
         
-      }
-    });
-  }
+  //     }
+  //   });
+  // }
 }

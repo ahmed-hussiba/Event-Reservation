@@ -30,14 +30,17 @@
 }
 
 .card {
-  margin: 3vh 0;
+  margin: 3vh auto;
   width: 80vw;
 }
 
 .title-container {
   
 }
-
+.category-text{
+  color: #00a97f;
+  font-style: italic;
+}
 .cart-btn-container {
   margin: auto;
 }

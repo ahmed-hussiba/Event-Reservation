@@ -3,14 +3,15 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { JwtPayload } from '../Interfaces/jwt-payload';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   private userID: any;
   private token: any;
-  private DB_URL = 'http://localhost:7000/api/users';
-  // private DB_URL = 'https://event-reservation-2.onrender.com/api/users';
+  // private DB_URL = 'http://localhost:7000/api/users';
+  private DB_URL = 'https://event-reservation-2.onrender.com/api/users';
   constructor(private http: HttpClient, private loginService: LoginService) {}
   GetUserByID() {
     this.token = this.loginService.getToken();
@@ -53,11 +54,13 @@ export class UserService {
     return this.http.put(this.DB_URL + '/' + userId + '/cart', item);
   }
 
-  EditProfile(user: any) {
+  EditProfile(user: any): Observable<any> {
     if (this.token) {
       const decoded = jwtDecode(this.token);
       this.userID = Object.values(decoded)[0];
     }
-    return this.http.put(this.DB_URL + '/' + this.userID, user);
+    return this.http.put(this.DB_URL + '/' + this.userID, user, {
+      observe: 'response',
+    });
   }
 }

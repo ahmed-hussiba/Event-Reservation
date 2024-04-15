@@ -7,11 +7,27 @@
     <!-- left column -->
     <div class="col-md-3">
       <div class="text-center">
-        <img src="data:image/jpg;base64,{{ UserData.imageUser }}" class="avatar img-circle img-thumbnail"
-          alt="avatar" />
-        <h6>Upload a different photo...</h6>
+        <h6>Current photo...</h6>
+        <img
+          src="data:image/jpg;base64,{{ UserData.imageUser }}"
+          class="avatar img-circle img-thumbnail"
+          alt="avatar"
+          id="imgId"
+        />
+        <br />
+        <label for="fileInput" class="custom-upload">Choose Image</label>
+        <input
+          formControlName="fileUpload"
+          class="form-control"
+          type="file"
+          (change)="triggerFileInput($event)"
+          class="upload-btn"
+          type="file"
+          id="fileInput"
+          style="display: none"
+        />
 
-        <input type="file" class="form-control" />
+        <!-- <input type="file" class="form-control" /> -->
       </div>
     </div>
 
@@ -23,32 +39,71 @@
         <div class="form-group">
           <label class="col-lg-3 control-label">Email:</label>
           <div class="col-lg-8">
-            <input formControlName="email" class="form-control" type="text" value="{{ UserData.user.email }}" />
+            <input
+              formControlName="email"
+              class="form-control"
+              type="text"
+              value="{{ UserData.user.email }}"
+            />
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">User Name:</label>
           <div class="col-lg-8">
-            <input formControlName="username" class="form-control" type="text" value="{{ UserData.user.username }}" />
+            <input
+              formControlName="username"
+              class="form-control"
+              type="text"
+              value="{{ UserData.user.username }}"
+            />
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">City:</label>
           <div class="col-lg-8">
-            <input formControlName="city" class="form-control" type="text" value="{{ UserData.user.city }}" />
+            <input
+              formControlName="city"
+              class="form-control"
+              type="text"
+              value="{{ UserData.user.city }}"
+            />
           </div>
         </div>
         <div class="form-group">
           <label class="col-lg-3 control-label">Country:</label>
           <div class="col-lg-8">
-            <input formControlName="country" class="form-control" type="text" value="{{ UserData.user.country }}" />
+            <input
+              formControlName="country"
+              class="form-control"
+              type="text"
+              value="{{ UserData.user.country }}"
+            />
           </div>
         </div>
       </form>
-      
-        <button class="save-btn" (click)="saveChanges()">Save</button>
-      
+
+      <button class="save-btn" (click)="saveChanges()" id="liveToastBtn">
+        Save
+      </button>
+      @if (flag==1) {
+      <p class="alert alert-success mt-3">Update Successfully</p>
+
+      } @else if(flag==2){
+      <p class="alert alert-danger mt-3">Update failed</p>
+      }
     </div>
   </div>
 </div>
 <hr />
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div
+    id="liveToast"
+    class="toast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  ></div>
+</div>
+
+<app-footer></app-footer>

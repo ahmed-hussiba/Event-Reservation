@@ -1,0 +1,11 @@
+.redirected-body {
+    
+}
+
+.login-parent {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 3vw 0;
+}

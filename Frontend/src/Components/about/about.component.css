@@ -1,107 +1,59 @@
-.header{
-    width: 100%;
-    height: 30vh;
-    display: flex;
-    justify-content: center;
-    /* background-color: rgb(135, 177, 178); */
-}
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200..800&display=swap');
 .parent{
-    width: 100%;
+width: 100%;
 }
-.headCol{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    /* justify-content: start; */
-    width: 70%;
-    margin: 20px;
-        background-image: url("../../assets/Images/22.jpeg");
-        background-size: cover;
 
+.title{
+    text-align: center;
+    width: 50%;
+    margin: 5vw auto;
 }
-.header-image{
-    width: 30%;
-    height: 100%;
-}
-h1{
-    margin-left: 20%;
-    color: rgb(47, 46, 46);
-}
-.prt1{
-    margin-top: 4%;
-    height: 25vh;
-    display: flex;
-    padding: 4%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* background-image: url("../../assets/Images/22.jpeg"); */
-    background-size: cover;
 
-}
-.prt2{
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    background-size: cover;
-}
-.imgLine{
-  width: 90%;
-    display: flex;
-    height: 100%;
-    justify-content: space-evenly;
-
-}
-.imgCard{
-    margin-top: 3%;
-    width: 20%;
-    height: 65%;
-    border: solid 0.5px gray;
-    border-radius: 10px;
-}
-h3{
-    margin-left: 15%;
+h1,h3{
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:#00A97F;
+  letter-spacing: 2px;
 }
 p{
-    margin: 3%;
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
 }
-.prt3{
+.item
+{
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom:30px ;
-    /* height: 30vh; */
-    background-image: linear-gradient(to right, #7097A8, #ABD1DC,#D3E7EE );
-    background-size: cover;
+    width: 100%;
+    margin: 5vw auto;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
 }
-.header-image2{
-    display: none;
+.fade-in{
+    opacity: 1;
 }
-.rev{
-    width: 90vw;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+.item div
+{
+    width: 50%;
+
 }
-.prt1row{
-    display: flex;
-    justify-content: center;
+
+img{
+    width: 40vw;
+    border-radius: 10px;
 }
-@media (max-width: 768px) {
-    .header , .prt1, .prt2 , .prt3 {
-        /* margin-top: 5%; */
-        flex-direction: column;
-    }
-    .headCol{
-        /* margin-top: 30%; */
-    }
-    .header-image{
-        display: none;
-    }
-    .header-image2{
-        display: block;
-        width: 50%;
-        height: 30%;
-    }
-  }
+.image
+{
+    text-align: center;
+}
+
+.content{
+    text-align: center;
+    margin: auto 5vw;
+}
+
+/* p{
+    text-align: start;
+} */

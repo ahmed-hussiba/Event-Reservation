@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from '@angular/core';
 import { ReviewService } from '../../Services/review.service';
 import { CommonModule } from '@angular/common';
 
@@ -18,6 +18,10 @@ export class ReviewsComponent {
   flag: boolean = true;
   constructor(private reviewService: ReviewService) {}
 
+
+  @ViewChild('next') myDiv!: ElementRef<HTMLElement>;
+
+
   ngOnInit(): void {
     this.reviewService.GetAllReviews().subscribe({
       next: (data) => {
@@ -31,9 +35,22 @@ export class ReviewsComponent {
       },
     });
   }
+
+  ngAfterViewInit() {
+    this.triggerFalseClick();
+  }
+
+  
   toggle() {
     this.flag = false;
     console.log("reviewsss");
     
+  }
+
+  triggerFalseClick() {
+    let el: HTMLElement = this.myDiv.nativeElement;
+    setInterval(() => {
+      el.click();
+    },2000)
   }
 }

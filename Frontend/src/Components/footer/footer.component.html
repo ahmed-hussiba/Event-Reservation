@@ -1,42 +1,45 @@
-<div id="booking" class="section footer">
-  <div class="section-center">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-7 col-md-push-5">
-          <div class="booking-cta">
-            <h1>Make your reservation</h1>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
-              facere, soluta magnam consectetur molestias itaque ad sint fugit
-              architecto incidunt iste culpa perspiciatis possimus voluptates
-              aliquid consequuntur cumque quasi. Perspiciatis.
-            </p>
-          </div>
-        </div>
-        <div class="col-md-4 col-md-pull-7">
-          <div class="booking-form">
-            <form>
-              <div class="form-group">
-                <span class="form-label">Add Review </span>
-
-                <textarea
-                  rows="5"
-                  cols="5"
-                  class="form-control"
-                  placeholder="Enter your message"
-                  #message
-                ></textarea>
-              </div>
-
-              <div class="form-btn">
-                <div class="submit-btn" (click)="AddReview(message.value)">
-                  Submit Message
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+<footer class="footer-14398">
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-md-3">
+        <a href="#" class="footer-site-logo">Tiatro</a>
+        <!-- <p>Your Opinion Matters, <a href="#">Add Review </a></p> -->
+        <p>Make Reservation For Any Event</p>
+      </div>
+      <div class="col-md-2 ml-auto">
+        <h3>Popular Vendors</h3>
+        <ul class="list-unstyled links">
+          <li>
+            <a href="https://www.cairoopera.org/" target="_blank">Opera</a>
+          </li>
+          <li>
+            <a
+              href="https://cairoopera.org/%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B1%D8%AD/%D9%85%D8%B3%D8%B1%D8%AD-%D8%A7%D9%84%D8%AC%D9%85%D9%87%D9%88%D8%B1%D9%8A%D8%A9/"
+              target="_blank"
+              >ElGomhorya Theater</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://cairoopera.org/%D8%A7%D9%84%D9%85%D8%B3%D8%A7%D8%B1%D8%AD/%D9%85%D8%B3%D8%B1%D8%AD-%D8%B3%D9%8A%D8%AF-%D8%AF%D8%B1%D9%88%D9%8A%D8%B4/"
+              target="_blank"
+              >Darwish Theater</a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2 ml-auto">
+        <h3>What's on</h3>
+        <ul class="list-unstyled links">
+          <li><a routerLink="event/allevents">Events</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2 ml-auto">
+        <h3>About</h3>
+        <ul class="list-unstyled links">
+          <li><a routerLink="aboutus">Add Review</a></li>
+        </ul>
       </div>
     </div>
   </div>
-</div>
+</footer>

@@ -1,12 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
 
 nav {
-  background-color: black !important;
+  background-color: black;
 }
 .nav-container {
   display: flex;
   justify-content: space-evenly;
   padding-bottom: 10px;
+  
 }
 
 .logo {
@@ -46,6 +47,7 @@ li {
 .nav-icon {
   font-size: 2rem;
   cursor: pointer;
+  min-width: fit-content;
 }
 
 .nav-profile {
@@ -60,8 +62,11 @@ i {
 }
 
 .badgee {
-  color: #00a97f;
-  /* background-color: orange; */
+  color: white;
+  vertical-align: top;
+  font-size: 12px;
+  background-color: #00a97f;
+  border-radius: 50%;
   /* position: absolute;
   right: 0;
   top: 0; */
@@ -73,4 +78,8 @@ i {
     min-width: 150px;
     margin: 5px 0;
   }
+  nav{
+    position: relative;
+  }
+
 }

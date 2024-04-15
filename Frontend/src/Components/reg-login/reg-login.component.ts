@@ -13,11 +13,17 @@ import { LoginService } from '../../Services/login.services';
 import { RegisterService } from '../../Services/register.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { GuestHeaderLinksComponent } from '../guest-header-links/guest-header-links.component';
 
 @Component({
   selector: 'app-reg-login',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule, HttpClientModule],
+  imports: [
+    ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule,
+    GuestHeaderLinksComponent,
+  ],
   providers: [LoginService, RegisterService],
   templateUrl: './reg-login.component.html',
   styleUrl: './reg-login.component.css',
@@ -27,11 +33,15 @@ export class RegLoginComponent {
   responseData: any;
   responseHeaders: any;
   image: any;
+
+  registerError: any = null;
+  logInError: any = null;
+
   constructor(
     private logService: LoginService,
     private regService: RegisterService,
     private router: Router
-  ) { }
+  ) {}
   mySignInFormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required]),
     password: new FormControl('', [
@@ -48,7 +58,7 @@ export class RegLoginComponent {
       Validators.pattern('^[a-zA-Z0-9_.]+$'),
     ]),
     gender: new FormControl({
-      gender: ''
+      gender: '',
     }),
     password: new FormControl('', [
       Validators.pattern('^(?=.*[a-zA-Z])(?=.*\\d).{8,}$'),
@@ -102,28 +112,29 @@ export class RegLoginComponent {
       // console.log(formData);
       this.regService.signUp(formData).subscribe({
         next: (data) => {
-          console.log("REGISTER COMP: REGSERVICE.SIGNUP")
-          if (data) {
-           
+          console.log('REGISTER COMP: REGSERVICE.SIGNUP');
+          if (data.body.message != 'already registered') {
             const authToken = data.headers.get('x-auth-token');
-            // console.log("authToken: \n" + JSON.stringify(authToken));
-            localStorage.setItem('access_token', authToken);
-            const decoded = jwtDecode(authToken);
-            // console.log('Decoded token \n' + decoded);
-            window.location.reload();
-
+            if (authToken) {
+              // console.log("authToken: \n" + JSON.stringify(authToken));
+              localStorage.setItem('access_token', authToken);
+              const decoded = jwtDecode(authToken);
+              // console.log('Decoded token \n' + decoded);
+              window.location.reload();
+            }
           } else {
-
-            console.log("REGISTER COMP: NO DATA RETURNED IN REGSERVICE.SIGNUP");
+            alert('Already Registered');
           }
-
 
           // console.log('x-auth-token:', authToken);
           // this.router.navigate(['/']);
-
         },
         error: (err) => {
-          console.log("ERROR CAUGHT: REGISTER COMP->REGSERVICE.SIGNUP->TOKEN ERROR")
+          this.registerError = true;
+
+          console.log(
+            'ERROR CAUGHT: REGISTER COMP->REGSERVICE.SIGNUP->TOKEN ERROR'
+          );
         },
       });
     } else {
@@ -141,17 +152,21 @@ export class RegLoginComponent {
           const authToken = data.headers.get('x-auth-token');
           // console.log('x-auth-token:', authToken);
           // console.log("authToken: \n" + JSON.stringify(authToken));
-
+          this.logInError = false;
           localStorage.setItem('access_token', authToken);
           const decoded = jwtDecode(authToken);
           console.log('Decoded token \n' + decoded);
 
-
-          window.location.reload();
+          if (this.router.url === '/login') {
+            this.router.navigate(['/']);
+          } else {
+            window.location.reload();
+          }
           // const decodedToken = jwt_decode();
           // console.log(decodedToken);
         },
         error: (err) => {
+          this.logInError = true;
           console.log(err);
         },
       });

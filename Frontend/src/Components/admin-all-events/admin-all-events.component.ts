@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from '../../Services/event.service';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
 import { AdminAddEventComponent } from '../admin-add-event/admin-add-event.component';
 import { AdminUpdateEventComponent } from '../admin-update-event/admin-update-event.component';
 

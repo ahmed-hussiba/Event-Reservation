@@ -1,10 +1,11 @@
 import { Component, Input, NgModule, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { EventService } from '../../Services/event.service';
 import { HttpClientModule } from '@angular/common/http';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { FormsModule } from '@angular/forms';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-all-events',
@@ -13,29 +14,50 @@ import { UserHeaderLinksComponent } from '../user-header-links/user-header-links
     RouterModule,
     HttpClientModule,
     FormsModule,
-    UserHeaderLinksComponent],
+    UserHeaderLinksComponent,
+    FooterComponent
+  ],
   providers:[EventService],
   templateUrl: './all-events.component.html',
   styleUrl: './all-events.component.css'
 })
 export class AllEventsComponent implements OnInit {
-constructor(private evService:EventService){}
+constructor(private evService:EventService,
+  private activatedRoute: ActivatedRoute
+){}
 allEv:any;
+
 searchData:{ event: { name: string } }[] =[];
 flag:boolean=true;
 ngOnInit(): void {
-  this.evService.GetAllEvents().subscribe({
-    next:(data)=>{
-      this.allEv=data;
-      this.allEv=this.allEv.eventsWithImgs;
-      this.searchData=this.allEv
-      console.log(this.searchData+"seeeeearchdataaa");
-      
-      console.log(this.allEv);
-    },
-    error:(err)=>{console.log(err);
+  let categoryName = this.activatedRoute.snapshot.paramMap.get("name")
+  if(!categoryName)
+    {
+      this.evService.GetAllEvents().subscribe({
+        next:(data)=>{
+          this.allEv=data;
+          this.allEv=this.allEv.eventsWithImgs;
+          this.searchData=this.allEv
+        },
+        error:(err)=>{console.log(err);
+        }
+      })
     }
-  })
+    else{
+      this.evService.GetEventByCategoryName(categoryName).subscribe({
+            next:(data)=>{
+              console.log(data);
+              this.allEv = data
+              this.allEv=this.allEv.eventsWithImgs;
+              this.searchData=this.allEv
+            },
+            error:(err)=>{
+              console.log(err);
+              
+            }
+          });
+    }
+ 
 }
 EvName:string="";
 filteredItems:any[]=[];

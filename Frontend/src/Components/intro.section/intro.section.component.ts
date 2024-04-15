@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
   templateUrl: './intro.section.component.html',
   styleUrl: './intro.section.component.css',
 })
-export class IntroSectionComponent {}
+export class IntroSectionComponent {
+
+  ngOnInit () {
+    console.log("Intro");
+
+  }
+}

@@ -1,0 +1,56 @@
+<div id="booking" class="section footer">
+    <div class="section-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 col-md-push-5">
+            <div class="booking-cta">
+              <h1>Make your reservation</h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi
+                facere, soluta magnam consectetur molestias itaque ad sint fugit
+                architecto incidunt iste culpa perspiciatis possimus voluptates
+                aliquid consequuntur cumque quasi. Perspiciatis.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4 col-md-pull-7 review-body">
+            <div class="booking-form">
+              <form>
+                <div class="form-group">
+                  <span class="form-label">Add Review </span>
+  
+                  <textarea rows="5" cols="5" class="form-control" placeholder="Enter your message" #message></textarea>
+                </div>
+  
+                @if (reviewError == null) {
+  
+                } @else {
+  
+  
+                @if (reviewError) {
+                <p class="review-error">Error Posting Review. Check if Review is more than 2 sentences and 5 words!</p>
+                } @else {
+                <p class="review-success">Review Sent Successfully!</p>
+                }
+  
+                }
+  
+                @if (isSignedIn == null) {
+  
+                } @else {
+                @if (!isSignedIn) {
+                <p class="review-error">Please Sign In to add a review!</p>
+                }
+                }
+                <div class="form-btn">
+                  <div class="submit-btn" (click)="AddReview(message.value)">
+                    Submit Message
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

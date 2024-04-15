@@ -1,22 +1,38 @@
 <div class="homeContainer">
   <app-try></app-try>
-  <!-- @defer (on timer(4000ms)) {  -->
-  @if (token) { @if(IsAdmin){
+@defer (on timer (3000ms)) {
+
+  @if (token) {
+  @if(IsAdmin){
   <h1>Admin</h1>
   } @else {
-  <app-user-header-links></app-user-header-links>
+    <div class="header-container">
+      <app-user-header-links></app-user-header-links>
+    </div>
 
   } } @else {
-  <app-guest-header-links></app-guest-header-links>
+    <div class="header-container">
+      <app-guest-header-links></app-guest-header-links>
+    </div>
   }
-  <!-- <app-intro></app-intro> -->
-  <app-promotion-events [events]="events"></app-promotion-events>
-  <!-- <app-categories></app-categories> -->
-  <app-events></app-events>
-  <app-reviews></app-reviews>
-  <app-footer></app-footer>
-  <!-- }@placeholder { -->
 
-  <!-- <app-intro></app-intro> -->
-  <!-- } -->
+  <app-promotion-events [events]="events"></app-promotion-events>
+  <app-categories></app-categories>
+
+
+<div class="events">
+  <app-events></app-events>
+</div>
+  
+<div class="reviews">
+  <app-reviews></app-reviews>
+</div>
+<app-footer></app-footer>
+  
+  
+}@placeholder {
+
+  <app-intro></app-intro>
+  } 
+
 </div>

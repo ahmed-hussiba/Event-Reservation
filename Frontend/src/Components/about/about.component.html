@@ -1,38 +1,61 @@
-@if (token) {
+
+@if (tokenFlag) {
+
+<div class="header-container">
     <app-user-header-links></app-user-header-links>
+</div>
 }
-@else{
+@else {
+<div class="header-container">
     <app-guest-header-links></app-guest-header-links>
+</div>
 }
 
-
-<div class=" parent">
-    <div class="header">
-       <div class="headCol">
-        <h1>About</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad quaerat nisi molestias nobis atque, perferendis fugiat incidunt. Obcaecati iure enim in fugiat quo distinctio, odit itaque. Commodi tempore sed eos.</p>
-       </div>
-    <div class="header-image"><img src="../../assets/Images/ticket.jpeg" alt="" width="100%" height="100%"></div>  
-    </div>  
-    <div class="header-image2"><img src="../../assets/Images/ticket.jpeg" alt="" width="100%" height="100%"></div>  
- 
-    <div class="prt1">
-    <h3>Who We Are ?</h3>
-    <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti temporibus voluptates incidunt blanditiis cumque quia consectetur deserunt, culpa a modi assumenda similique! Voluptate, ratione debitis. Consequatur fuga quisquam omnis eius?</div>
-</div>
-<div class="prt2">
-    <h3>What We Do ?</h3>
-    <div class="imgLine">
-        <div class="imgCard"><img alt="" src="../../assets/Images/ticket2.jpeg" width="100%" height="100%"></div>
-        <div class="imgCard"><img alt="" src="../../assets/Images/ticket2.jpeg" width="100%" height="100%"></div>
-        <div class="imgCard"><img alt="" src="../../assets/Images/ticket2.jpeg"width="100%" height="100%"></div>
-
+<div class="parent">
+    <div class="title">
+        <h1>Who Are We?</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa sunt laudantium ea nesciunt vitae illo sed ducimus doloremque ut aspernatur quod alias neque, harum commodi. Voluptatem facere reiciendis cum sed?
+        </p>
     </div>
-</div>
-<div class="prt3">
-    <h3>Reviews</h3>
-    <div class="rev">
-        <app-reviews></app-reviews>
+    <div class="item">
+        <div class="content">
+            <h3>Gomhoreya Theatre</h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni, nam asperiores consequatur dolores cumque incidunt at aliquam quaerat repudiandae autem mollitia fugiat nisi aspernatur expedita ut! Et ipsa officia odit?
+            </p>
+        </div>
+        <div class="image">
+            <img src="../../assets/Images/gomhoreya theatre.jpeg">
+        </div>
     </div>
-</div>  
+    <div class="item">
+
+        <div class="image">
+            <img src="../../assets/Images/sayed darwish theatre.jpg">
+        </div>
+        <div class="content">
+            <h3>Sayed Darwish Theatre</h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni, nam asperiores consequatur dolores cumque incidunt at aliquam quaerat repudiandae autem mollitia fugiat nisi aspernatur expedita ut! Et ipsa officia odit?
+            </p>
+        </div>
+       
+    </div>
+    <div class="item">
+
+        <div class="content">
+            <h3>Opera</h3>
+            <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Magni, nam asperiores consequatur dolores cumque incidunt at aliquam quaerat repudiandae autem mollitia fugiat nisi aspernatur expedita ut! Et ipsa officia odit?
+            </p>
+        </div>
+       
+        <div class="image">
+            <img src="../../assets/Images/opera.jpg">
+        </div>
+    </div>
+    <app-add-review></app-add-review>
+    <app-footer></app-footer>
 </div>
+

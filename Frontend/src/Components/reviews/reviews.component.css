@@ -1,3 +1,6 @@
+.carousel-indicators{
+  visibility: hidden;
+}
 .feedback {
   /* background-image: url("../../assets/Images/review2BK.jpg"); */
 

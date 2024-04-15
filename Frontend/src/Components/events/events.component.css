@@ -37,7 +37,10 @@
 .title-container {
   
 }
-
+.category-text{
+  color: #00a97f;
+  font-style: italic;
+}
 .cart-btn-container {
   margin: auto;
 }

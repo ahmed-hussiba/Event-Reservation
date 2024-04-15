@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ReviewsComponent } from '../reviews/reviews.component';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 import { GuestHeaderLinksComponent } from '../guest-header-links/guest-header-links.component';
 import { LoginService } from '../../Services/login.services';
 import { CommonModule } from '@angular/common';
+import { JwtPayload, jwtDecode } from 'jwt-decode';
+import { AddReviewComponent } from '../add-review/add-review.component';
 
 @Component({
   selector: 'app-about',
   standalone: true,
   imports: [
-    ReviewsComponent,
+    AddReviewComponent,
     UserHeaderLinksComponent,
     GuestHeaderLinksComponent,
     CommonModule
@@ -17,11 +19,44 @@ import { CommonModule } from '@angular/common';
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent implements OnInit {
+export class AboutComponent implements OnInit,AfterViewInit {
   token:any;
+  tokenFlag:any;
   constructor (private loginService:LoginService){}
+  ngAfterViewInit(): void {
+    window.addEventListener('scroll', function() {
+      var box = document.querySelectorAll('.item');
+      for (let i = 0; i < box.length; i++) {
+        var boxPosition = box[i]?.getBoundingClientRect().top;
+        var screenPosition = window.innerHeight;
+      
+      // If the top of the box is within the viewport
+      if (boxPosition! < screenPosition) {
+        box[i]?.classList.add('fade-in');
+      }
+        
+      }
+      
+      // You can remove the class when scrolling up to create a continuous effect
+      // else {
+      //   box.classList.remove('fade-in');
+      // }
+    });
+  }
   ngOnInit(): void {
+
     this.token = this.loginService.getToken();
+
+    if (this.token) {
+      const decoded = jwtDecode(this.token) as JwtPayload;
+      if(decoded)
+        {
+          this.tokenFlag = true;
+        }
+        else{
+          this.tokenFlag = false;
+        }
+    }
   }
   
   

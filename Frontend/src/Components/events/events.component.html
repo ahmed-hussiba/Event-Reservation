@@ -18,8 +18,9 @@
 
         <div class="text-container">
           <p class="card-text">{{ event.event.description }}</p>
+          <p class="card-text category-text">Category: {{ event.event.category }}</p>
         </div>
-        <!-- <a routerLink="/eventdetails" (click)="GoToEvent(event.event._id)" class="bookBtn btn btn-primary mt-3">Book</a> -->
+        
 
         <div class="cart-btn-container">
           <button type="button" class="button__book" routerLink="eventdetails/{{event.event._id}}" (click)="GoToEvent(event.event._id)">

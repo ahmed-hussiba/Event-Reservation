@@ -52,7 +52,9 @@
           <div class="totalsummary"><strong>Count :</strong> <span>{{orderQuantity}}</span> </div>
           <div class="totalsummary"><strong>Total Price :</strong><span>{{orderPrice}}</span></div>
         </div>
-             <button routerLink="/users/{{userID}}/payment" (click)="checkOut()">Check Out</button>
+             <!-- <button routerLink="/users/{{userID}}/payment" (click)="checkOut()">Check Out</button> -->
+             <button  (click)="checkOut()">Check Out</button>
+
       </div>
     </div>
   </div>

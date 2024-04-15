@@ -16,7 +16,7 @@ import { EventService } from '../../Services/event.service';
 export class EventsComponent implements OnInit {
   events: any;
   twoEvents: {
-    event: { _id: Number; name: string; description: string };
+    event: { _id: Number; name: string; description: string,category:string };
     imgBuffer: string;
   }[] = [];
   constructor(
@@ -33,6 +33,8 @@ export class EventsComponent implements OnInit {
         // }
         this.twoEvents.push(this.events['eventsWithImgs'][0]);
         this.twoEvents.push(this.events['eventsWithImgs'][1]);
+        this.twoEvents.push(this.events['eventsWithImgs'][2]);
+
         // console.log(this.twoEvents);
       },
       error: (err) => {

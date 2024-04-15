@@ -3,7 +3,7 @@ import { UserService } from '../../Services/user.service';
 import { LoginService } from '../../Services/login.services';
 import { jwtDecode } from 'jwt-decode';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SharedEventsService } from '../../Services/shared-events.service';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
@@ -31,7 +31,8 @@ export class CartComponent implements OnInit {
   constructor(
     private userService: UserService,
     private loginServie: LoginService,
-    private sharedService: SharedEventsService
+    private sharedService: SharedEventsService,
+    private router:Router
   ) { }
   ngOnInit(): void {
     const token: any = this.loginServie.getToken()
@@ -62,29 +63,30 @@ export class CartComponent implements OnInit {
     }
   }
 
-  // eventId: Number,
-  //       numberOfTickets: Number,
-  //       totalPrice: Number,
-  //       level:
   checkOut() {
-    for (let i = 0; i < this.cartItems.cart.length; i++) {
-      this.orderDetails.push(
-        {
-          eventId: this.cartItems.cart[i].eventId,
-          numberOfTickets: this.cartItems.cart[i].quantity,
-          totalPrice: this.cartItems.cart[i].quantity * this.cartItems.cart[i].ticketPrice,
-          level: this.cartItems.cart[i].ticketLevel
+    if(this.cartItems.cart.length!=0)
+      {
+
+        for (let i = 0; i < this.cartItems.cart.length; i++) {
+          this.orderDetails.push(
+            {
+              eventId: this.cartItems.cart[i].eventId,
+              numberOfTickets: this.cartItems.cart[i].quantity,
+              totalPrice: this.cartItems.cart[i].quantity * this.cartItems.cart[i].ticketPrice,
+              level: this.cartItems.cart[i].ticketLevel
+            }
+          )
         }
-      )
-    }
-
-    let order = {
-      totalPrice: this.orderPrice,
-      countOfTickets: this.orderQuantity,
-      orderDetails: this.orderDetails
-    };
-
-    this.sharedService.setData(order);
+        
+        let order = {
+          totalPrice: this.orderPrice,
+          countOfTickets: this.orderQuantity,
+          orderDetails: this.orderDetails
+        };
+        
+        this.sharedService.setData(order);
+        this.router.navigate([`/users/${this.userID}/payment`])
+      }
   }
 
 

@@ -1,16 +1,16 @@
-import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { ReviewService } from '../../Services/review.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-footer',
+  selector: 'app-add-review',
   standalone: true,
   imports: [],
   providers: [ReviewService],
-  templateUrl: './footer.component.html',
-  styleUrl: './footer.component.css',
+  templateUrl: './add-review.component.html',
+  styleUrl: './add-review.component.css'
 })
-export class FooterComponent {
+export class AddReviewComponent {
   reviewError  : any = null;
   isSignedIn : any = null;
   constructor(private reviewService: ReviewService, private router: Router) {}

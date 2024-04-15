@@ -5,12 +5,13 @@ import { SharedEventsService } from '../../Services/shared-events.service';
 import { OrderServiceService } from '../../Services/order.service.service';
 import { Route, Router, RouterModule } from '@angular/router';
 import { PaymentServiceService } from '../../Services/payment.service.service';
-import {render,paypal} from 'creditcardpayments/creditCardPayments'
+import {render} from 'creditcardpayments/creditCardPayments'
+import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 
 @Component({
   selector: 'app-payment',
   standalone: true,
-  imports: [CommonModule,ReactiveFormsModule, RouterModule],
+  imports: [CommonModule,ReactiveFormsModule, RouterModule,UserHeaderLinksComponent],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.css'
 })
@@ -18,8 +19,7 @@ export class PaymentComponent implements OnInit{
   order:any;
   constructor(private serv:SharedEventsService,
     private orderService:OrderServiceService,
-    private router:Router,
-    private paymentService:PaymentServiceService){
+    private router:Router,){
     }
   ngOnInit(): void {
     

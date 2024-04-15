@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Dosis:wght@200..800&display=swap');
+.parent{
+width: 100%;
+}
+
+.title{
+    text-align: center;
+    width: 50%;
+    margin: 5vw auto;
+}
+
+h1,h3{
+    font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color:#00A97F;
+  letter-spacing: 2px;
+}
+p{
+    font-family: "Dosis", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+.item
+{
+    display: flex;
+    width: 100%;
+    margin: 5vw auto;
+    opacity: 0;
+    transition: opacity 1.4s ease-in-out;
+}
+.fade-in{
+    opacity: 1;
+}
+.item div
+{
+    width: 50%;
+
+}
+
+img{
+    width: 40vw;
+    border-radius: 10px;
+}
+.image
+{
+    text-align: center;
+}
+
+.content{
+    text-align: center;
+    margin: auto 5vw;
+}
+
+/* p{
+    text-align: start;
+} */

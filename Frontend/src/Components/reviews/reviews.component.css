@@ -1,15 +1,37 @@
 .feedback {
-  background-image: url("../../assets/Images/review2BK.jpg");
+  /* background-image: url("../../assets/Images/review2BK.jpg"); */
+
+  /* background: rgb(0,169,127);
+  background: linear-gradient(90deg, rgba(0,169,127,1) 23%, rgba(8,245,95,1) 71%); */
+
+background: rgb(171,179,176);
+background: linear-gradient(90deg, rgba(171,179,176,1) 24%, rgba(200,203,202,1) 50%, rgba(230,230,230,0) 96%);
+
+/* background: rgb(171,179,176);
+background: linear-gradient(90deg, rgba(171,179,176,1) 24%, rgba(200,203,202,1) 50%, rgba(230,230,230,0) 96%); */
+
+  /* background-color: black; */
+
+  height: fit-content;
+  padding: 5vw 0;
+
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
+
 .carousel-indicators button {
-  width: 15px !important ;
+  width: 15px !important;
   height: 15px !important;
   border-radius: 50%;
 }
+
+.img {
+  width: 10vw;
+  height: 10vw;
+}
+
 .nav-item a {
   position: relative;
 }
@@ -17,6 +39,7 @@
 .nav-line {
   transition: all 1s;
 }
+
 .nav-item a:hover .nav-line {
   background-color: #fff;
   position: absolute;

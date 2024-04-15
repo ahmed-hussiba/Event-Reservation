@@ -6,8 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class RegisterService {
-  constructor(private http: HttpClient) {}
-  private DB_URL = 'http://localhost:7000/api/register';
+
+  constructor(private http: HttpClient) { }
+  private DB_URL = "http://localhost:7000/api/register";
   // private DB_URL = 'https://event-reservation-2.onrender.com/api/register';
 
   //sign up

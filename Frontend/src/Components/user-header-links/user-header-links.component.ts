@@ -16,6 +16,8 @@ export class UserHeaderLinksComponent implements OnInit {
   UserImg: any;
   cartLength: any;
   ngOnInit(): void {
+    console.log("Heaedr");
+
     let token = localStorage.getItem('access_token');
 
     if (token) {

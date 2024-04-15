@@ -3,12 +3,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { faL } from '@fortawesome/free-solid-svg-icons';
 import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit, ViewChild, input } from '@angular/core';
+import { RouterModule } from '@angular/router';
 declare var $: any;
 
 @Component({
   selector: 'app-promotion-events',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, RouterModule],
   providers: [EventService],
   templateUrl: './promotion-events.component.html',
   styleUrl: './promotion-events.component.css',

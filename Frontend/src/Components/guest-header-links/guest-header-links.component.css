@@ -46,7 +46,23 @@ li {
   justify-content: center;
 }
 
+.ads {
+  width: 100%;
+  height: 10vh;
+  text-align: center;
+  background: rgb(19,109,147);
+background: linear-gradient(90deg, rgba(19,109,147,1) 20%, rgba(7,153,171,1) 74%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
 
+.ads p {
+  margin: auto 0;
+}
 
 
 @media screen and (min-width: 200px) and (max-width: 992px) {

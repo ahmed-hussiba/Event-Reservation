@@ -4,7 +4,6 @@ const userController = require("../Controllers/Register.Controller");
 const multer = require("multer");
 const path = require("path");
 const extensions = require("../Utils/Constants");
-const { log } = require("console");
 
 // let finalName;
 

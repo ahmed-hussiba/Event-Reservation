@@ -14,9 +14,13 @@ const storage = multer.diskStorage({
 
   filename: function (req, file, cb) {
     /// favicon.a.png
+    console.log(file.originalname);
     n = file.originalname.split(".")[1];
     extensions.setExtensions(n);
-    cb(null, "newEvent." + n);
+    console.log(n);
+    console.log(`img=${file.originalname}`);
+
+    cb(null,"newEvent."+n);
   },
 });
 
@@ -26,7 +30,6 @@ router.get("/", EventController.GetAllEvents);
 router.get("/promoted", EventController.GetPromotedEvents);
 router.get("/:id", EventController.GetEventByID);
 router.get("/category/:name", EventController.GetEventByCategoryName);
-
 
 // router.post('/',AdminPermissionMW,EventController.AddEvent);
 

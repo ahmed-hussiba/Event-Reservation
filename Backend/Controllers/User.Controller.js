@@ -1,6 +1,8 @@
 const userModel = require("../Models/userModel");
 const path = require("path");
 const fs = require("fs");
+const extensions = require("../Utils/Constants");
+const JWT = require("jsonwebtoken");
 
 let getAllUsers = async (req, res) => {
   let users = await userModel.find({});
@@ -39,20 +41,76 @@ let getUser = async (req, res) => {
 };
 
 let updateUser = async (req, res) => {
-  let newUser = req.body;
+  // let newUser = req.body;
+  console.log(`bodyyy=${req.body.data}`);
+  let newUser = JSON.parse(req.body.data);
   let id = req.params.id;
 
   ///DON'T UPDATE PASSWORD
 
   if (newUser.password)
     return res.status(401).json({ message: "can't update password" });
+  // console.log("img=", req.body.image);
+  let img = req.body.image;
+  // console.log(img);
+  if (img == "undefined") {
+    // console.log("here.......");
+    let updatedUser = await userModel.findOneAndUpdate({ _id: id }, newUser, {
+      new: true,
+    });
 
-  let updatedUser = await userModel.findOneAndUpdate({ _id: id }, newUser, {
-    new: true,
-  });
+    if (updatedUser) {
+      console.log("newUSer==", updatedUser);
+      return res.status(200).json({ updatedUser });
+    }
+  } else {
+    let oldUser = await userModel.findOne({ _id: id });
 
-  if (updatedUser) {
-    return res.status(200).json({ updatedUser });
+    console.log("old image USer", oldUser.imageURL);
+    let oldPath = path.join(
+      __dirname,
+      "../images/User-Profile-Images/" + oldUser.imageURL
+    );
+    let newPath = path.join(
+      __dirname,
+      "../images/User-Profile-Images/" +
+        newUser.username +
+        "." +
+        extensions.getExtension()
+    );
+    let tmpPath = path.join(
+      __dirname,
+      "../images/User-Profile-Images/newUser." + extensions.getExtension()
+    );
+
+    fs.unlink(oldPath, (err) => {
+      console.log(err);
+    });
+    newUser.imageURL = newUser.username + "." + extensions.getExtension();
+    let updatedUser = await userModel.findOneAndUpdate({ _id: id }, newUser, {
+      new: true,
+    });
+
+    const token = JWT.sign(
+      {
+        userID: newUser._id,
+        userName: newUser.username,
+        imageURL: newUser.imageURL,
+        userEmail: newUser.email,
+      },
+      "private"
+    );
+
+    // console.log(token);
+    res.header("x-auth-token", "Bearer " + token);
+
+    fs.rename(tmpPath, newPath, (err) => {
+      console.log(err);
+    });
+
+    if (updatedUser) {
+      return res.status(200).json({ updatedUser });
+    }
   }
 
   return res.status(404).json({ message: "Bad Request" });
@@ -89,13 +147,13 @@ let addUser = async (req, res) => {
 };
 
 let getUserCart = async (req, res) => {
-  let id = req.params.id; 
+  let id = req.params.id;
 
   let user = await userModel.findOne({ _id: id });
 
   if (user) {
     let cart = user.cart;
-    return res.status(200).json({ cart:cart, cartLength:cart.length});
+    return res.status(200).json({ cart: cart, cartLength: cart.length });
   }
 
   return res.status(404);
@@ -143,15 +201,11 @@ let deleteFromUserCart = async (req, res) => {
 
   return res.status(400).json({ message: "Not Found" });
 };
-let deleteUserCart = async (id)=>
-{
-
-  let foundUser = await userModel.findOneAndUpdate({_id:id},{cart:[]});
-  if(foundUser)
-    console.log(foundUser._id);
-  else
-    console.log("notFound");
-}
+let deleteUserCart = async (id) => {
+  let foundUser = await userModel.findOneAndUpdate({ _id: id }, { cart: [] });
+  if (foundUser) console.log(foundUser._id);
+  else console.log("notFound");
+};
 
 function validateCartObj(obj) {
   if (isNaN(+obj.eventId) || isNaN(+obj.quantity) || isNaN(+obj.ticketPrice))
@@ -169,5 +223,5 @@ module.exports = {
   addToUserCart,
   getUserCart,
   deleteFromUserCart,
-  deleteUserCart
+  deleteUserCart,
 };

@@ -4,7 +4,7 @@ const OrderController = require("../Controllers/Order.Controller");
 const UserPermissionMW = require("../MiddleWares/UserPermissionMW");
 const AdminPermissionMW = require("../MiddleWares/AdminPermissionMW");
 
-router.get("/", AdminPermissionMW, OrderController.getAllOrders); //admin
+router.get("/", OrderController.getAllOrders); //admin
 
 router.get("/:id", OrderController.getOrderByID); //user
 

@@ -28,6 +28,8 @@ import { AdminHomeComponent } from '../Components/admin-home/admin-home.componen
 import { AdminAllEventsComponent } from '../Components/admin-all-events/admin-all-events.component';
 import { AdminAddEventComponent } from '../Components/admin-add-event/admin-add-event.component';
 import { AdminShowOrdersComponent } from "../Components/admin-show-orders/admin-show-orders.component";
+import { DoughnutChartComponent } from '../Components/doughnut-chart/doughnut-chart.component';
+import { BarchartComponent } from '../Components/barchart/barchart.component';
 
 @Component({
     selector: 'app-root',
@@ -56,7 +58,9 @@ import { AdminShowOrdersComponent } from "../Components/admin-show-orders/admin-
         AdminHomeComponent,
         AdminAllEventsComponent,
         AdminAddEventComponent,
-        AdminShowOrdersComponent
+        AdminShowOrdersComponent,
+        DoughnutChartComponent,
+        BarchartComponent,
     ]
 })
 export class AppComponent {

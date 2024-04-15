@@ -15,6 +15,8 @@ import { AdminAllEventsComponent } from '../Components/admin-all-events/admin-al
 import { AdminUpdateEventComponent } from '../Components/admin-update-event/admin-update-event.component';
 import { AdminShowOrdersComponent } from '../Components/admin-show-orders/admin-show-orders.component';
 import { RedirectedLoginComponent } from '../Components/redirected-login/redirected-login.component';
+import { ErrorComponent } from '../Components/error/error.component';
+import { adminGuardGuard } from '../Guards/admin-guard.guard';
 
 export const routes: Routes = [
   {
@@ -41,7 +43,7 @@ export const routes: Routes = [
     canActivate: [guardAuthGuard],
 
   },
-  { path: 'about', component: AboutComponent },
+  { path:'about', component: AboutComponent },
   {
     path: 'profile', component: ProfileComponent,
     canActivate: [guardAuthGuard],
@@ -49,30 +51,30 @@ export const routes: Routes = [
   },
   {
     path:'admin',component:AdminHomeComponent,
-    // canActivate:[guardAuthGuard]
+    canActivate:[adminGuardGuard]
   },
   {
     path:'addevent', component:AdminAddEventComponent,
-    // canActivate:[guardAuthGuard]
+    canActivate:[adminGuardGuard]
 
   },
   {
     path:'updateevent/:id', component:AdminUpdateEventComponent,
-    // canActivate:[guardAuthGuard]
+    canActivate:[adminGuardGuard]
 
   },
   {
     path:'admin/allevents' , component:AdminAllEventsComponent,
-    // canActivate:[guardAuthGuard]
+    canActivate:[adminGuardGuard]
 
   },
   {
     path:'admin/allorders' , component:AdminShowOrdersComponent,
-    // canActivate:[guardAuthGuard]
+    canActivate:[adminGuardGuard]
 
   },
   {
-    path:'**', component:AboutComponent, 
+    path:'**', component:ErrorComponent, 
   }
 
 ];

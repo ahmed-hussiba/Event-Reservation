@@ -6,6 +6,8 @@
   <!-- edit form column -->
   <div class="col-md-12 personal-info m-auto">
     <h3>Event information</h3>
+@defer (on timer(2000ms)) {
+
 
     @if (event) {
     <form role="form" [formGroup]="addForm">
@@ -17,14 +19,6 @@
             alt="avatar"
             width="400"
             height="200"
-          />
-          <h6>Upload image</h6>
-
-          <input
-            type="file"
-            formControlName="imageURl"
-            class="form-control"
-            (change)="triggerFileInput($event)"
           />
         </div>
       </div>
@@ -209,6 +203,14 @@
       </div>
     </form>
     }
+  }
+  @placeholder {
+    <div class="spinner">
+      <div class="spinner-border text-success" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+  }
   </div>
 </div>
 <hr />

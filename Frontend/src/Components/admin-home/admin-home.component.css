@@ -1,0 +1,129 @@
+.bar-chart{
+    width: 70%;
+    /* height: 30%; */
+background-color: #fffcfc;
+border-radius: 10px;
+    margin-left: 25%;
+}
+
+
+.doughnut-chart{
+    width: 40%;
+    /* height: 30%; */
+    margin-bottom: 3%;
+    margin-top: 2%;
+    margin-left: 4%;
+    background-color: #fffcfc;
+    border-radius: 10px;
+}
+.chart-container{
+  width: 70%;
+    display: flex;
+    flex-direction: column;
+
+}
+.main-container{
+width: 100%;
+height: 100%;
+display: flex;
+background-color: white;
+}
+
+.spinner{
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner-border{
+  width: 5vw;
+  height: 5vw;
+}
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500");
+li{
+  margin-bottom: 10px;
+}
+body {
+  overflow-x: hidden;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+
+}
+
+/* Toggle Styles */
+
+#viewport {
+  padding-left: 250px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#content {
+  width: 100%;
+  position: relative;
+  margin-right: 0;
+}
+
+/* Sidebar Styles */
+
+#sidebar {
+  z-index: 1000;
+  position: fixed;
+  left: 200px;
+  width: 250px;
+  height: 100%;
+  margin-left: -250px;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.837);
+  /* background: linear-gradient(to top left, #b7b5b5d2, rgba(246, 243, 255, 1)); */
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar header {
+  /* background-color: #e0e0e0; */
+  font-size: 20px;
+  line-height: 52px;
+  text-align: center;
+}
+
+#sidebar header a {
+  color: rgb(255, 254, 254);
+  display: block;
+  text-decoration: none;
+  font-size: larger;
+}
+
+#sidebar header a:hover {
+  color: gray;
+}
+
+#sidebar .nav {
+}
+
+#sidebar .nav a {
+  background: none;
+  color: white;
+  font-size: 1.1rem;
+  text-decoration: none;
+  padding: 16px 24px;
+}
+ul{
+  padding-left: 24%;
+}
+
+
+#sidebar .nav a:hover {
+  background: none;
+  color: gray;
+}
+
+#sidebar .nav a i {
+  margin-right: 16px;
+}

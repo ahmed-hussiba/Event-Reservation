@@ -5,9 +5,6 @@ import {
   Router,
   RouterStateSnapshot,
 } from '@angular/router';
-import { LoginService } from '../Services/login.services';
-import { SharedEventsService } from '../Services/shared-events.service';
-import { RegisterService } from '../Services/register.service';
 export const guardAuthGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot

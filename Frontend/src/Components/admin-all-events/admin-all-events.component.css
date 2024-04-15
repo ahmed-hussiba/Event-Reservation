@@ -1,8 +1,203 @@
 .btn-row{
     display: flex;
+    flex-direction: column;
     justify-content: space-evenly;
 }
 .add-btn-row{
     display: flex;
     justify-content: end;
+    
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+.spinner{
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.spinner-border{
+  width: 5vw;
+  height: 5vw;
+}
+.search-container{
+  margin-top: 2vw;
+    margin-bottom: 4vw;
+    height: 5vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.search-input{
+    width: 60%;
+    height: 7vh;
+    text-indent: 15px;
+    border-radius: 20px;
+    border: solid  #00a97f 2px;
+}
+
+
+.bi{
+  color: #00a97f;
+  font-size: 2vw;
+  position: relative;
+  right: 4vw;
+  cursor: pointer;
+}
+
+
+
+
+:host {
+  --btnGreen: #00a97f;
+}
+
+.eventsContainer {
+  min-width: fit-content;
+  width: 95%;
+  /* min-height: fit-content; */
+  box-sizing: border-box;
+  margin: 5vh auto;
+  padding-bottom: 5vw;
+  background-color: rgba(230, 230, 230, 0.767);
+  border: 1px solid rgb(196, 192, 192);
+  border-radius: 20px;
+}
+
+.btn-container {
+  margin: 3vh;
+}
+
+.see-all-button {
+  font-size: 0.75rem;
+  font-weight: bolder;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  background-color: var(--btnGreen);
+  color: #fff;
+  font-weight: 600;
+}
+
+.card {
+  margin: 3vh 0;
+  width: 80vw;
+}
+
+.title-container {
+  
+}
+
+.cart-btn-container {
+  margin: auto;
+}
+
+.card-title {
+  font-size: 2vw;
+  color: #6c978c;
+  font-family: "Pacifico", cursive;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.card-text {
+  line-height: 1.25;
+
+}
+
+.button__book {
+  position: relative;
+  width: 11vw;
+  height: 40px;
+  cursor: pointer;
+
+  border: 1px solid var(--btnGreen);
+  background-color: var(--btnGreen);
+  margin-top: 2vw;
+}
+
+
+/* .button__book,
+.button__icon,
+.button__text {
+  transition: all 0.3s;
+} */
+
+.button__text{
+  text-align: center;
+}
+.button__book .button__text {
+  color: #fff;
+  font-weight: 400;
+}
+
+.button__book .button__icon {
+  position: absolute;
+  transform: translateX(109px);
+  height: 100%;
+  width: 39px;
+  background-color: var(--btnGreen);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button__book .svg {
+  width: 30px;
+  stroke: #fff;
+}
+
+.button__book:hover {
+  background: var(--btnGreen);
+}
+
+.button__book:hover .buttontext {
+  color: transparent;
+}
+
+.button__book:hover .button__icon {
+  width: 148px;
+  transform: translateX(0);
+}
+
+.button__book:active .button__icon {
+  background-color: var(--btnGreen);
+}
+
+.button__book:active {
+  border: 1px solid var(--btnGreen);
+}
+
+.bookBtn {
+  width: 50%;
+  height: 15% !important;
+  font-size: 1vw;
+}
+
+p {
+  font-size: 1.5vw;
+}
+
+@media (max-width: 880px) {
+  .flex-xs-column {
+    flex-direction: column !important;
+  }
+
+  .title-container, .text-container {
+    text-align: center;
+  }
+  .card-title {
+    font-size: 1.5em;
+  }
+
+  .card-text {
+    font-size: 0.7rem;
+    margin: 2vh 0;
+  }
+
+  .xsmallRow {
+    width: 100% !important;
+  }
 }

@@ -1,29 +1,53 @@
-<!-- admin-home.component.html
-<button routerLink="/admin/allevents">Show All Events</button>
-<div class="m-auto">Dashboard</div>
-<hr> -->
-<!-- <button routerLink="/admin/allorders">Show Orders</button> -->
-<!-- <app-user-header-links> </app-user-header-links> -->
+
 <div class="main-container ">
- 
- 
-  <div class="nav ">
-    <nav class="flex-column ">
-      <div ><a class="nav-link" routerLink="/admin/allevents">Show All Events</a></div>
-      <div> <a class="nav-link" routerLink="/admin/allorders">Show Orders</a></div>
-    </nav>
-  </div>
- 
- 
- 
-  <div class=" chart-container">
-    <div class="doughnut-chart">
-      <app-doughnut-chart></app-doughnut-chart>
+  <div id="viewport">
+    <!-- Sidebar -->
+    <div id="sidebar">
+      <header>
+        <a >Dashboard</a>
+      </header>
+      <hr>
+      <ul class="nav">
+        <li>
+          <a routerLink="/admin/allorders">
+           Show Orders
+          </a>
+        </li>
+        <li>
+          <a routerLink="/admin/allevents">
+            Show Events
+          </a>
+        </li>
+        <li>
+          <a (click)="logOut()">
+            LogOut
+          </a>
+        </li>
+       
+        
+     
+      </ul>
     </div>
-  
-    <div class="bar-chart"><app-barchart></app-barchart></div>
+    <!-- Content -->
+    <div id="content">
+      
+     
+    </div>
   </div>
+  <div class=" chart-container">
+    @defer (on timer(2000ms)) {
 
-
-
+      <div class="doughnut-chart">
+        <app-doughnut-chart></app-doughnut-chart>
+      </div>
+      
+      <div class="bar-chart"><app-barchart></app-barchart></div>
+    }@placeholder {
+      <div class="spinner">
+        <div class="spinner-border text-success" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    }
+  </div>
 </div>

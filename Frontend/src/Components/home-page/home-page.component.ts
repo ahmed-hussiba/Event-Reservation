@@ -21,6 +21,8 @@ import { JwtPayload } from '../../Interfaces/jwt-payload';
 import { IntroSectionComponent } from '../intro.section/intro.section.component';
 import { EventService } from '../../Services/event.service';
 import { FooterComponent } from '../footer/footer.component';
+import { AdminHomeComponent } from '../admin-home/admin-home.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-page',
@@ -36,7 +38,8 @@ import { FooterComponent } from '../footer/footer.component';
     CommonModule,
     AllEventsComponent,
     IntroSectionComponent,
-    FooterComponent
+    FooterComponent,
+    AdminHomeComponent
   ],
   providers: [LoginService, UserService,EventService],
   templateUrl: './home-page.component.html',
@@ -50,7 +53,8 @@ export class HomePageComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private userService: UserService,
-    private evService: EventService
+    private evService: EventService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -74,6 +78,8 @@ export class HomePageComponent implements OnInit {
 
       if (email.includes('@admin.com')) {
         this.IsAdmin = true;
+        this.router.navigate(['/admin'])
+        
       }
     }
     //#endregion

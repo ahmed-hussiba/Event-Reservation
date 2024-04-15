@@ -1,7 +1,18 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:300);
 
-.body {
+.spinner{
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+.spinner-border{
+  width: 5vw;
+  height: 5vw;
+}
+
 .form-group-type{
   display: flex;
   flex-wrap: wrap;

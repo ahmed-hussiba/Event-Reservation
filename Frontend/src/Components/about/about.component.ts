@@ -1,5 +1,4 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
-import { ReviewsComponent } from '../reviews/reviews.component';
 import { UserHeaderLinksComponent } from '../user-header-links/user-header-links.component';
 import { GuestHeaderLinksComponent } from '../guest-header-links/guest-header-links.component';
 import { LoginService } from '../../Services/login.services';
@@ -31,18 +30,11 @@ export class AboutComponent implements OnInit,AfterViewInit {
       for (let i = 0; i < box.length; i++) {
         var boxPosition = box[i]?.getBoundingClientRect().top;
         var screenPosition = window.innerHeight;
-      
-      // If the top of the box is within the viewport
       if (boxPosition! < screenPosition) {
         box[i]?.classList.add('fade-in');
       }
         
       }
-      
-      // You can remove the class when scrolling up to create a continuous effect
-      // else {
-      //   box.classList.remove('fade-in');
-      // }
     });
   }
   ngOnInit(): void {

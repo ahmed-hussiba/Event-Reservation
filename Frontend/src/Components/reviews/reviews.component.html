@@ -1,4 +1,4 @@
-<div id="carouselExampleDark" class="carousel carousel-dark slide feedback">
+<div id="carouselExampleDark" class="carousel carousel-dark slide feedback" data-bs-interval="2000" >
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true"
       aria-label="Slide 1"></button>
@@ -11,11 +11,11 @@
 
   <div class="carousel-inner">
     @for (item of review["reviewsWithImgs"]; track $index) {
-    <div class="carousel-item" [class.active]="flag" data-bs-interval="2000">
+    <div class="carousel-item" [class.active]="flag" >
       <img src="data:image/jpg;base64,{{ item.imgBuffer }}"
        class="img d-block m-auto rounded-circle" alt="..." />
       <div class="feedback-content text-center">
-        <h3>{{ item.review.username }}</h3>
+        <h1>{{ item.review.username }}</h1>
         <P> {{ item.review.body }}</P>
       </div>
     </div>

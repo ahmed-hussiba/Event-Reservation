@@ -84,6 +84,7 @@ export class AdminAddEventComponent {
       this.EvService.AddEvent(formData).subscribe({
         next: (data) => {
           console.log(data);
+          alert("added successfully");
         },
         error: (err) => {
           console.log(err);

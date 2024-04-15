@@ -128,7 +128,9 @@ export class AdminUpdateEventComponent implements OnInit {
         this.event['ticketsAvailable'] = this.ticketsDetails;
 
         this.eventService.UpdateEvent(this.id,this.event).subscribe({
-          next:(data)=>{console.log(data);},
+          next:(data)=>{console.log(data);
+            alert("updated succesfully")
+          },
           error:(err)=>{console.log(err);}
         });
         console.log("After Update service ");

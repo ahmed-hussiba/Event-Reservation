@@ -4,19 +4,11 @@
 
   @if (token) {
   @if(IsAdmin){
-  <h1>Admin</h1>
   } @else {
     <div class="header-container">
       <app-user-header-links></app-user-header-links>
     </div>
-
-  } } @else {
-    <div class="header-container">
-      <app-guest-header-links></app-guest-header-links>
-    </div>
-  }
-
-  <app-promotion-events [events]="events"></app-promotion-events>
+      <app-promotion-events [events]="events"></app-promotion-events>
   <app-categories></app-categories>
 
 
@@ -28,6 +20,27 @@
   <app-reviews></app-reviews>
 </div>
 <app-footer></app-footer>
+
+
+  } } @else {
+    <div class="header-container">
+      <app-guest-header-links></app-guest-header-links>
+    </div>
+    <app-promotion-events [events]="events"></app-promotion-events>
+
+
+<div class="events">
+  <app-events></app-events>
+</div>
+  
+<div class="reviews">
+  <app-reviews></app-reviews>
+</div>
+<app-footer></app-footer>
+
+  }
+
+
   
   
 }@placeholder {

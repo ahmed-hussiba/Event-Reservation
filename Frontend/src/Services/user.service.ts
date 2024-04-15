@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { jwtDecode } from 'jwt-decode';
 import { JwtPayload } from '../Interfaces/jwt-payload';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
@@ -51,11 +52,13 @@ export class UserService {
     return this.http.put(this.DB_URL + '/' + userId + '/cart', item);
   }
 
-  EditProfile(user: any) {
+  EditProfile(user: any): Observable<any> {
     if (this.token) {
       const decoded = jwtDecode(this.token);
       this.userID = Object.values(decoded)[0];
     }
-    return this.http.put(this.DB_URL + '/' + this.userID, user);
+    return this.http.put(this.DB_URL + '/' + this.userID, user, {
+      observe: 'response',
+    });
   }
 }

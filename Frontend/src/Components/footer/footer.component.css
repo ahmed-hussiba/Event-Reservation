@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+a {
+  -webkit-transition: 0.3s all ease;
+  -o-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}
+a,
+a:hover {
+  text-decoration: none !important;
+}
+
+.content {
+  height: 70vh;
+}
+
+.footer-14398 {
+  padding: 4rem 0;
+  background: #000;
+  color: #777;
+}
+.footer-14398 .footer-site-logo {
+  color: #00a97f;
+  font-family: "Pacifico", cursive;
+  font-size: 60px;
+  font-style: italic;
+  font-weight: bold;
+  margin-bottom: 18px;
+  display: block;
+}
+.footer-14398 h3 {
+  color: #fff;
+  font-size: 20px;
+  margin-bottom: 18px;
+}
+.footer-14398 .links li {
+  margin-bottom: 10px;
+}
+.footer-14398 .links li a {
+  color: #999;
+}
+.footer-14398 .links li a:hover {
+  color: #fff;
+}
+
+.review-error {
+  font-size: 12px;
+  color: rgb(122, 3, 3);
+}
+
+.review-success {
+  font-size: 12px;
+  color: #047c32;
+}

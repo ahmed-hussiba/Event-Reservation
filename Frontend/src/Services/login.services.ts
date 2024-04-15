@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class LoginService {
-  private DB_URL = 'http://localhost:7000/api/login';
-  // private DB_URL = 'https://event-reservation-2.onrender.com/api/login';
+  // private DB_URL = 'http://localhost:7000/api/login';
+  private DB_URL = 'https://event-reservation-2.onrender.com/api/login';
 
   http = inject(HttpClient);
   constructor() {}

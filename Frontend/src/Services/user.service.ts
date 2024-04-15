@@ -10,8 +10,8 @@ import { Observable } from 'rxjs';
 export class UserService {
   private userID: any;
   private token: any;
-  private DB_URL = 'http://localhost:7000/api/users';
-  // private DB_URL = 'https://event-reservation-2.onrender.com/api/users';
+  // private DB_URL = 'http://localhost:7000/api/users';
+  private DB_URL = 'https://event-reservation-2.onrender.com/api/users';
   constructor(private http: HttpClient, private loginService: LoginService) {}
   GetUserByID() {
     this.token = this.loginService.getToken();

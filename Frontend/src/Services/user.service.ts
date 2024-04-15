@@ -20,7 +20,9 @@ export class UserService {
     }
     return this.http.get(this.DB_URL + '/' + this.userID);
   }
-
+  GetAllUsers(){
+    return this.http.get(this.DB_URL);
+  }
   AddItemToCart(item: any) {
     this.token = this.loginService.getToken();
     // console.log(this.token);

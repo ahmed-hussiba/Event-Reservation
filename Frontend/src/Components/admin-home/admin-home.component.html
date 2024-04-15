@@ -1,3 +1,29 @@
+<!-- admin-home.component.html
 <button routerLink="/admin/allevents">Show All Events</button>
-<button routerLink="/admin/allorders">Show Orders</button>
 <div class="m-auto">Dashboard</div>
+<hr> -->
+<!-- <button routerLink="/admin/allorders">Show Orders</button> -->
+<!-- <app-user-header-links> </app-user-header-links> -->
+<div class="main-container ">
+ 
+ 
+  <div class="nav ">
+    <nav class="flex-column ">
+      <div ><a class="nav-link" routerLink="/admin/allevents">Show All Events</a></div>
+      <div> <a class="nav-link" routerLink="/admin/allorders">Show Orders</a></div>
+    </nav>
+  </div>
+ 
+ 
+ 
+  <div class=" chart-container">
+    <div class="doughnut-chart">
+      <app-doughnut-chart></app-doughnut-chart>
+    </div>
+  
+    <div class="bar-chart"><app-barchart></app-barchart></div>
+  </div>
+
+
+
+</div>

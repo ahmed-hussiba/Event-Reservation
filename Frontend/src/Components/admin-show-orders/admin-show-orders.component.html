@@ -1,3 +1,4 @@
+<div class="w-50"><app-barchart></app-barchart></div> 
 <section class="h-100 gradient-custom">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
@@ -8,28 +9,26 @@
             </div>
             
             <div class="card-body p-4 mb-3">
+              @if(allOrders){
+                @for (item of allOrders; track $index) {
               <div class="card shadow-0 border mb-4">
                 <div class="card-body">
-                  <div class="row">
+                  <div class="row d-flex justify-content-evenly">
                     <div class="col-md-2">
                       <img src="../../assets/Images/ticket2.jpeg"
                         class="img-fluid" alt="Phone">
                     </div>
                     <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0">Samsung Galaxy</p>
+                      <p class="text-muted mb-0">{{item.date}}</p>
                     </div>
                     <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">White</p>
+                      <p class="text-muted mb-0 small">{{item.countOfTickets}} * Ticket </p>
                     </div>
                     <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Capacity: 64GB</p>
+                      <p class="text-muted mb-0 small">{{item.totalPrice}} LE</p>
                     </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">Qty: 1</p>
-                    </div>
-                    <div class="col-md-2 text-center d-flex justify-content-center align-items-center">
-                      <p class="text-muted mb-0 small">$499</p>
-                    </div>
+                    
+                   
                   </div>
                   <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
                   <div class="row d-flex align-items-center">
@@ -47,25 +46,19 @@
                     </div>
                   </div>
                   <hr class="mb-4" style="background-color: #e0e0e0; opacity: 1;">
-
-                  <div class="d-flex justify-content-between pt-2">
-                    <p class="fw-bold mb-0 ms-3">Username</p>
-                    <p class="fw-bold mb-0 me-5 ">Email</p>
+                  <div class="d-flex justify-content-evenly pt-2">
+                    <p class="fw-bold mb-0 ms-3">OrderID</p>
+                    <p class="text-muted mb-0 ">{{item._id}}</p>
 
                   </div>
-      
-
-                  <div class="d-flex justify-content-between">
-                    <p class="text-muted mb-0 ms-3"> yasmeen </p>
-                    <p class="text-muted mb-0">user&#64;gmail.com</p>
-                  </div>
+  
       
                   
                 </div>
               </div>
              
-  
-
+            }
+          }
 
 
 

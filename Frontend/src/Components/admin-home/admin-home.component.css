@@ -1,0 +1,38 @@
+.bar-chart{
+    width: 70%;
+    height: 30%;
+    border: 0.5px solid blue;
+
+    margin-left: 25%;
+}
+
+.doughnut-chart{
+    width: 60%;
+    /* height: 30%; */
+    border: 0.5px solid red;
+    margin-bottom: 3%;
+    margin-top: 2%;
+    margin-left: 4%;
+}
+.chart-container{
+  width: 70%;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-evenly; */
+    /* align-items: center; */
+}
+.main-container{
+width: 100%;
+height: 100%;
+display: flex;
+/* flex-direction: column;   */
+}
+.nav{
+  width: 25%;
+  height: 100vh;
+  background-color: gray;
+}
+.nav-link{
+  font-size: large;
+  text-decoration: none;
+}

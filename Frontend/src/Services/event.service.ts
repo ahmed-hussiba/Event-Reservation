@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EventService {
   // private DB_URL = 'http://localhost:7000/api/event';
-  private DB_URL = 'https://event-reservation-2.onrender.com/api/event';
+  private DB_URL = 'https://event-reservation-4.onrender.com/api/event';
 
 
   constructor(private http: HttpClient) {}

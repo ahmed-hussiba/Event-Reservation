@@ -11,7 +11,8 @@
           <span class="badge bg-success">-{{ item.event.promotion }}%</span>
         </div>
         
-        <div class="carousel-item" [class.active]="flag">
+        <!-- routerLink="eventdetails/{{item.event._id}}" -->
+        <div  class="carousel-item" [class.active]="flag">
           <img 
           src="data:image/jpg;base64,{{ item.imgBuffer }}"
           class="d-block w-100"

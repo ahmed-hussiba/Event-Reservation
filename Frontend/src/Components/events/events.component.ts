@@ -34,6 +34,10 @@ export class EventsComponent implements OnInit {
         this.twoEvents.push(this.events['eventsWithImgs'][0]);
         this.twoEvents.push(this.events['eventsWithImgs'][1]);
         this.twoEvents.push(this.events['eventsWithImgs'][2]);
+        this.twoEvents.push(this.events['eventsWithImgs'][3]);
+        this.twoEvents.push(this.events['eventsWithImgs'][4]);
+
+
 
         // console.log(this.twoEvents);
       },

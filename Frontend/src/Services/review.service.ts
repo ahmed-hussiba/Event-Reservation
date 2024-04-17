@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class ReviewService {
   // private DB_URL = 'http://localhost:7000/api/reviews';
-  private DB_URL = 'https://event-reservation-2.onrender.com/api/reviews';
+  private DB_URL = 'https://event-reservation-4.onrender.com/api/reviews';
   
   constructor(private http: HttpClient) {}
   

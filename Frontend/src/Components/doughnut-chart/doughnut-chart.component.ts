@@ -11,13 +11,13 @@ import { ElementRef } from '@angular/core';
 @Component({
   selector: 'app-doughnut-chart',
   standalone: true,
-  imports: [HttpClientModule,RouterModule],
-  providers:[EventService],
+  imports: [HttpClientModule, RouterModule],
+  providers: [EventService],
   templateUrl: './doughnut-chart.component.html',
-  styleUrl: './doughnut-chart.component.css'
+  styleUrl: './doughnut-chart.component.css',
 })
 export class DoughnutChartComponent implements AfterViewInit, OnInit {
-  constructor(private EventService: EventService){}
+  constructor(private EventService: EventService) {}
   allEvents: any;
   sportCounter: number = 0;
   theaterCounter: number = 0;
@@ -36,14 +36,15 @@ export class DoughnutChartComponent implements AfterViewInit, OnInit {
       error: (err) => {
         console.log(err);
       },
-    });  }
+    });
+  }
   ngAfterViewInit(): void {
     throw new Error('Method not implemented.');
   }
   CountCategory() {
     for (var item of this.allEvents) {
       switch (item.event.category) {
-        case 'Sport':
+        case 'Sports':
           this.sportCounter++;
           break;
         case 'Comedy':
@@ -108,5 +109,4 @@ export class DoughnutChartComponent implements AfterViewInit, OnInit {
       },
     });
   }
-
 }

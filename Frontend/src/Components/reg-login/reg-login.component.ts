@@ -121,7 +121,12 @@ export class RegLoginComponent {
               const decoded = jwtDecode(authToken);
               // console.log('Decoded token \n' + decoded);
               // window.location.reload();
-              this.router.navigate(['/']);
+              // this.router.navigate(['/']);
+              if (this.router.url === '/login') {
+                this.router.navigate(['/']);
+              } else {
+                window.location.reload();
+              }
             }
           } else {
             alert('Already Registered');

@@ -120,7 +120,8 @@ export class RegLoginComponent {
               localStorage.setItem('access_token', authToken);
               const decoded = jwtDecode(authToken);
               // console.log('Decoded token \n' + decoded);
-              window.location.reload();
+              // window.location.reload();
+              this.router.navigate(['/']);
             }
           } else {
             alert('Already Registered');

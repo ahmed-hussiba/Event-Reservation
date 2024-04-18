@@ -1,11 +1,21 @@
 .redirected-body {
-    
+  background-image: url("../../assets/Images/introBlur.jpg");
+  background-size: contain;
+  object-fit: fill;
+  padding-bottom: 3vw;
 }
 
 .login-parent {
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 3vw 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 3vw 0;
+}
+
+.bg-img {
+  opacity: 0.6;
+  position: absolute;
+
+  object-fit: fill;
 }

@@ -30,10 +30,9 @@ body {
   margin-right: 0.5em;
 }
 
-
 /* forget password link */
 .link {
-  color: #00A082;
+  color: #00a082;
 }
 
 .link:hover {
@@ -47,18 +46,18 @@ p {
 
 h4 {
   font-weight: 600;
-  color: #00A082;
+  color: #00a082;
 }
 
 h6 span {
   padding: 0 1vw;
   text-transform: uppercase;
   font-weight: 700;
-  color: #00A082;
+  color: #00a082;
 }
 
-.checkbox:checked+label,
-.checkbox:not(:checked)+label {
+.checkbox:checked + label,
+.checkbox:not(:checked) + label {
   position: relative;
   display: block;
   text-align: center;
@@ -71,15 +70,15 @@ h6 span {
   background-color: white;
 }
 
-.checkbox:checked+label:before,
-.checkbox:not(:checked)+label:before {
+.checkbox:checked + label:before,
+.checkbox:not(:checked) + label:before {
   position: absolute;
   display: block;
   width: 36px;
   height: 36px;
   border-radius: 50%;
   color: #ffeba7;
-  background-color: #00A082;
+  background-color: #00a082;
   font-family: "unicons";
   content: "\2196";
   z-index: 20;
@@ -91,11 +90,9 @@ h6 span {
   transition: all 0.5s ease;
 }
 
-.checkbox:checked+label:before {
+.checkbox:checked + label:before {
   transform: translateX(44px) rotate(-270deg);
-
 }
-
 
 /* [type="checkbox"]:checked,
 .visibility-controller {
@@ -120,10 +117,8 @@ h6 span {
   display: flex;
 } */
 
-
 [type="checkbox"]:checked,
 [type="checkbox"]:not(:checked) {
-
   position: absolute;
   left: -9999px;
 }
@@ -135,7 +130,7 @@ h6 span {
 }
 
 .mainSection {
-  width: 40VW;
+  width: 40vw;
   max-width: 450px;
   border-radius: 25px;
   padding-bottom: 15px;
@@ -144,7 +139,6 @@ h6 span {
   /* background-color: #2a2b38 !important; */
   /* background-color: #0a0d3f !important; */
   background-color: rgb(192, 188, 188) !important;
-
 }
 
 .card-3d-wrap {
@@ -176,17 +170,15 @@ h6 span {
   /* background-color: #0a0d3f !important; */
   background-color: rgb(192, 188, 188) !important;
 
-
-
-  background-blend-mode:difference;
+  background-blend-mode: difference;
   /* background-blend-mode: color-dodge; */
   /* background-blend-mode:screen; */
   /* background-blend-mode:lighten; */
   /* background-blend-mode: color-burn; */
-  
+
   /* background-blend-mode:overlay; */
 
-  background-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg');
+  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
   background-position: bottom center;
   background-repeat: no-repeat;
   background-size: 300%;
@@ -203,7 +195,6 @@ h6 span {
   transform-style: preserve-3d;
 }
 
-
 .card-back {
   display: flex;
   align-items: center;
@@ -215,14 +206,14 @@ h6 span {
   margin: auto;
 }
 
-.card-back h4, .card-front h4 {
+.card-back h4,
+.card-front h4 {
   margin-top: 5vh;
 }
 
 .card-back .form-style {
   height: 40px;
   margin-bottom: 1vh;
-  
 }
 
 .form-check {
@@ -239,7 +230,7 @@ h6 span {
 
 .custom-upload {
   width: 70%;
-  height: 5vh ;
+  height: 5vh;
   /* font-weight: 300; */
   border: 1px solid rgb(95, 93, 93);
   margin: auto 1vw;
@@ -258,9 +249,8 @@ h6 span {
   transform: rotateY(180deg);
 }
 
-.checkbox:checked~.card-3d-wrap .card-3d-wrapper {
+.checkbox:checked ~ .card-3d-wrap .card-3d-wrapper {
   transform: rotateY(180deg);
-
 }
 
 .center-wrap {
@@ -284,7 +274,7 @@ h6 span {
   line-height: 22px;
   letter-spacing: 0.5px;
   outline: none;
-  color: #00A082;
+  color: #00a082;
   background-color: white;
   /* background-color: #FFC244; */
   /* background-color: #2a2b38 !important; */
@@ -339,7 +329,6 @@ h6 span {
   font-size: 0.7em;
 }
 
-
 .btn {
   border-radius: 16px;
   border: 2px solid rgb(206, 195, 195);
@@ -355,28 +344,24 @@ h6 span {
   justify-content: center;
   text-align: center;
   background-color: white;
-  color: #00A082;
+  color: #00a082;
   box-shadow: 0 4px 8px 0 rgba(21, 21, 21, 0.2);
 }
 
-
-
 .btn:active,
 .btn:focus {
-  background-color: #00A082;
+  background-color: #00a082;
   color: white;
 }
 
 .btn:hover {
-  background-color: #00A082;
+  background-color: #00a082;
   color: white;
 }
 
-
-.border-red{
+.border-red {
   border: 2px solid red;
 }
-
 
 .error {
   font-size: 12px;
